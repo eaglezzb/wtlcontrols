@@ -1,0 +1,34 @@
+HKCR
+{
+	GradientFrame.GradientFrameCtrl.1 = s 'GradientFrameCtrl Class'
+	{
+		CLSID = s '{1E448DF8-0E7B-43ED-8CE1-2E80DF2835CF}'
+	}
+	GradientFrame.GradientFrameCtrl = s 'GradientFrameCtrl Class'
+	{
+		CLSID = s '{1E448DF8-0E7B-43ED-8CE1-2E80DF2835CF}'
+		CurVer = s 'GradientFrame.GradientFrameCtrl.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {1E448DF8-0E7B-43ED-8CE1-2E80DF2835CF} = s 'GradientFrameCtrl Class'
+		{
+			ProgID = s 'GradientFrame.GradientFrameCtrl.1'
+			VersionIndependentProgID = s 'GradientFrame.GradientFrameCtrl'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			ForceRemove 'Control'
+			ForceRemove 'Insertable'
+			ForceRemove 'ToolboxBitmap32' = s '%MODULE%, 101'
+			'MiscStatus' = s '0'
+			{
+			    '1' = s '139665'
+			}
+			'TypeLib' = s '{53D6C6D8-5A00-4A0B-AB9B-674E4D3A89DB}'
+			'Version' = s '1.0'
+		}
+	}
+}

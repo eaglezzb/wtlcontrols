@@ -1,0 +1,64 @@
+// GradientFrame.idl : IDL source for GradientFrame.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (GradientFrame.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+#include "olectl.h"
+	
+
+	[
+		object,
+		uuid(DB9DC418-4750-48D1-88EA-610A81A9B103),
+		dual,
+		helpstring("IGradientFrameCtrl Interface"),
+		pointer_default(unique)
+	]
+	interface IGradientFrameCtrl : IDispatch
+	{
+		[propput, id(DISPID_BACKCOLOR)]
+		HRESULT BackColor([in]OLE_COLOR clr);
+		[propget, id(DISPID_BACKCOLOR)]
+		HRESULT BackColor([out,retval]OLE_COLOR* pclr);
+		[propput, id(DISPID_BORDERCOLOR)]
+		HRESULT BorderColor([in]OLE_COLOR clr);
+		[propget, id(DISPID_BORDERCOLOR)]
+		HRESULT BorderColor([out, retval]OLE_COLOR* pclr);
+		[propput, id(DISPID_BORDERWIDTH)]
+		HRESULT BorderWidth([in]long width);
+		[propget, id(DISPID_BORDERWIDTH)]
+		HRESULT BorderWidth([out, retval]long* width);
+		[propput, id(DISPID_FORECOLOR)]
+		HRESULT ForeColor([in]OLE_COLOR clr);
+		[propget, id(DISPID_FORECOLOR)]
+		HRESULT ForeColor([out,retval]OLE_COLOR* pclr);
+		[propput, id(DISPID_BORDERVISIBLE)]
+		HRESULT BorderVisible([in]VARIANT_BOOL vbool);
+		[propget, id(DISPID_BORDERVISIBLE)]
+		HRESULT BorderVisible([out, retval]VARIANT_BOOL* pbool);
+		[id(1), helpstring("method Refresh")] HRESULT Refresh();
+		[propget, id(2), helpstring("property Radius")] HRESULT Radius([out, retval] long *pVal);
+		[propput, id(2), helpstring("property Radius")] HRESULT Radius([in] long newVal);
+	};
+
+[
+	uuid(53D6C6D8-5A00-4A0B-AB9B-674E4D3A89DB),
+	version(1.0),
+	helpstring("GradientFrame 1.0 Type Library")
+]
+library GRADIENTFRAMELib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(1E448DF8-0E7B-43ED-8CE1-2E80DF2835CF),
+		helpstring("GradientFrameCtrl Class")
+	]
+	coclass GradientFrameCtrl
+	{
+		[default] interface IGradientFrameCtrl;
+	};
+};
