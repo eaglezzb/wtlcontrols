@@ -69,15 +69,27 @@ public:
         m_sName = sName;        // keep only pointer and hope
                                 // user will not destroy original string
 
-        m_nStart = GetTickCount();
+        //m_nStart = GetTickCount();
+
+		//获取精确时间
+		if (QueryPerformanceFrequency(&m_nFreq))
+		{
+			QueryPerformanceCounter(&m_nLastTime1);
+		}
         m_bShowTime = FALSE;
     }
     ~CTimeCounter()
     {
         if ( m_bShowTime )
         {
-            TCHAR* s = new TCHAR[lstrlen(m_sName) + 10];
-            _stprintf(s, _T("%s  %d ms\n"), m_sName, GetTickCount() - m_nStart);
+			LARGE_INTEGER nLastTime2;
+			QueryPerformanceCounter(&nLastTime2);
+
+			float fInterval = nLastTime2.QuadPart - m_nLastTime1.QuadPart;
+            TCHAR* s = new TCHAR[lstrlen(m_sName) + 64];
+			//_stprintf(s, _T("%s  %d ms\n"), m_sName, GetTickCount() - m_nStart);
+            //AtlTrace(s);
+			_stprintf(s, _T("%s  %.2f mis\n"), "microscends", fInterval);
             AtlTrace(s);
             delete[] s;
         }
@@ -89,9 +101,13 @@ public:
     }
 
 protected:
-    long m_nStart;
+    //long m_nStart;
     LPCTSTR m_sName;
     BOOL m_bShowTime;
+	
+	LARGE_INTEGER m_nFreq;
+	LARGE_INTEGER m_nLastTime1;
+	//LARGE_INTEGER m_nLastTime2;
 };
 
 // smart pointer to CTimeCounter
