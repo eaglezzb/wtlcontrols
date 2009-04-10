@@ -163,9 +163,11 @@ public:
 	
 	LRESULT OnDraw(ATL_DRAWINFO& )
 	{
+		#ifdef _DEBUG
 		SHOW_TIME_START(t, _T("OnPaint"));		
-		
-		SHOW_TIME_START(t1, _T("Prepare off-screen bitmap"));
+		//≤‚ ‘ ±º‰
+		//SHOW_TIME_START(t1, _T("Prepare off-screen bitmap"));
+		#endif
 
 		CPaintDC dc(m_ctlStatic.m_hWnd);
 		RECT rect;
@@ -247,7 +249,11 @@ public:
 // 			graphics.DrawCachedBitmap(m_pCachedBitmap, 0, 0);
 // 		}
 // 		
-		SHOW_TIME_END(t);
+		#ifdef _DEBUG
+			SHOW_TIME_END(t);
+		#endif
+
+
 		return 0;
 	}
 
