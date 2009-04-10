@@ -20,9 +20,7 @@ CFG=GradientFrame - Win32 Debug
 !MESSAGE "GradientFrame - Win32 Debug" (based on "Win32 (x86) Dynamic-Link Library")
 !MESSAGE "GradientFrame - Win32 Unicode Debug" (based on "Win32 (x86) Dynamic-Link Library")
 !MESSAGE "GradientFrame - Win32 Release MinSize" (based on "Win32 (x86) Dynamic-Link Library")
-!MESSAGE "GradientFrame - Win32 Release MinDependency" (based on "Win32 (x86) Dynamic-Link Library")
 !MESSAGE "GradientFrame - Win32 Unicode Release MinSize" (based on "Win32 (x86) Dynamic-Link Library")
-!MESSAGE "GradientFrame - Win32 Unicode Release MinDependency" (based on "Win32 (x86) Dynamic-Link Library")
 !MESSAGE 
 
 # Begin Project
@@ -123,7 +121,7 @@ SOURCE="$(InputPath)"
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /MT /W3 /O1 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "_ATL_DLL" /D "_ATL_MIN_CRT" /Yu"stdafx.h" /FD /c
-# ADD CPP /nologo /MT /W3 /O1 /I "C:\WTL80_7161_Final\GDIPlus\Includes" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /Yu"stdafx.h" /FD /c
+# ADD CPP /nologo /MT /W3 /O2 /I "C:\WTL80_7161_Final\GDIPlus\Includes" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /Yu"stdafx.h" /FD /c
 # ADD BASE RSC /l 0x804 /d "NDEBUG"
 # ADD RSC /l 0x804 /d "NDEBUG"
 BSC32=bscmake.exe
@@ -136,41 +134,6 @@ LINK32=link.exe
 OutDir=.\ReleaseMinSize
 TargetPath=.\ReleaseMinSize\GradientFrame.dll
 InputPath=.\ReleaseMinSize\GradientFrame.dll
-SOURCE="$(InputPath)"
-
-"$(OutDir)\regsvr32.trg" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
-	regsvr32 /s /c "$(TargetPath)" 
-	echo regsvr32 exec. time > "$(OutDir)\regsvr32.trg" 
-	
-# End Custom Build
-
-!ELSEIF  "$(CFG)" == "GradientFrame - Win32 Release MinDependency"
-
-# PROP BASE Use_MFC 0
-# PROP BASE Use_Debug_Libraries 0
-# PROP BASE Output_Dir "ReleaseMinDependency"
-# PROP BASE Intermediate_Dir "ReleaseMinDependency"
-# PROP BASE Target_Dir ""
-# PROP Use_MFC 0
-# PROP Use_Debug_Libraries 0
-# PROP Output_Dir "ReleaseMinDependency"
-# PROP Intermediate_Dir "ReleaseMinDependency"
-# PROP Ignore_Export_Lib 0
-# PROP Target_Dir ""
-# ADD BASE CPP /nologo /MT /W3 /O1 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "_ATL_STATIC_REGISTRY" /D "_ATL_MIN_CRT" /Yu"stdafx.h" /FD /c
-# ADD CPP /nologo /MT /W3 /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /Yu"stdafx.h" /FD /c
-# ADD BASE RSC /l 0x804 /d "NDEBUG"
-# ADD RSC /l 0x804 /d "NDEBUG"
-BSC32=bscmake.exe
-# ADD BASE BSC32 /nologo
-# ADD BSC32 /nologo
-LINK32=link.exe
-# ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /dll /machine:I386
-# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib gdiplus.lib /nologo /subsystem:windows /dll /machine:I386
-# Begin Custom Build - Performing registration
-OutDir=.\ReleaseMinDependency
-TargetPath=.\ReleaseMinDependency\GradientFrame.dll
-InputPath=.\ReleaseMinDependency\GradientFrame.dll
 SOURCE="$(InputPath)"
 
 "$(OutDir)\regsvr32.trg" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
@@ -192,7 +155,7 @@ SOURCE="$(InputPath)"
 # PROP Intermediate_Dir "ReleaseUMinSize"
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /MT /W3 /O1 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_USRDLL" /D "_UNICODE" /D "_ATL_DLL" /D "_ATL_MIN_CRT" /Yu"stdafx.h" /FD /c
-# ADD CPP /nologo /MT /W3 /O1 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_USRDLL" /D "_UNICODE" /D "_ATL_DLL" /D "_ATL_MIN_CRT" /Yu"stdafx.h" /FD /c
+# ADD CPP /nologo /MT /W3 /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_USRDLL" /D "_UNICODE" /D "_ATL_DLL" /D "_ATL_MIN_CRT" /Yu"stdafx.h" /FD /c
 # ADD BASE RSC /l 0x804 /d "NDEBUG"
 # ADD RSC /l 0x804 /d "NDEBUG"
 BSC32=bscmake.exe
@@ -219,46 +182,6 @@ SOURCE="$(InputPath)"
 	
 # End Custom Build
 
-!ELSEIF  "$(CFG)" == "GradientFrame - Win32 Unicode Release MinDependency"
-
-# PROP BASE Use_MFC 0
-# PROP BASE Use_Debug_Libraries 0
-# PROP BASE Output_Dir "ReleaseUMinDependency"
-# PROP BASE Intermediate_Dir "ReleaseUMinDependency"
-# PROP BASE Target_Dir ""
-# PROP Use_MFC 0
-# PROP Use_Debug_Libraries 0
-# PROP Output_Dir "ReleaseUMinDependency"
-# PROP Intermediate_Dir "ReleaseUMinDependency"
-# PROP Target_Dir ""
-# ADD BASE CPP /nologo /MT /W3 /O1 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_USRDLL" /D "_UNICODE" /D "_ATL_STATIC_REGISTRY" /D "_ATL_MIN_CRT" /Yu"stdafx.h" /FD /c
-# ADD CPP /nologo /MT /W3 /O1 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_USRDLL" /D "_UNICODE" /D "_ATL_STATIC_REGISTRY" /D "_ATL_MIN_CRT" /Yu"stdafx.h" /FD /c
-# ADD BASE RSC /l 0x804 /d "NDEBUG"
-# ADD RSC /l 0x804 /d "NDEBUG"
-BSC32=bscmake.exe
-# ADD BASE BSC32 /nologo
-# ADD BSC32 /nologo
-LINK32=link.exe
-# ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /dll /machine:I386
-# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /dll /machine:I386
-# Begin Custom Build - Performing registration
-OutDir=.\ReleaseUMinDependency
-TargetPath=.\ReleaseUMinDependency\GradientFrame.dll
-InputPath=.\ReleaseUMinDependency\GradientFrame.dll
-SOURCE="$(InputPath)"
-
-"$(OutDir)\regsvr32.trg" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
-	if "%OS%"=="" goto NOTNT 
-	if not "%OS%"=="Windows_NT" goto NOTNT 
-	regsvr32 /s /c "$(TargetPath)" 
-	echo regsvr32 exec. time > "$(OutDir)\regsvr32.trg" 
-	goto end 
-	:NOTNT 
-	echo Warning : Cannot register Unicode DLL on Windows 95 
-	:end 
-	
-# End Custom Build
-
 !ENDIF 
 
 # Begin Target
@@ -266,9 +189,7 @@ SOURCE="$(InputPath)"
 # Name "GradientFrame - Win32 Debug"
 # Name "GradientFrame - Win32 Unicode Debug"
 # Name "GradientFrame - Win32 Release MinSize"
-# Name "GradientFrame - Win32 Release MinDependency"
 # Name "GradientFrame - Win32 Unicode Release MinSize"
-# Name "GradientFrame - Win32 Unicode Release MinDependency"
 # Begin Group "Source Files"
 
 # PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
