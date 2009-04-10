@@ -174,7 +174,7 @@ public:
 		int nHeight = rect.bottom - rect.top + 1;
 		//
 	
-		CDC MemDC; //首先定义一个显示设备对象
+		CDCHandle MemDC; //首先定义一个显示设备对象
 		CBitmap MemBitmap;//定义一个位图对象
 		//随后建立与屏幕显示兼容的内存显示设备
 		MemDC.CreateCompatibleDC(dc.m_hDC);
@@ -184,17 +184,35 @@ public:
 
 		//将位图选入到内存显示设备中
 		//只有选入了位图的内存显示设备才有地方绘图，画到指定的位图上
-		CBitmap OldBit;
+		CBitmapHandle OldBit;
 		OldBit.m_hBitmap = MemDC.SelectBitmap (MemBitmap.m_hBitmap);
 		//先用背景色将位图清除干净，这里我用的是白色作为背景
 		//你也可以用自己应该用的颜色
 		MemDC.FillSolidRect(0,0,nWidth,nHeight, m_clrBackColor);
+
 		//绘图
-		CBrush brush;
+
+		CBrushHandle brush;
 		brush.CreateSolidBrush(m_clrForeColor);	
-		CRgn rgn;
+		CRgnHandle rgn;
 		rgn.CreateRoundRectRgn(0, 0, nWidth, nHeight, m_radius, m_radius);
 		MemDC.FillRgn(rgn.m_hRgn, brush);
+
+		if (m_bBorderVisible)
+		{
+			HPEN pen = ::CreatePen(m_nBorderStyle, m_nBorderWidth, m_clrBorderColor);
+			HPEN oldPen = MemDC.SelectPen(pen);
+			LOGBRUSH logBrush;
+			logBrush.lbStyle = BS_SOLID;
+			logBrush.lbColor = m_clrBorderColor;
+			logBrush.lbHatch = 0;
+			CBrushHandle rgnBrush;
+			rgnBrush.CreateBrushIndirect(&logBrush);
+			BOOL framed = MemDC.FrameRgn(rgn.m_hRgn, rgnBrush, m_nBorderWidth, m_nBorderWidth);
+			MemDC.SelectPen(oldPen);
+		}
+
+		
 		//MemDC.FillRect(&rect, brush.m_hBrush);
 		//将内存中的图拷贝到屏幕上进行显示
 		BOOL result = dc.BitBlt(0,0,nWidth,nHeight,MemDC.m_hDC,0,0,SRCCOPY);
