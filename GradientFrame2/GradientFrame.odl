@@ -1,0 +1,71 @@
+// GradientFrame.odl : type library source for ActiveX Control project.
+
+// This file will be processed by the Make Type Library (mktyplib) tool to
+// produce the type library (GradientFrame.tlb) that will become a resource in
+// GradientFrame.ocx.
+
+#include <olectl.h>
+#include <idispids.h>
+
+[ uuid(3781E7E6-8F8B-4BED-8FA7-856C944CDDE9), version(1.0),
+  helpfile("GradientFrame.hlp"),
+  helpstring("GradientFrame ActiveX Control module"),
+  control ]
+library GRADIENTFRAMELib
+{
+	importlib(STDOLE_TLB);
+	importlib(STDTYPE_TLB);
+
+	//  Primary dispatch interface for CGradientFrameCtrl
+
+	[ uuid(DF226003-0637-440E-B967-C54E3B609717),
+	  helpstring("Dispatch interface for GradientFrame Control"), hidden ]
+	dispinterface _DGradientFrame
+	{
+		properties:
+			// NOTE - ClassWizard will maintain property information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_PROP(CGradientFrameCtrl)
+			[id(1)] OLE_COLOR BackColor;
+			[id(2)] OLE_COLOR ForeColor;
+			[id(3)] long Radius;
+			//}}AFX_ODL_PROP
+
+		methods:
+			// NOTE - ClassWizard will maintain method information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_METHOD(CGradientFrameCtrl)
+			[id(DISPID_REFRESH)] void Refresh();
+			//}}AFX_ODL_METHOD
+	};
+
+	//  Event dispatch interface for CGradientFrameCtrl
+
+	[ uuid(CBB78C23-5D6D-4003-B35A-47EB2D309F9D),
+	  helpstring("Event interface for GradientFrame Control") ]
+	dispinterface _DGradientFrameEvents
+	{
+		properties:
+			//  Event interface has no properties
+
+		methods:
+			// NOTE - ClassWizard will maintain event information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_EVENT(CGradientFrameCtrl)
+			//}}AFX_ODL_EVENT
+	};
+
+	//  Class information for CGradientFrameCtrl
+
+	[ uuid(1E448DF8-0E7B-43ED-8CE1-2E80DF2835CF),
+	  helpstring("GradientFrame Control"), control ]
+	coclass GradientFrame
+	{
+		[default] dispinterface _DGradientFrame;
+		[default, source] dispinterface _DGradientFrameEvents;
+	};
+
+
+	//{{AFX_APPEND_ODL}}
+	//}}AFX_APPEND_ODL}}
+};
