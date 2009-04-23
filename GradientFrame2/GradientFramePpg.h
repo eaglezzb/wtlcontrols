@@ -30,6 +30,9 @@ public:
 protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
 
+private:
+	long m_radius;
+
 // Message maps
 protected:
 	//{{AFX_MSG(CGradientFramePropPage)

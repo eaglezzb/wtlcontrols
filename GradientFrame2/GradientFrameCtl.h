@@ -50,10 +50,18 @@ protected:
 
 // Dispatch maps
 	//{{AFX_DISPATCH(CGradientFrameCtrl)
+	OLE_COLOR m_clrBackColor;
 	afx_msg void OnBackColorChanged();
+	OLE_COLOR m_clrForeColor;
 	afx_msg void OnForeColorChanged();
 	long m_radius;
 	afx_msg void OnRadiusChanged();
+	BOOL m_borderVisible;
+	afx_msg void OnBorderVisibleChanged();
+	long m_borderWidth;
+	afx_msg void OnBorderWidthChanged();
+	OLE_COLOR m_borderColor;
+	afx_msg void OnBorderColorChanged();
 	afx_msg void Refresh();
 	//}}AFX_DISPATCH
 	DECLARE_DISPATCH_MAP()
@@ -70,6 +78,9 @@ public:
 	dispidBackColor = 1L,
 	dispidForeColor = 2L,
 	dispidRadius = 3L,
+	dispidBorderVisible = 4L,
+	dispidBorderWidth = 5L,
+	dispidBorderColor = 6L,
 	//}}AFX_DISP_ID
 	};
 
