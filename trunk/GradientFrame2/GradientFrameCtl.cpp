@@ -38,6 +38,10 @@ BEGIN_DISPATCH_MAP(CGradientFrameCtrl, COleControl)
 	DISP_PROPERTY_NOTIFY(CGradientFrameCtrl, "BackColor", m_clrBackColor, OnBackColorChanged, VT_COLOR)
 	DISP_PROPERTY_NOTIFY(CGradientFrameCtrl, "ForeColor", m_clrForeColor, OnForeColorChanged, VT_COLOR)
 	DISP_PROPERTY_NOTIFY(CGradientFrameCtrl, "Radius", m_radius, OnRadiusChanged, VT_I4)
+	DISP_PROPERTY_NOTIFY(CGradientFrameCtrl, "BorderVisible", m_borderVisible, OnBorderVisibleChanged, VT_BOOL)
+	DISP_PROPERTY_NOTIFY(CGradientFrameCtrl, "BorderWidth", m_borderWidth, OnBorderWidthChanged, VT_I4)
+	DISP_PROPERTY_NOTIFY(CGradientFrameCtrl, "BorderColor", m_borderColor, OnBorderColorChanged, VT_COLOR)
+	DISP_STOCKPROP_ENABLED()
 	DISP_FUNCTION_ID(CGradientFrameCtrl, "Refresh", DISPID_REFRESH, Refresh, VT_EMPTY, VTS_NONE)
 	//}}AFX_DISPATCH_MAP
 END_DISPATCH_MAP()
@@ -133,7 +137,7 @@ BOOL CGradientFrameCtrl::CGradientFrameCtrlFactory::UpdateRegistry(BOOL bRegiste
 // CGradientFrameCtrl::CGradientFrameCtrl - Constructor
 
 CGradientFrameCtrl::CGradientFrameCtrl():
-	m_radius(20)
+	m_radius(20), m_borderVisible(FALSE), m_borderWidth(2), m_borderColor(16777215)
 {
 	InitializeIIDs(&IID_DGradientFrame, &IID_DGradientFrameEvents);
 
@@ -188,20 +192,20 @@ void CGradientFrameCtrl::OnDraw(
 	rgn.CreateRoundRectRgn(0, 0, nWidth, nHeight, m_radius, m_radius);
 	MemDC.FillRgn(&rgn, &brush);
 	
-	// 	if (m_bBorderVisible)
-	// 	{
-	// 		HPEN pen = ::CreatePen(m_nBorderStyle, m_nBorderWidth, m_clrBorderColor);
-	// 		HPEN oldPen = MemDC.SelectPen(pen);
-	// 		LOGBRUSH logBrush;
-	// 		logBrush.lbStyle = BS_SOLID;
-	// 		logBrush.lbColor = m_clrBorderColor;
-	// 		logBrush.lbHatch = 0;
-	// 		CBrushHandle rgnBrush;
-	// 		rgnBrush.CreateBrushIndirect(&logBrush);
-	// 		BOOL framed = MemDC.FrameRgn(rgn.m_hRgn, rgnBrush, m_nBorderWidth, m_nBorderWidth);
-	// 		MemDC.SelectPen(oldPen);
-	// 	}
-	// 	
+	if (m_borderVisible)
+	{
+// 		HPEN pen = ::CreatePen(m_nBorderStyle, m_borderWidth, m_borderColor);
+// 		HPEN oldPen = (HPEN)MemDC.SelectObject(pen);
+		LOGBRUSH logBrush;
+		logBrush.lbStyle = BS_SOLID;
+		logBrush.lbColor = m_borderColor;
+		logBrush.lbHatch = 0;
+		CBrush rgnBrush;
+		rgnBrush.CreateBrushIndirect(&logBrush);
+		BOOL framed = MemDC.FrameRgn(&rgn, &rgnBrush, m_borderWidth, m_borderWidth);
+// 		MemDC.SelectPen(oldPen);
+	}
+	
 	
 	//将内存中的图拷贝到屏幕上进行显示
 	BOOL result = pdc->BitBlt(0,0,nWidth,nHeight, &MemDC,0,0,SRCCOPY);
@@ -227,6 +231,9 @@ void CGradientFrameCtrl::DoPropExchange(CPropExchange* pPX)
 		PX_Color(pPX, _T("BackColor"), m_clrBackColor, 16777215);
 		PX_Color(pPX, _T("ForeColor"), m_clrForeColor, 12999969);
 		PX_Long(pPX, _T("Radius"), m_radius, 20);
+		PX_Color(pPX, _T("BorderColor"), m_borderColor, 16777215);
+		PX_Long(pPX, _T("BorderWidth"), m_borderWidth, 2);
+		PX_Bool(pPX, _T("BorderVisible"), m_borderVisible, FALSE);
 	}
 	else if (pPX->IsLoading())
 	{
@@ -234,11 +241,17 @@ void CGradientFrameCtrl::DoPropExchange(CPropExchange* pPX)
 		PX_Color(pPX, _T("BackColor"), m_clrBackColor, 16777215);
 		PX_Color(pPX, _T("ForeColor"), m_clrForeColor, 12999969);
 		PX_Long(pPX, _T("Radius"), m_radius, 20);
-		
+		PX_Color(pPX, _T("BorderColor"), m_borderColor, 16777215);
+		PX_Long(pPX, _T("BorderWidth"), m_borderWidth, 2);
+		PX_Bool(pPX, _T("BorderVisible"), m_borderVisible, FALSE);
+
 		// Force property values to these defaults
 		m_radius = 20;
 		m_clrBackColor = 16777215;
 		m_clrForeColor = 12999969;
+		m_borderVisible = FALSE;
+		m_borderWidth = 2;
+		m_borderColor = 16777215;
 	}
 
 }
@@ -255,6 +268,9 @@ void CGradientFrameCtrl::OnResetState()
 	m_radius = 20;
 	m_clrBackColor = 16777215;
 	m_clrForeColor = 12999969;
+	m_borderVisible = FALSE;
+	m_borderWidth = 2;
+	m_borderColor = 16777215;
 	// TODO: Reset any other control state here.
 }
 
@@ -324,6 +340,32 @@ void CGradientFrameCtrl::OnForeColorChanged()
 
 
 void CGradientFrameCtrl::OnRadiusChanged() 
+{
+	// TODO: Add notification handler code
+
+	SetModifiedFlag();
+
+	Invalidate(TRUE);
+}
+
+void CGradientFrameCtrl::OnBorderVisibleChanged() 
+{
+	// TODO: Add notification handler code
+
+	SetModifiedFlag();
+
+	Invalidate(TRUE);
+}
+
+void CGradientFrameCtrl::OnBorderWidthChanged() 
+{
+	// TODO: Add notification handler code
+
+	SetModifiedFlag();
+	Invalidate(TRUE);
+}
+
+void CGradientFrameCtrl::OnBorderColorChanged() 
 {
 	// TODO: Add notification handler code
 

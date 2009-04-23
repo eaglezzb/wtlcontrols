@@ -50,7 +50,7 @@ BOOL CGradientFramePropPage::CGradientFramePropPageFactory::UpdateRegistry(BOOL 
 // CGradientFramePropPage::CGradientFramePropPage - Constructor
 
 CGradientFramePropPage::CGradientFramePropPage() :
-	COlePropertyPage(IDD, IDS_GRADIENTFRAME_PPG_CAPTION)
+	COlePropertyPage(IDD, IDS_GRADIENTFRAME_PPG_CAPTION),m_radius(20)
 {
 	//{{AFX_DATA_INIT(CGradientFramePropPage)
 	// NOTE: ClassWizard will add member initialization here
@@ -67,6 +67,8 @@ void CGradientFramePropPage::DoDataExchange(CDataExchange* pDX)
 	//{{AFX_DATA_MAP(CGradientFramePropPage)
 	// NOTE: ClassWizard will add DDP, DDX, and DDV calls here
 	//    DO NOT EDIT what you see in these blocks of generated code !
+	DDP_Text(pDX, IDC_EDIT_RADIUS, m_radius, _T("Radius"));
+	DDX_Text(pDX, IDC_EDIT_RADIUS, m_radius);
 	//}}AFX_DATA_MAP
 	DDP_PostProcessing(pDX);
 }

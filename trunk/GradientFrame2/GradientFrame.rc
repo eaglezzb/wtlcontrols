@@ -103,12 +103,12 @@ IDB_GRADIENTFRAME       BITMAP  DISCARDABLE     "GradientFrameCtl.bmp"
 // Dialog
 //
 
-IDD_PROPPAGE_GRADIENTFRAME DIALOG DISCARDABLE  0, 0, 250, 62
+IDD_PROPPAGE_GRADIENTFRAME DIALOG DISCARDABLE  0, 0, 250, 73
 STYLE WS_CHILD
 FONT 8, "MS Sans Serif"
 BEGIN
-    LTEXT           "TODO: Place controls to manipulate properties of GradientFrame Control on this dialog.",
-                    IDC_STATIC,7,25,229,16
+    LTEXT           "Radius:",IDC_STATIC,15,17,29,8
+    EDITTEXT        IDC_EDIT_RADIUS,75,13,57,15,ES_AUTOHSCROLL
 END
 
 
@@ -125,7 +125,7 @@ BEGIN
         LEFTMARGIN, 7
         RIGHTMARGIN, 243
         TOPMARGIN, 7
-        BOTTOMMARGIN, 55
+        BOTTOMMARGIN, 66
     END
 END
 #endif    // APSTUDIO_INVOKED

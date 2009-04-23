@@ -29,6 +29,10 @@ library GRADIENTFRAMELib
 			[id(1)] OLE_COLOR BackColor;
 			[id(2)] OLE_COLOR ForeColor;
 			[id(3)] long Radius;
+			[id(DISPID_ENABLED), bindable, requestedit] boolean Enabled;
+			[id(4)] boolean BorderVisible;
+			[id(5)] long BorderWidth;
+			[id(6)] OLE_COLOR BorderColor;
 			//}}AFX_ODL_PROP
 
 		methods:
