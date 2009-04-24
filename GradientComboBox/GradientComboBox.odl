@@ -1,0 +1,69 @@
+// GradientComboBox.odl : type library source for ActiveX Control project.
+
+// This file will be processed by the Make Type Library (mktyplib) tool to
+// produce the type library (GradientComboBox.tlb) that will become a resource in
+// GradientComboBox.ocx.
+
+#include <olectl.h>
+#include <idispids.h>
+
+[ uuid(90EE2415-0ED2-4C9C-A42E-DB79B06572C8), version(1.0),
+  helpfile("GradientComboBox.hlp"),
+  helpstring("GradientComboBox ActiveX Control module"),
+  control ]
+library GRADIENTCOMBOBOXLib
+{
+	importlib(STDOLE_TLB);
+	importlib(STDTYPE_TLB);
+
+	//  Primary dispatch interface for CGradientComboBoxCtrl
+
+	[ uuid(109B54C7-E1B9-4278-B41E-47FF295A7607),
+	  helpstring("Dispatch interface for GradientComboBox Control"), hidden ]
+	dispinterface _DGradientComboBox
+	{
+		properties:
+			// NOTE - ClassWizard will maintain property information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_PROP(CGradientComboBoxCtrl)
+			[id(DISPID_ENABLED), bindable, requestedit] boolean Enabled;
+			//}}AFX_ODL_PROP
+
+		methods:
+			// NOTE - ClassWizard will maintain method information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_METHOD(CGradientComboBoxCtrl)
+			[id(1)] long AddString(BSTR text);
+			//}}AFX_ODL_METHOD
+	};
+
+	//  Event dispatch interface for CGradientComboBoxCtrl
+
+	[ uuid(7DDB5A60-7BAA-4681-BC86-71656BD91A2F),
+	  helpstring("Event interface for GradientComboBox Control") ]
+	dispinterface _DGradientComboBoxEvents
+	{
+		properties:
+			//  Event interface has no properties
+
+		methods:
+			// NOTE - ClassWizard will maintain event information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_EVENT(CGradientComboBoxCtrl)
+			//}}AFX_ODL_EVENT
+	};
+
+	//  Class information for CGradientComboBoxCtrl
+
+	[ uuid(D593B2F2-1FC4-477E-B218-1A273E286F55),
+	  helpstring("GradientComboBox Control"), control ]
+	coclass GradientComboBox
+	{
+		[default] dispinterface _DGradientComboBox;
+		[default, source] dispinterface _DGradientComboBoxEvents;
+	};
+
+
+	//{{AFX_APPEND_ODL}}
+	//}}AFX_APPEND_ODL}}
+};
