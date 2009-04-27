@@ -21,10 +21,7 @@ IMPLEMENT_DYNCREATE(CGradientComboBoxCtrl, COleControl)
 
 BEGIN_MESSAGE_MAP(CGradientComboBoxCtrl, COleControl)
 	//{{AFX_MSG_MAP(CGradientComboBoxCtrl)
-// 	ON_WM_CREATE()
-// 	ON_WM_ACTIVATE()
-// 	ON_WM_DRAWITEM()
-// 	ON_WM_MEASUREITEM()
+	ON_WM_CREATE()
 	//}}AFX_MSG_MAP
 	ON_MESSAGE(WM_CTLCOLORLISTBOX, OnCtlColorListBox)
 	ON_MESSAGE(OCM_COMMAND, OnOcmCommand)
@@ -190,8 +187,9 @@ BOOL CGradientComboBoxCtrl::PreCreateWindow(CREATESTRUCT& cs)
 	cs.lpszClass = _T("COMBOBOX");
 	//cs.style &= ~0x0001L;
 	//cs.style |= CBS_DROPDOWN|CBS_HASSTRINGS|CBS_AUTOHSCROLL;
-	cs.style |= CBS_DROPDOWN;
-	return  COleControl::PreCreateWindow(cs);
+	cs.style |= CBS_DROPDOWN|CBS_AUTOHSCROLL|WS_VSCROLL;
+	//return  COleControl::PreCreateWindow(cs);
+	return TRUE;
 }
 
 
@@ -263,13 +261,13 @@ LRESULT CGradientComboBoxCtrl::OnCtlColorListBox(WPARAM wParam, LPARAM lParam)
 // 	
 // 	COleControl::OnDrawItem(nIDCtl, lpDrawItemStruct);
 // }
-// 
-// void CGradientComboBoxCtrl::OnMeasureItem(int nIDCtl, LPMEASUREITEMSTRUCT lpMeasureItemStruct) 
-// {
-// 	// TODO: Add your message handler code here and/or call default
-// 	
-// 	COleControl::OnMeasureItem(nIDCtl, lpMeasureItemStruct);
-// }
+
+void CGradientComboBoxCtrl::OnMeasureItem(int nIDCtl, LPMEASUREITEMSTRUCT lpMeasureItemStruct) 
+{
+	// TODO: Add your message handler code here and/or call default
+	
+	COleControl::OnMeasureItem(nIDCtl, lpMeasureItemStruct);
+}
 
 long CGradientComboBoxCtrl::AddString(LPCTSTR text) 
 {
@@ -283,3 +281,20 @@ long CGradientComboBoxCtrl::AddString(LPCTSTR text)
 	return SetCurSel(index);
 
 }
+
+
+// int CGradientComboBoxCtrl::OnCreate(LPCREATESTRUCT lpCreateStruct) 
+// {
+// // 	if (COleControl::OnCreate(lpCreateStruct) == -1)
+// // 		return -1;
+// // 	
+// // 	// TODO: Add your specialized creation code here
+// 	RECT rect;
+// 	rect.left = lpCreateStruct->x;
+// 	rect.top = lpCreateStruct->y;
+// 	rect.right = lpCreateStruct->x+lpCreateStruct->cx;
+// 	rect.bottom = lpCreateStruct->y + lpCreateStruct->cy;
+// 	return this->Create(lpCreateStruct->dwExStyle, rect, CWnd::FromHandlePermanent(lpCreateStruct->hwndParent), 10);
+// 
+// 	return 0;
+// }

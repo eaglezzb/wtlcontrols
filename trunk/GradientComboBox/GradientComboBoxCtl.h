@@ -45,7 +45,8 @@ protected:
 	//{{AFX_MSG(CGradientComboBoxCtrl)
 // 	afx_msg void OnActivate(UINT nState, CWnd* pWndOther, BOOL bMinimized);
 // 	afx_msg void OnDrawItem(int nIDCtl, LPDRAWITEMSTRUCT lpDrawItemStruct);
-// 	afx_msg void OnMeasureItem(int nIDCtl, LPMEASUREITEMSTRUCT lpMeasureItemStruct);
+	afx_msg void OnMeasureItem(int nIDCtl, LPMEASUREITEMSTRUCT lpMeasureItemStruct);
+// 	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
 	//}}AFX_MSG
 	afx_msg LRESULT OnCtlColorListBox(WPARAM wParam, LPARAM lParam);
 	DECLARE_MESSAGE_MAP()
@@ -72,10 +73,10 @@ public:
 //copy from Microsoft MFC code library, wrap messages
 private:
 
-// 	BOOL Create(DWORD dwStyle, const RECT& rect, CWnd* pParentWnd, UINT nID) {
-// 		CWnd* pWnd = this;
-// 		return pWnd->Create(_T("COMBOBOX"), NULL, dwStyle, rect, pParentWnd, nID);
-// 	}
+	BOOL Create(DWORD dwStyle, const RECT& rect, CWnd* pParentWnd, UINT nID) {
+		CWnd* pWnd = this;
+		return pWnd->Create(_T("COMBOBOX"), NULL, dwStyle, rect, pParentWnd, nID);
+	}
 
 	// Attributes
 	// for entire combo box
