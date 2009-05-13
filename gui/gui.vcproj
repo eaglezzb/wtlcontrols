@@ -1,510 +1,877 @@
-<?xml version="1.0" encoding = "Windows-1252"?>
+<?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="9,00"
+	Version="9.00"
 	Name="QtGui"
 	ProjectGUID="{0DADE6A8-861F-3E6F-9610-9D5C62505EB4}"
-	Keyword="Qt4VSv1.0">
+	Keyword="Qt4VSv1.0"
+	TargetFrameworkVersion="0"
+	>
 	<Platforms>
 		<Platform
-			Name="Win32"/>
+			Name="Win32"
+		/>
 	</Platforms>
+	<ToolFiles>
+	</ToolFiles>
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
 			OutputDirectory="."
-			ATLMinimizesCRunTimeLibraryUsage="false"
-			ConfigurationType="2"
 			IntermediateDirectory="tmp\obj\debug_shared\"
-			UseOfMfc="0">
+			ConfigurationType="2"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="false"
+			>
 			<Tool
-				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="&quot;$(QTDIR)\include\QtCore&quot;,&quot;$(QTDIR)\include&quot;,&quot;$(QTDIR)\include\QtGui&quot;,&quot;tmp\rcc\debug_shared&quot;,&quot;tmp&quot;,&quot;$(QTDIR)\include\ActiveQt&quot;,&quot;tmp\moc\debug_shared&quot;,&quot;.&quot;,$(QTDIR)\mkspecs\win32-msvc2008"
-				AdditionalOptions="-Zm200 -w34100 -w34189 -Zm200 -w34100 -w34189 -w34100 -w34189"
-				AssemblerListingLocation="tmp\obj\debug_shared\"
-				BufferSecurityCheck="false"
-				DebugInformationFormat="3"
-				ExceptionHandling="1"
-				GeneratePreprocessedFile="0"
-				ObjectFile="tmp\obj\debug_shared\"
-				Optimization ="4"
-				PreprocessorDefinitions="_WINDOWS,UNICODE,WIN32,QT_LARGEFILE_SUPPORT,QT_BUILD_GUI_LIB,QT_NO_USING_NAMESPACE,QT_MAKEDLL,QT_NO_CAST_TO_ASCII,QT_ASCII_CAST_WARNINGS,QT_MOC_COMPAT,_USE_MATH_DEFINES,QT_NO_IMAGEFORMAT_PNG,QT_RASTER_IMAGEENGINE,QT_RASTER_PAINTENGINE,QT_NO_CUPS,QT_NO_LPR,QT_HAVE_MMX,QT_HAVE_3DNOW,QT_HAVE_SSE,QT_HAVE_MMXEXT,QT_HAVE_SSE2,Q_INTERNAL_QAPP_SRC,QT_DLL,QT_CORE_LIB,QT_SHARED,QT_THREAD_SUPPORT"
-				ProgramDataBaseFileName=".\"
-				RuntimeLibrary="3"
-				RuntimeTypeInfo="true"
-				SuppressStartupBanner="true"
-				TreatWChar_tAsBuiltInType="false"
-				WarningLevel="3"/>
+				Name="VCPreBuildEventTool"
+			/>
 			<Tool
-				Name="VCCustomBuildTool"/>
+				Name="VCCustomBuildTool"
+			/>
 			<Tool
-				Name="VCLinkerTool"
-				AdditionalDependencies="gdi32.lib comdlg32.lib oleaut32.lib imm32.lib winmm.lib winspool.lib ws2_32.lib ole32.lib user32.lib advapi32.lib msimg32.lib d:\qt-win-opensource-src-4.5.1\lib\QtCored4.lib"
-				AdditionalLibraryDirectories="d:\qt-win-opensource-src-4.5.1\lib,$(QTDIR)\lib"
-				AdditionalOptions="&quot;/MANIFESTDEPENDENCY:type=&apos;win32&apos; name=&apos;Microsoft.Windows.Common-Controls&apos; version=&apos;6.0.0.0&apos; publicKeyToken=&apos;6595b64144ccf1df&apos; language=&apos;*&apos; processorArchitecture=&apos;*&apos;&quot;"
-				BaseAddress="0x65000000"
-				GenerateDebugInformation="true"
-				IgnoreImportLibrary="true"
-				LinkTimeCodeGeneration="0"
-				OutputFile="debug\QtGuid4.dll"
-				ProgramDatabaseFile=""
-				SubSystem="2"
-				SuppressStartupBanner="true"
-				Version="4.51"/>
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
 			<Tool
 				Name="VCMIDLTool"
+				WarningLevel="0"
 				DefaultCharType="0"
 				EnableErrorChecks="1"
-				WarningLevel="0"/>
+			/>
 			<Tool
-				Name="VCPostBuildEventTool"
-				CommandLine="copy  &quot;$(TargetPath)&quot; &quot;..\..\bin&quot;"
-				Description="Copy QtGuid4.dll to ..\..\bin"/>
+				Name="VCCLCompilerTool"
+				AdditionalOptions="-Zm200 -w34100 -w34189 -Zm200 -w34100 -w34189 -w34100 -w34189"
+				Optimization="4"
+				AdditionalIncludeDirectories="&quot;$(QTDIR)\include\QtCore&quot;,&quot;$(QTDIR)\include&quot;,&quot;$(QTDIR)\include\QtGui&quot;,&quot;tmp\rcc\debug_shared&quot;,&quot;tmp&quot;,&quot;$(QTDIR)\include\ActiveQt&quot;,&quot;tmp\moc\debug_shared&quot;,&quot;.&quot;,$(QTDIR)\mkspecs\win32-msvc2008"
+				PreprocessorDefinitions="_WINDOWS,UNICODE,WIN32,QT_LARGEFILE_SUPPORT,QT_BUILD_GUI_LIB,QT_NO_USING_NAMESPACE,QT_MAKEDLL,QT_NO_CAST_TO_ASCII,QT_ASCII_CAST_WARNINGS,QT_MOC_COMPAT,_USE_MATH_DEFINES,QT_NO_IMAGEFORMAT_PNG,QT_RASTER_IMAGEENGINE,QT_RASTER_PAINTENGINE,QT_NO_CUPS,QT_NO_LPR,QT_HAVE_MMX,QT_HAVE_3DNOW,QT_HAVE_SSE,QT_HAVE_MMXEXT,QT_HAVE_SSE2,Q_INTERNAL_QAPP_SRC,QT_DLL,QT_CORE_LIB,QT_SHARED,QT_THREAD_SUPPORT"
+				GeneratePreprocessedFile="0"
+				ExceptionHandling="1"
+				RuntimeLibrary="3"
+				BufferSecurityCheck="false"
+				TreatWChar_tAsBuiltInType="false"
+				RuntimeTypeInfo="true"
+				AssemblerListingLocation="tmp\obj\debug_shared\"
+				ObjectFile="tmp\obj\debug_shared\"
+				ProgramDataBaseFileName=".\"
+				WarningLevel="3"
+				SuppressStartupBanner="true"
+				DebugInformationFormat="3"
+			/>
 			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
+				Name="VCManagedResourceCompilerTool"
+			/>
 			<Tool
 				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_WINDOWS,UNICODE,WIN32,QT_LARGEFILE_SUPPORT,QT_BUILD_GUI_LIB,QT_NO_USING_NAMESPACE,QT_MAKEDLL,QT_NO_CAST_TO_ASCII,QT_ASCII_CAST_WARNINGS,QT_MOC_COMPAT,_USE_MATH_DEFINES,QT_NO_IMAGEFORMAT_PNG,QT_RASTER_IMAGEENGINE,QT_RASTER_PAINTENGINE,QT_NO_CUPS,QT_NO_LPR,QT_HAVE_MMX,QT_HAVE_3DNOW,QT_HAVE_SSE,QT_HAVE_MMXEXT,QT_HAVE_SSE2,Q_INTERNAL_QAPP_SRC,QT_DLL,QT_CORE_LIB,QT_SHARED,QT_THREAD_SUPPORT,_DEBUG"/>
+				PreprocessorDefinitions="_WINDOWS,UNICODE,WIN32,QT_LARGEFILE_SUPPORT,QT_BUILD_GUI_LIB,QT_NO_USING_NAMESPACE,QT_MAKEDLL,QT_NO_CAST_TO_ASCII,QT_ASCII_CAST_WARNINGS,QT_MOC_COMPAT,_USE_MATH_DEFINES,QT_NO_IMAGEFORMAT_PNG,QT_RASTER_IMAGEENGINE,QT_RASTER_PAINTENGINE,QT_NO_CUPS,QT_NO_LPR,QT_HAVE_MMX,QT_HAVE_3DNOW,QT_HAVE_SSE,QT_HAVE_MMXEXT,QT_HAVE_SSE2,Q_INTERNAL_QAPP_SRC,QT_DLL,QT_CORE_LIB,QT_SHARED,QT_THREAD_SUPPORT,_DEBUG"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				IgnoreImportLibrary="true"
+				AdditionalOptions="&quot;/MANIFESTDEPENDENCY:type=&apos;win32&apos; name=&apos;Microsoft.Windows.Common-Controls&apos; version=&apos;6.0.0.0&apos; publicKeyToken=&apos;6595b64144ccf1df&apos; language=&apos;*&apos; processorArchitecture=&apos;*&apos;&quot;"
+				AdditionalDependencies="gdi32.lib comdlg32.lib oleaut32.lib imm32.lib winmm.lib winspool.lib ws2_32.lib ole32.lib user32.lib advapi32.lib msimg32.lib QtCored4.lib "
+				OutputFile="debug\QtGuid4.dll"
+				Version="4.51"
+				SuppressStartupBanner="true"
+				AdditionalLibraryDirectories="d:\qt-win-opensource-src-4.5.1\lib,$(QTDIR)\lib"
+				GenerateDebugInformation="true"
+				ProgramDatabaseFile=""
+				SubSystem="2"
+				LinkTimeCodeGeneration="0"
+				BaseAddress="0x65000000"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				Description="Copy QtGuid4.dll to ..\..\bin"
+				CommandLine="copy  &quot;$(TargetPath)&quot; &quot;..\..\bin&quot;"
+			/>
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
 			OutputDirectory="."
-			ATLMinimizesCRunTimeLibraryUsage="false"
-			ConfigurationType="2"
 			IntermediateDirectory="tmp\obj\release_shared\"
-			UseOfMfc="0"
-			WholeProgramOptimization="true">
+			ConfigurationType="2"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="false"
+			>
 			<Tool
-				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="&quot;$(QTDIR)\include\QtCore&quot;,&quot;$(QTDIR)\include&quot;,&quot;$(QTDIR)\include\QtGui&quot;,&quot;tmp\rcc\debug_shared&quot;,&quot;tmp&quot;,&quot;$(QTDIR)\include\ActiveQt&quot;,&quot;tmp\moc\release_shared&quot;,&quot;.&quot;,$(QTDIR)\mkspecs\win32-msvc2008"
-				AdditionalOptions="-Zm200 -w34100 -w34189 -Zm200 -w34100 -w34189 -w34100 -w34189"
-				AssemblerListingLocation="tmp\obj\release_shared\"
-				BufferSecurityCheck="false"
-				DebugInformationFormat="0"
-				ExceptionHandling="1"
-				GeneratePreprocessedFile="0"
-				ObjectFile="tmp\obj\release_shared\"
-				Optimization ="2"
-				PreprocessorDefinitions="QT_NO_DEBUG,NDEBUG,_WINDOWS,UNICODE,WIN32,QT_LARGEFILE_SUPPORT,QT_BUILD_GUI_LIB,QT_NO_USING_NAMESPACE,QT_MAKEDLL,QT_NO_CAST_TO_ASCII,QT_ASCII_CAST_WARNINGS,QT_MOC_COMPAT,_USE_MATH_DEFINES,QT_NO_IMAGEFORMAT_PNG,QT_RASTER_IMAGEENGINE,QT_RASTER_PAINTENGINE,QT_NO_CUPS,QT_NO_LPR,QT_HAVE_MMX,QT_HAVE_3DNOW,QT_HAVE_SSE,QT_HAVE_MMXEXT,QT_HAVE_SSE2,Q_INTERNAL_QAPP_SRC,QT_DLL,QT_NO_DEBUG,QT_CORE_LIB,QT_SHARED,QT_THREAD_SUPPORT,NDEBUG"
-				ProgramDataBaseFileName=".\"
-				RuntimeLibrary="2"
-				RuntimeTypeInfo="true"
-				SuppressStartupBanner="true"
-				TreatWChar_tAsBuiltInType="false"
-				WarningLevel="3"
-				WholeProgramOptimization="true"/>
+				Name="VCPreBuildEventTool"
+			/>
 			<Tool
-				Name="VCCustomBuildTool"/>
+				Name="VCCustomBuildTool"
+			/>
 			<Tool
-				Name="VCLinkerTool"
-				AdditionalDependencies="gdi32.lib comdlg32.lib oleaut32.lib imm32.lib winmm.lib winspool.lib ws2_32.lib ole32.lib user32.lib advapi32.lib msimg32.lib d:\qt-win-opensource-src-4.5.1\lib\QtCore4.lib"
-				AdditionalLibraryDirectories="d:\qt-win-opensource-src-4.5.1\lib,$(QTDIR)\lib"
-				AdditionalOptions="&quot;/MANIFESTDEPENDENCY:type=&apos;win32&apos; name=&apos;Microsoft.Windows.Common-Controls&apos; version=&apos;6.0.0.0&apos; publicKeyToken=&apos;6595b64144ccf1df&apos; language=&apos;*&apos; processorArchitecture=&apos;*&apos;&quot;"
-				BaseAddress="0x65000000"
-				GenerateDebugInformation="false"
-				IgnoreImportLibrary="true"
-				LinkIncremental="1"
-				LinkTimeCodeGeneration="1"
-				OutputFile="release\QtGui4.dll"
-				ProgramDatabaseFile=""
-				SubSystem="2"
-				SuppressStartupBanner="true"
-				Version="4.51"/>
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
 			<Tool
 				Name="VCMIDLTool"
+				WarningLevel="0"
 				DefaultCharType="0"
 				EnableErrorChecks="1"
-				WarningLevel="0"/>
+			/>
 			<Tool
-				Name="VCPostBuildEventTool"
-				CommandLine="copy  &quot;$(TargetPath)&quot; &quot;..\..\bin&quot;"
-				Description="Copy QtGui4.dll to ..\..\bin"/>
+				Name="VCCLCompilerTool"
+				AdditionalOptions="-Zm200 -w34100 -w34189 -Zm200 -w34100 -w34189 -w34100 -w34189"
+				Optimization="2"
+				WholeProgramOptimization="true"
+				AdditionalIncludeDirectories="&quot;$(QTDIR)\include\QtCore&quot;,&quot;$(QTDIR)\include&quot;,&quot;$(QTDIR)\include\QtGui&quot;,&quot;tmp\rcc\debug_shared&quot;,&quot;tmp&quot;,&quot;$(QTDIR)\include\ActiveQt&quot;,&quot;tmp\moc\release_shared&quot;,&quot;.&quot;,$(QTDIR)\mkspecs\win32-msvc2008"
+				PreprocessorDefinitions="QT_NO_DEBUG,NDEBUG,_WINDOWS,UNICODE,WIN32,QT_LARGEFILE_SUPPORT,QT_BUILD_GUI_LIB,QT_NO_USING_NAMESPACE,QT_MAKEDLL,QT_NO_CAST_TO_ASCII,QT_ASCII_CAST_WARNINGS,QT_MOC_COMPAT,_USE_MATH_DEFINES,QT_NO_IMAGEFORMAT_PNG,QT_RASTER_IMAGEENGINE,QT_RASTER_PAINTENGINE,QT_NO_CUPS,QT_NO_LPR,QT_HAVE_MMX,QT_HAVE_3DNOW,QT_HAVE_SSE,QT_HAVE_MMXEXT,QT_HAVE_SSE2,Q_INTERNAL_QAPP_SRC,QT_DLL,QT_NO_DEBUG,QT_CORE_LIB,QT_SHARED,QT_THREAD_SUPPORT,NDEBUG"
+				GeneratePreprocessedFile="0"
+				ExceptionHandling="1"
+				RuntimeLibrary="2"
+				BufferSecurityCheck="false"
+				TreatWChar_tAsBuiltInType="false"
+				RuntimeTypeInfo="true"
+				AssemblerListingLocation="tmp\obj\release_shared\"
+				ObjectFile="tmp\obj\release_shared\"
+				ProgramDataBaseFileName=".\"
+				WarningLevel="3"
+				SuppressStartupBanner="true"
+				DebugInformationFormat="0"
+			/>
 			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
+				Name="VCManagedResourceCompilerTool"
+			/>
 			<Tool
 				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="QT_NO_DEBUG,NDEBUG,_WINDOWS,UNICODE,WIN32,QT_LARGEFILE_SUPPORT,QT_BUILD_GUI_LIB,QT_NO_USING_NAMESPACE,QT_MAKEDLL,QT_NO_CAST_TO_ASCII,QT_ASCII_CAST_WARNINGS,QT_MOC_COMPAT,_USE_MATH_DEFINES,QT_NO_IMAGEFORMAT_PNG,QT_RASTER_IMAGEENGINE,QT_RASTER_PAINTENGINE,QT_NO_CUPS,QT_NO_LPR,QT_HAVE_MMX,QT_HAVE_3DNOW,QT_HAVE_SSE,QT_HAVE_MMXEXT,QT_HAVE_SSE2,Q_INTERNAL_QAPP_SRC,QT_DLL,QT_NO_DEBUG,QT_CORE_LIB,QT_SHARED,QT_THREAD_SUPPORT"/>
+				PreprocessorDefinitions="QT_NO_DEBUG,NDEBUG,_WINDOWS,UNICODE,WIN32,QT_LARGEFILE_SUPPORT,QT_BUILD_GUI_LIB,QT_NO_USING_NAMESPACE,QT_MAKEDLL,QT_NO_CAST_TO_ASCII,QT_ASCII_CAST_WARNINGS,QT_MOC_COMPAT,_USE_MATH_DEFINES,QT_NO_IMAGEFORMAT_PNG,QT_RASTER_IMAGEENGINE,QT_RASTER_PAINTENGINE,QT_NO_CUPS,QT_NO_LPR,QT_HAVE_MMX,QT_HAVE_3DNOW,QT_HAVE_SSE,QT_HAVE_MMXEXT,QT_HAVE_SSE2,Q_INTERNAL_QAPP_SRC,QT_DLL,QT_NO_DEBUG,QT_CORE_LIB,QT_SHARED,QT_THREAD_SUPPORT"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				IgnoreImportLibrary="true"
+				AdditionalOptions="&quot;/MANIFESTDEPENDENCY:type=&apos;win32&apos; name=&apos;Microsoft.Windows.Common-Controls&apos; version=&apos;6.0.0.0&apos; publicKeyToken=&apos;6595b64144ccf1df&apos; language=&apos;*&apos; processorArchitecture=&apos;*&apos;&quot;"
+				AdditionalDependencies="gdi32.lib comdlg32.lib oleaut32.lib imm32.lib winmm.lib winspool.lib ws2_32.lib ole32.lib user32.lib advapi32.lib msimg32.lib QtCore4.lib "
+				OutputFile="release\QtGui4.dll"
+				Version="4.51"
+				LinkIncremental="1"
+				SuppressStartupBanner="true"
+				AdditionalLibraryDirectories="d:\qt-win-opensource-src-4.5.1\lib,$(QTDIR)\lib"
+				GenerateDebugInformation="false"
+				ProgramDatabaseFile=""
+				SubSystem="2"
+				LinkTimeCodeGeneration="1"
+				BaseAddress="0x65000000"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				Description="Copy QtGui4.dll to ..\..\bin"
+				CommandLine="copy  &quot;$(TargetPath)&quot; &quot;..\..\bin&quot;"
+			/>
 		</Configuration>
 	</Configurations>
+	<References>
+	</References>
 	<Files>
 		<Filter
 			Name="Source Files"
 			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx"
-			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}">
+			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
+			>
 			<File
-				RelativePath="painting\qbezier.cpp"/>
+				RelativePath="painting\qbezier.cpp"
+				>
+			</File>
 			<File
-				RelativePath="image\qbitmap.cpp"/>
+				RelativePath="image\qbitmap.cpp"
+				>
+			</File>
 			<File
-				RelativePath="painting\qblendfunctions.cpp"/>
+				RelativePath="painting\qblendfunctions.cpp"
+				>
+			</File>
 			<File
-				RelativePath="image\qbmphandler.cpp"/>
+				RelativePath="image\qbmphandler.cpp"
+				>
+			</File>
 			<File
-				RelativePath="painting\qbrush.cpp"/>
+				RelativePath="painting\qbrush.cpp"
+				>
+			</File>
 			<File
-				RelativePath="painting\qcolor.cpp"/>
+				RelativePath="painting\qcolor.cpp"
+				>
+			</File>
 			<File
-				RelativePath="painting\qcolor_p.cpp"/>
+				RelativePath="painting\qcolor_p.cpp"
+				>
+			</File>
 			<File
-				RelativePath="painting\qcolormap_win.cpp"/>
+				RelativePath="painting\qcolormap_win.cpp"
+				>
+			</File>
 			<File
-				RelativePath="painting\qdrawhelper.cpp"/>
+				RelativePath="painting\qdrawhelper.cpp"
+				>
+			</File>
 			<File
-				RelativePath="painting\qdrawhelper_mmx.cpp"/>
+				RelativePath="painting\qdrawhelper_mmx.cpp"
+				>
+			</File>
 			<File
-				RelativePath="painting\qdrawhelper_mmx3dnow.cpp"/>
+				RelativePath="painting\qdrawhelper_mmx3dnow.cpp"
+				>
+			</File>
 			<File
-				RelativePath="painting\qdrawhelper_sse.cpp"/>
+				RelativePath="painting\qdrawhelper_sse.cpp"
+				>
+			</File>
 			<File
-				RelativePath="painting\qdrawhelper_sse2.cpp"/>
+				RelativePath="painting\qdrawhelper_sse2.cpp"
+				>
+			</File>
 			<File
-				RelativePath="painting\qdrawhelper_sse3dnow.cpp"/>
+				RelativePath="painting\qdrawhelper_sse3dnow.cpp"
+				>
+			</File>
 			<File
-				RelativePath="painting\qdrawutil.cpp"/>
+				RelativePath="painting\qdrawutil.cpp"
+				>
+			</File>
 			<File
-				RelativePath="painting\qemulationpaintengine.cpp"/>
+				RelativePath="painting\qemulationpaintengine.cpp"
+				>
+			</File>
 			<File
-				RelativePath="painting\qgrayraster.c"/>
+				RelativePath="painting\qgrayraster.c"
+				>
+			</File>
 			<File
-				RelativePath="image\qimage.cpp"/>
+				RelativePath="image\qimage.cpp"
+				>
+			</File>
 			<File
-				RelativePath="image\qimageiohandler.cpp"/>
+				RelativePath="image\qimageiohandler.cpp"
+				>
+			</File>
 			<File
-				RelativePath="image\qimagereader.cpp"/>
+				RelativePath="image\qimagereader.cpp"
+				>
+			</File>
 			<File
-				RelativePath="painting\qimagescale.cpp"/>
+				RelativePath="painting\qimagescale.cpp"
+				>
+			</File>
 			<File
-				RelativePath="image\qimagewriter.cpp"/>
+				RelativePath="image\qimagewriter.cpp"
+				>
+			</File>
 			<File
-				RelativePath="painting\qmatrix.cpp"/>
+				RelativePath="painting\qmatrix.cpp"
+				>
+			</File>
 			<File
-				RelativePath="painting\qmemrotate.cpp"/>
+				RelativePath="painting\qmemrotate.cpp"
+				>
+			</File>
 			<File
-				RelativePath="image\qnativeimage.cpp"/>
+				RelativePath="image\qnativeimage.cpp"
+				>
+			</File>
 			<File
-				RelativePath="painting\qoutlinemapper.cpp"/>
+				RelativePath="painting\qoutlinemapper.cpp"
+				>
+			</File>
 			<File
-				RelativePath="painting\qpaintdevice_win.cpp"/>
+				RelativePath="painting\qpaintdevice_win.cpp"
+				>
+			</File>
 			<File
-				RelativePath="painting\qpaintengine.cpp"/>
+				RelativePath="painting\qpaintengine.cpp"
+				>
+			</File>
 			<File
-				RelativePath="painting\qpaintengine_raster.cpp"/>
+				RelativePath="painting\qpaintengine_raster.cpp"
+				>
+			</File>
 			<File
-				RelativePath="painting\qpaintengineex.cpp"/>
+				RelativePath="painting\qpaintengineex.cpp"
+				>
+			</File>
 			<File
-				RelativePath="painting\qpainter.cpp"/>
+				RelativePath="painting\qpainter.cpp"
+				>
+			</File>
 			<File
-				RelativePath="painting\qpainterpath.cpp"/>
+				RelativePath="painting\qpainterpath.cpp"
+				>
+			</File>
 			<File
-				RelativePath="kernel\qpalette.cpp"/>
+				RelativePath="kernel\qpalette.cpp"
+				>
+			</File>
 			<File
-				RelativePath="painting\qpathclipper.cpp"/>
+				RelativePath="painting\qpathclipper.cpp"
+				>
+			</File>
 			<File
-				RelativePath="painting\qpen.cpp"/>
+				RelativePath="painting\qpen.cpp"
+				>
+			</File>
 			<File
-				RelativePath="image\qpixmap.cpp"/>
+				RelativePath="image\qpixmap.cpp"
+				>
+			</File>
 			<File
-				RelativePath="image\qpixmap_raster.cpp"/>
+				RelativePath="image\qpixmap_raster.cpp"
+				>
+			</File>
 			<File
-				RelativePath="image\qpixmap_win.cpp"/>
+				RelativePath="image\qpixmap_win.cpp"
+				>
+			</File>
 			<File
-				RelativePath="image\qpixmapcache.cpp"/>
+				RelativePath="image\qpixmapcache.cpp"
+				>
+			</File>
 			<File
-				RelativePath="image\qpixmapdata.cpp"/>
+				RelativePath="image\qpixmapdata.cpp"
+				>
+			</File>
 			<File
-				RelativePath="painting\qpolygon.cpp"/>
+				RelativePath="painting\qpolygon.cpp"
+				>
+			</File>
 			<File
-				RelativePath="image\qppmhandler.cpp"/>
+				RelativePath="image\qppmhandler.cpp"
+				>
+			</File>
 			<File
-				RelativePath="painting\qrasterizer.cpp"/>
+				RelativePath="painting\qrasterizer.cpp"
+				>
+			</File>
 			<File
-				RelativePath="painting\qregion.cpp"/>
+				RelativePath="painting\qregion.cpp"
+				>
+			</File>
 			<File
-				RelativePath="painting\qregion_win.cpp"/>
+				RelativePath="painting\qregion_win.cpp"
+				>
+			</File>
 			<File
-				RelativePath="painting\qstroker.cpp"/>
+				RelativePath="painting\qstroker.cpp"
+				>
+			</File>
 			<File
-				RelativePath="painting\qtessellator.cpp"/>
+				RelativePath="painting\qtessellator.cpp"
+				>
+			</File>
 			<File
-				RelativePath="painting\qtransform.cpp"/>
+				RelativePath="painting\qtransform.cpp"
+				>
+			</File>
 			<File
-				RelativePath="image\qxbmhandler.cpp"/>
+				RelativePath="image\qxbmhandler.cpp"
+				>
+			</File>
 			<File
-				RelativePath="image\qxpmhandler.cpp"/>
+				RelativePath="image\qxpmhandler.cpp"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
-			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}">
+			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
+			>
 			<File
-				RelativePath="painting\qbezier_p.h"/>
+				RelativePath="painting\qbezier_p.h"
+				>
+			</File>
 			<File
-				RelativePath="image\qbitmap.h"/>
+				RelativePath="image\qbitmap.h"
+				>
+			</File>
 			<File
-				RelativePath="image\qbmphandler_p.h"/>
+				RelativePath="image\qbmphandler_p.h"
+				>
+			</File>
 			<File
-				RelativePath="painting\qbrush.h">
+				RelativePath="painting\qbrush.h"
+				>
 				<FileConfiguration
-					Name="Debug|Win32">
+					Name="Debug|Win32"
+					>
 					<Tool
 						Name="VCCustomBuildTool"
-						AdditionalDependencies="$(QTDIR)\bin\moc.exe;painting\qbrush.h"
-						CommandLine="$(QTDIR)\bin\moc.exe  -DQT_SHARED -DQT_THREAD_SUPPORT -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_BUILD_GUI_LIB -DQT_NO_USING_NAMESPACE -DQT_MAKEDLL -DQT_NO_CAST_TO_ASCII -DQT_ASCII_CAST_WARNINGS -DQT_MOC_COMPAT -D_USE_MATH_DEFINES -DQT_NO_IMAGEFORMAT_PNG -DQT_RASTER_IMAGEENGINE -DQT_RASTER_PAINTENGINE -DQT_NO_CUPS -DQT_NO_LPR -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQ_INTERNAL_QAPP_SRC -DQT_DLL -DQT_CORE_LIB -I&quot;$(QTDIR)\include\QtCore&quot; -I&quot;$(QTDIR)\include&quot; -I&quot;$(QTDIR)\include\QtGui&quot; -I&quot;tmp\rcc\debug_shared&quot; -I&quot;tmp&quot; -I&quot;$(QTDIR)\include\ActiveQt&quot; -I&quot;tmp\moc\debug_shared&quot; -I&quot;.&quot; -I$(QTDIR)\mkspecs\win32-msvc2008 -D_MSC_VER=1500 -DWIN32 painting\qbrush.h -o tmp\moc\debug_shared\moc_qbrush.cpp"
 						Description="MOC painting\qbrush.h"
+						CommandLine="$(QTDIR)\bin\moc.exe  -DQT_SHARED -DQT_THREAD_SUPPORT -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_BUILD_GUI_LIB -DQT_NO_USING_NAMESPACE -DQT_MAKEDLL -DQT_NO_CAST_TO_ASCII -DQT_ASCII_CAST_WARNINGS -DQT_MOC_COMPAT -D_USE_MATH_DEFINES -DQT_NO_IMAGEFORMAT_PNG -DQT_RASTER_IMAGEENGINE -DQT_RASTER_PAINTENGINE -DQT_NO_CUPS -DQT_NO_LPR -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQ_INTERNAL_QAPP_SRC -DQT_DLL -DQT_CORE_LIB -I&quot;$(QTDIR)\include\QtCore&quot; -I&quot;$(QTDIR)\include&quot; -I&quot;$(QTDIR)\include\QtGui&quot; -I&quot;tmp\rcc\debug_shared&quot; -I&quot;tmp&quot; -I&quot;$(QTDIR)\include\ActiveQt&quot; -I&quot;tmp\moc\debug_shared&quot; -I&quot;.&quot; -I$(QTDIR)\mkspecs\win32-msvc2008 -D_MSC_VER=1500 -DWIN32 painting\qbrush.h -o tmp\moc\debug_shared\moc_qbrush.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;painting\qbrush.h"
 						Outputs="tmp\moc\debug_shared\moc_qbrush.cpp"
-						Path="$(QTDIR)\bin"/>
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32">
+					Name="Release|Win32"
+					>
 					<Tool
 						Name="VCCustomBuildTool"
-						AdditionalDependencies="$(QTDIR)\bin\moc.exe;painting\qbrush.h"
-						CommandLine="$(QTDIR)\bin\moc.exe  -DQT_SHARED -DQT_THREAD_SUPPORT -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_BUILD_GUI_LIB -DQT_NO_USING_NAMESPACE -DQT_MAKEDLL -DQT_NO_CAST_TO_ASCII -DQT_ASCII_CAST_WARNINGS -DQT_MOC_COMPAT -D_USE_MATH_DEFINES -DQT_NO_IMAGEFORMAT_PNG -DQT_RASTER_IMAGEENGINE -DQT_RASTER_PAINTENGINE -DQT_NO_CUPS -DQT_NO_LPR -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQ_INTERNAL_QAPP_SRC -DQT_DLL -DQT_NO_DEBUG -DQT_CORE_LIB -I&quot;$(QTDIR)\include\QtCore&quot; -I&quot;$(QTDIR)\include&quot; -I&quot;$(QTDIR)\include\QtGui&quot; -I&quot;tmp\rcc\debug_shared&quot; -I&quot;tmp&quot; -I&quot;$(QTDIR)\include\ActiveQt&quot; -I&quot;tmp\moc\release_shared&quot; -I&quot;.&quot; -I$(QTDIR)\mkspecs\win32-msvc2008 -D_MSC_VER=1500 -DWIN32 painting\qbrush.h -o tmp\moc\release_shared\moc_qbrush.cpp"
 						Description="MOC painting\qbrush.h"
+						CommandLine="$(QTDIR)\bin\moc.exe  -DQT_SHARED -DQT_THREAD_SUPPORT -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_BUILD_GUI_LIB -DQT_NO_USING_NAMESPACE -DQT_MAKEDLL -DQT_NO_CAST_TO_ASCII -DQT_ASCII_CAST_WARNINGS -DQT_MOC_COMPAT -D_USE_MATH_DEFINES -DQT_NO_IMAGEFORMAT_PNG -DQT_RASTER_IMAGEENGINE -DQT_RASTER_PAINTENGINE -DQT_NO_CUPS -DQT_NO_LPR -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQ_INTERNAL_QAPP_SRC -DQT_DLL -DQT_NO_DEBUG -DQT_CORE_LIB -I&quot;$(QTDIR)\include\QtCore&quot; -I&quot;$(QTDIR)\include&quot; -I&quot;$(QTDIR)\include\QtGui&quot; -I&quot;tmp\rcc\debug_shared&quot; -I&quot;tmp&quot; -I&quot;$(QTDIR)\include\ActiveQt&quot; -I&quot;tmp\moc\release_shared&quot; -I&quot;.&quot; -I$(QTDIR)\mkspecs\win32-msvc2008 -D_MSC_VER=1500 -DWIN32 painting\qbrush.h -o tmp\moc\release_shared\moc_qbrush.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;painting\qbrush.h"
 						Outputs="tmp\moc\release_shared\moc_qbrush.cpp"
-						Path="$(QTDIR)\bin"/>
+					/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="painting\qcolor.h"/>
+				RelativePath="painting\qcolor.h"
+				>
+			</File>
 			<File
-				RelativePath="painting\qcolor_p.h"/>
+				RelativePath="painting\qcolor_p.h"
+				>
+			</File>
 			<File
-				RelativePath="painting\qcolormap.h"/>
+				RelativePath="painting\qcolormap.h"
+				>
+			</File>
 			<File
-				RelativePath="painting\qdrawhelper_mmx_p.h"/>
+				RelativePath="painting\qdrawhelper_mmx_p.h"
+				>
+			</File>
 			<File
-				RelativePath="painting\qdrawhelper_sse_p.h"/>
+				RelativePath="painting\qdrawhelper_sse_p.h"
+				>
+			</File>
 			<File
-				RelativePath="painting\qdrawhelper_x86_p.h"/>
+				RelativePath="painting\qdrawhelper_x86_p.h"
+				>
+			</File>
 			<File
-				RelativePath="painting\qdrawutil.h"/>
+				RelativePath="painting\qdrawutil.h"
+				>
+			</File>
 			<File
-				RelativePath="painting\qemulationpaintengine_p.h"/>
+				RelativePath="painting\qemulationpaintengine_p.h"
+				>
+			</File>
 			<File
-				RelativePath="painting\qgrayraster_p.h"/>
+				RelativePath="painting\qgrayraster_p.h"
+				>
+			</File>
 			<File
-				RelativePath="image\qimage.h"/>
+				RelativePath="image\qimage.h"
+				>
+			</File>
 			<File
-				RelativePath="image\qimage_p.h"/>
+				RelativePath="image\qimage_p.h"
+				>
+			</File>
 			<File
-				RelativePath="image\qimageiohandler.h">
+				RelativePath="image\qimageiohandler.h"
+				>
 				<FileConfiguration
-					Name="Debug|Win32">
+					Name="Debug|Win32"
+					>
 					<Tool
 						Name="VCCustomBuildTool"
-						AdditionalDependencies="$(QTDIR)\bin\moc.exe;image\qimageiohandler.h"
-						CommandLine="$(QTDIR)\bin\moc.exe  -DQT_SHARED -DQT_THREAD_SUPPORT -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_BUILD_GUI_LIB -DQT_NO_USING_NAMESPACE -DQT_MAKEDLL -DQT_NO_CAST_TO_ASCII -DQT_ASCII_CAST_WARNINGS -DQT_MOC_COMPAT -D_USE_MATH_DEFINES -DQT_NO_IMAGEFORMAT_PNG -DQT_RASTER_IMAGEENGINE -DQT_RASTER_PAINTENGINE -DQT_NO_CUPS -DQT_NO_LPR -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQ_INTERNAL_QAPP_SRC -DQT_DLL -DQT_CORE_LIB -I&quot;$(QTDIR)\include\QtCore&quot; -I&quot;$(QTDIR)\include&quot; -I&quot;$(QTDIR)\include\QtGui&quot; -I&quot;tmp\rcc\debug_shared&quot; -I&quot;tmp&quot; -I&quot;$(QTDIR)\include\ActiveQt&quot; -I&quot;tmp\moc\debug_shared&quot; -I&quot;.&quot; -I$(QTDIR)\mkspecs\win32-msvc2008 -D_MSC_VER=1500 -DWIN32 image\qimageiohandler.h -o tmp\moc\debug_shared\moc_qimageiohandler.cpp"
 						Description="MOC image\qimageiohandler.h"
+						CommandLine="$(QTDIR)\bin\moc.exe  -DQT_SHARED -DQT_THREAD_SUPPORT -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_BUILD_GUI_LIB -DQT_NO_USING_NAMESPACE -DQT_MAKEDLL -DQT_NO_CAST_TO_ASCII -DQT_ASCII_CAST_WARNINGS -DQT_MOC_COMPAT -D_USE_MATH_DEFINES -DQT_NO_IMAGEFORMAT_PNG -DQT_RASTER_IMAGEENGINE -DQT_RASTER_PAINTENGINE -DQT_NO_CUPS -DQT_NO_LPR -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQ_INTERNAL_QAPP_SRC -DQT_DLL -DQT_CORE_LIB -I&quot;$(QTDIR)\include\QtCore&quot; -I&quot;$(QTDIR)\include&quot; -I&quot;$(QTDIR)\include\QtGui&quot; -I&quot;tmp\rcc\debug_shared&quot; -I&quot;tmp&quot; -I&quot;$(QTDIR)\include\ActiveQt&quot; -I&quot;tmp\moc\debug_shared&quot; -I&quot;.&quot; -I$(QTDIR)\mkspecs\win32-msvc2008 -D_MSC_VER=1500 -DWIN32 image\qimageiohandler.h -o tmp\moc\debug_shared\moc_qimageiohandler.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;image\qimageiohandler.h"
 						Outputs="tmp\moc\debug_shared\moc_qimageiohandler.cpp"
-						Path="$(QTDIR)\bin"/>
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32">
+					Name="Release|Win32"
+					>
 					<Tool
 						Name="VCCustomBuildTool"
-						AdditionalDependencies="$(QTDIR)\bin\moc.exe;image\qimageiohandler.h"
-						CommandLine="$(QTDIR)\bin\moc.exe  -DQT_SHARED -DQT_THREAD_SUPPORT -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_BUILD_GUI_LIB -DQT_NO_USING_NAMESPACE -DQT_MAKEDLL -DQT_NO_CAST_TO_ASCII -DQT_ASCII_CAST_WARNINGS -DQT_MOC_COMPAT -D_USE_MATH_DEFINES -DQT_NO_IMAGEFORMAT_PNG -DQT_RASTER_IMAGEENGINE -DQT_RASTER_PAINTENGINE -DQT_NO_CUPS -DQT_NO_LPR -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQ_INTERNAL_QAPP_SRC -DQT_DLL -DQT_NO_DEBUG -DQT_CORE_LIB -I&quot;$(QTDIR)\include\QtCore&quot; -I&quot;$(QTDIR)\include&quot; -I&quot;$(QTDIR)\include\QtGui&quot; -I&quot;tmp\rcc\debug_shared&quot; -I&quot;tmp&quot; -I&quot;$(QTDIR)\include\ActiveQt&quot; -I&quot;tmp\moc\release_shared&quot; -I&quot;.&quot; -I$(QTDIR)\mkspecs\win32-msvc2008 -D_MSC_VER=1500 -DWIN32 image\qimageiohandler.h -o tmp\moc\release_shared\moc_qimageiohandler.cpp"
 						Description="MOC image\qimageiohandler.h"
+						CommandLine="$(QTDIR)\bin\moc.exe  -DQT_SHARED -DQT_THREAD_SUPPORT -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_BUILD_GUI_LIB -DQT_NO_USING_NAMESPACE -DQT_MAKEDLL -DQT_NO_CAST_TO_ASCII -DQT_ASCII_CAST_WARNINGS -DQT_MOC_COMPAT -D_USE_MATH_DEFINES -DQT_NO_IMAGEFORMAT_PNG -DQT_RASTER_IMAGEENGINE -DQT_RASTER_PAINTENGINE -DQT_NO_CUPS -DQT_NO_LPR -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQ_INTERNAL_QAPP_SRC -DQT_DLL -DQT_NO_DEBUG -DQT_CORE_LIB -I&quot;$(QTDIR)\include\QtCore&quot; -I&quot;$(QTDIR)\include&quot; -I&quot;$(QTDIR)\include\QtGui&quot; -I&quot;tmp\rcc\debug_shared&quot; -I&quot;tmp&quot; -I&quot;$(QTDIR)\include\ActiveQt&quot; -I&quot;tmp\moc\release_shared&quot; -I&quot;.&quot; -I$(QTDIR)\mkspecs\win32-msvc2008 -D_MSC_VER=1500 -DWIN32 image\qimageiohandler.h -o tmp\moc\release_shared\moc_qimageiohandler.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;image\qimageiohandler.h"
 						Outputs="tmp\moc\release_shared\moc_qimageiohandler.cpp"
-						Path="$(QTDIR)\bin"/>
+					/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="image\qimagereader.h"/>
+				RelativePath="image\qimagereader.h"
+				>
+			</File>
 			<File
-				RelativePath="image\qimagewriter.h"/>
+				RelativePath="image\qimagewriter.h"
+				>
+			</File>
 			<File
-				RelativePath="painting\qmatrix.h"/>
+				RelativePath="painting\qmatrix.h"
+				>
+			</File>
 			<File
-				RelativePath="painting\qmemrotate_p.h"/>
+				RelativePath="painting\qmemrotate_p.h"
+				>
+			</File>
 			<File
-				RelativePath="image\qnativeimage_p.h"/>
+				RelativePath="image\qnativeimage_p.h"
+				>
+			</File>
 			<File
-				RelativePath="painting\qoutlinemapper_p.h"/>
+				RelativePath="painting\qoutlinemapper_p.h"
+				>
+			</File>
 			<File
-				RelativePath="painting\qpaintdevice.h"/>
+				RelativePath="painting\qpaintdevice.h"
+				>
+			</File>
 			<File
-				RelativePath="painting\qpaintengine.h"/>
+				RelativePath="painting\qpaintengine.h"
+				>
+			</File>
 			<File
-				RelativePath="painting\qpaintengine_p.h"/>
+				RelativePath="painting\qpaintengine_p.h"
+				>
+			</File>
 			<File
-				RelativePath="painting\qpaintengine_raster_p.h"/>
+				RelativePath="painting\qpaintengine_raster_p.h"
+				>
+			</File>
 			<File
-				RelativePath="painting\qpaintengineex_p.h"/>
+				RelativePath="painting\qpaintengineex_p.h"
+				>
+			</File>
 			<File
-				RelativePath="painting\qpainter.h">
+				RelativePath="painting\qpainter.h"
+				>
 				<FileConfiguration
-					Name="Debug|Win32">
+					Name="Debug|Win32"
+					>
 					<Tool
 						Name="VCCustomBuildTool"
-						AdditionalDependencies="$(QTDIR)\bin\moc.exe;painting\qpainter.h"
-						CommandLine="$(QTDIR)\bin\moc.exe  -DQT_SHARED -DQT_THREAD_SUPPORT -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_BUILD_GUI_LIB -DQT_NO_USING_NAMESPACE -DQT_MAKEDLL -DQT_NO_CAST_TO_ASCII -DQT_ASCII_CAST_WARNINGS -DQT_MOC_COMPAT -D_USE_MATH_DEFINES -DQT_NO_IMAGEFORMAT_PNG -DQT_RASTER_IMAGEENGINE -DQT_RASTER_PAINTENGINE -DQT_NO_CUPS -DQT_NO_LPR -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQ_INTERNAL_QAPP_SRC -DQT_DLL -DQT_CORE_LIB -I&quot;$(QTDIR)\include\QtCore&quot; -I&quot;$(QTDIR)\include&quot; -I&quot;$(QTDIR)\include\QtGui&quot; -I&quot;tmp\rcc\debug_shared&quot; -I&quot;tmp&quot; -I&quot;$(QTDIR)\include\ActiveQt&quot; -I&quot;tmp\moc\debug_shared&quot; -I&quot;.&quot; -I$(QTDIR)\mkspecs\win32-msvc2008 -D_MSC_VER=1500 -DWIN32 painting\qpainter.h -o tmp\moc\debug_shared\moc_qpainter.cpp"
 						Description="MOC painting\qpainter.h"
+						CommandLine="$(QTDIR)\bin\moc.exe  -DQT_SHARED -DQT_THREAD_SUPPORT -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_BUILD_GUI_LIB -DQT_NO_USING_NAMESPACE -DQT_MAKEDLL -DQT_NO_CAST_TO_ASCII -DQT_ASCII_CAST_WARNINGS -DQT_MOC_COMPAT -D_USE_MATH_DEFINES -DQT_NO_IMAGEFORMAT_PNG -DQT_RASTER_IMAGEENGINE -DQT_RASTER_PAINTENGINE -DQT_NO_CUPS -DQT_NO_LPR -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQ_INTERNAL_QAPP_SRC -DQT_DLL -DQT_CORE_LIB -I&quot;$(QTDIR)\include\QtCore&quot; -I&quot;$(QTDIR)\include&quot; -I&quot;$(QTDIR)\include\QtGui&quot; -I&quot;tmp\rcc\debug_shared&quot; -I&quot;tmp&quot; -I&quot;$(QTDIR)\include\ActiveQt&quot; -I&quot;tmp\moc\debug_shared&quot; -I&quot;.&quot; -I$(QTDIR)\mkspecs\win32-msvc2008 -D_MSC_VER=1500 -DWIN32 painting\qpainter.h -o tmp\moc\debug_shared\moc_qpainter.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;painting\qpainter.h"
 						Outputs="tmp\moc\debug_shared\moc_qpainter.cpp"
-						Path="$(QTDIR)\bin"/>
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32">
+					Name="Release|Win32"
+					>
 					<Tool
 						Name="VCCustomBuildTool"
-						AdditionalDependencies="$(QTDIR)\bin\moc.exe;painting\qpainter.h"
-						CommandLine="$(QTDIR)\bin\moc.exe  -DQT_SHARED -DQT_THREAD_SUPPORT -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_BUILD_GUI_LIB -DQT_NO_USING_NAMESPACE -DQT_MAKEDLL -DQT_NO_CAST_TO_ASCII -DQT_ASCII_CAST_WARNINGS -DQT_MOC_COMPAT -D_USE_MATH_DEFINES -DQT_NO_IMAGEFORMAT_PNG -DQT_RASTER_IMAGEENGINE -DQT_RASTER_PAINTENGINE -DQT_NO_CUPS -DQT_NO_LPR -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQ_INTERNAL_QAPP_SRC -DQT_DLL -DQT_NO_DEBUG -DQT_CORE_LIB -I&quot;$(QTDIR)\include\QtCore&quot; -I&quot;$(QTDIR)\include&quot; -I&quot;$(QTDIR)\include\QtGui&quot; -I&quot;tmp\rcc\debug_shared&quot; -I&quot;tmp&quot; -I&quot;$(QTDIR)\include\ActiveQt&quot; -I&quot;tmp\moc\release_shared&quot; -I&quot;.&quot; -I$(QTDIR)\mkspecs\win32-msvc2008 -D_MSC_VER=1500 -DWIN32 painting\qpainter.h -o tmp\moc\release_shared\moc_qpainter.cpp"
 						Description="MOC painting\qpainter.h"
+						CommandLine="$(QTDIR)\bin\moc.exe  -DQT_SHARED -DQT_THREAD_SUPPORT -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_BUILD_GUI_LIB -DQT_NO_USING_NAMESPACE -DQT_MAKEDLL -DQT_NO_CAST_TO_ASCII -DQT_ASCII_CAST_WARNINGS -DQT_MOC_COMPAT -D_USE_MATH_DEFINES -DQT_NO_IMAGEFORMAT_PNG -DQT_RASTER_IMAGEENGINE -DQT_RASTER_PAINTENGINE -DQT_NO_CUPS -DQT_NO_LPR -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQ_INTERNAL_QAPP_SRC -DQT_DLL -DQT_NO_DEBUG -DQT_CORE_LIB -I&quot;$(QTDIR)\include\QtCore&quot; -I&quot;$(QTDIR)\include&quot; -I&quot;$(QTDIR)\include\QtGui&quot; -I&quot;tmp\rcc\debug_shared&quot; -I&quot;tmp&quot; -I&quot;$(QTDIR)\include\ActiveQt&quot; -I&quot;tmp\moc\release_shared&quot; -I&quot;.&quot; -I$(QTDIR)\mkspecs\win32-msvc2008 -D_MSC_VER=1500 -DWIN32 painting\qpainter.h -o tmp\moc\release_shared\moc_qpainter.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;painting\qpainter.h"
 						Outputs="tmp\moc\release_shared\moc_qpainter.cpp"
-						Path="$(QTDIR)\bin"/>
+					/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="painting\qpainter_p.h"/>
+				RelativePath="painting\qpainter_p.h"
+				>
+			</File>
 			<File
-				RelativePath="painting\qpainterpath.h"/>
+				RelativePath="painting\qpainterpath.h"
+				>
+			</File>
 			<File
-				RelativePath="painting\qpainterpath_p.h"/>
+				RelativePath="painting\qpainterpath_p.h"
+				>
+			</File>
 			<File
-				RelativePath="kernel\qpalette.h">
+				RelativePath="kernel\qpalette.h"
+				>
 				<FileConfiguration
-					Name="Debug|Win32">
+					Name="Debug|Win32"
+					>
 					<Tool
 						Name="VCCustomBuildTool"
-						AdditionalDependencies="$(QTDIR)\bin\moc.exe;kernel\qpalette.h"
-						CommandLine="$(QTDIR)\bin\moc.exe  -DQT_SHARED -DQT_THREAD_SUPPORT -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_BUILD_GUI_LIB -DQT_NO_USING_NAMESPACE -DQT_MAKEDLL -DQT_NO_CAST_TO_ASCII -DQT_ASCII_CAST_WARNINGS -DQT_MOC_COMPAT -D_USE_MATH_DEFINES -DQT_NO_IMAGEFORMAT_PNG -DQT_RASTER_IMAGEENGINE -DQT_RASTER_PAINTENGINE -DQT_NO_CUPS -DQT_NO_LPR -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQ_INTERNAL_QAPP_SRC -DQT_DLL -DQT_CORE_LIB -I&quot;$(QTDIR)\include\QtCore&quot; -I&quot;$(QTDIR)\include&quot; -I&quot;$(QTDIR)\include\QtGui&quot; -I&quot;tmp\rcc\debug_shared&quot; -I&quot;tmp&quot; -I&quot;$(QTDIR)\include\ActiveQt&quot; -I&quot;tmp\moc\debug_shared&quot; -I&quot;.&quot; -I$(QTDIR)\mkspecs\win32-msvc2008 -D_MSC_VER=1500 -DWIN32 kernel\qpalette.h -o tmp\moc\debug_shared\moc_qpalette.cpp"
 						Description="MOC kernel\qpalette.h"
+						CommandLine="$(QTDIR)\bin\moc.exe  -DQT_SHARED -DQT_THREAD_SUPPORT -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_BUILD_GUI_LIB -DQT_NO_USING_NAMESPACE -DQT_MAKEDLL -DQT_NO_CAST_TO_ASCII -DQT_ASCII_CAST_WARNINGS -DQT_MOC_COMPAT -D_USE_MATH_DEFINES -DQT_NO_IMAGEFORMAT_PNG -DQT_RASTER_IMAGEENGINE -DQT_RASTER_PAINTENGINE -DQT_NO_CUPS -DQT_NO_LPR -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQ_INTERNAL_QAPP_SRC -DQT_DLL -DQT_CORE_LIB -I&quot;$(QTDIR)\include\QtCore&quot; -I&quot;$(QTDIR)\include&quot; -I&quot;$(QTDIR)\include\QtGui&quot; -I&quot;tmp\rcc\debug_shared&quot; -I&quot;tmp&quot; -I&quot;$(QTDIR)\include\ActiveQt&quot; -I&quot;tmp\moc\debug_shared&quot; -I&quot;.&quot; -I$(QTDIR)\mkspecs\win32-msvc2008 -D_MSC_VER=1500 -DWIN32 kernel\qpalette.h -o tmp\moc\debug_shared\moc_qpalette.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;kernel\qpalette.h"
 						Outputs="tmp\moc\debug_shared\moc_qpalette.cpp"
-						Path="$(QTDIR)\bin"/>
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32">
+					Name="Release|Win32"
+					>
 					<Tool
 						Name="VCCustomBuildTool"
-						AdditionalDependencies="$(QTDIR)\bin\moc.exe;kernel\qpalette.h"
-						CommandLine="$(QTDIR)\bin\moc.exe  -DQT_SHARED -DQT_THREAD_SUPPORT -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_BUILD_GUI_LIB -DQT_NO_USING_NAMESPACE -DQT_MAKEDLL -DQT_NO_CAST_TO_ASCII -DQT_ASCII_CAST_WARNINGS -DQT_MOC_COMPAT -D_USE_MATH_DEFINES -DQT_NO_IMAGEFORMAT_PNG -DQT_RASTER_IMAGEENGINE -DQT_RASTER_PAINTENGINE -DQT_NO_CUPS -DQT_NO_LPR -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQ_INTERNAL_QAPP_SRC -DQT_DLL -DQT_NO_DEBUG -DQT_CORE_LIB -I&quot;$(QTDIR)\include\QtCore&quot; -I&quot;$(QTDIR)\include&quot; -I&quot;$(QTDIR)\include\QtGui&quot; -I&quot;tmp\rcc\debug_shared&quot; -I&quot;tmp&quot; -I&quot;$(QTDIR)\include\ActiveQt&quot; -I&quot;tmp\moc\release_shared&quot; -I&quot;.&quot; -I$(QTDIR)\mkspecs\win32-msvc2008 -D_MSC_VER=1500 -DWIN32 kernel\qpalette.h -o tmp\moc\release_shared\moc_qpalette.cpp"
 						Description="MOC kernel\qpalette.h"
+						CommandLine="$(QTDIR)\bin\moc.exe  -DQT_SHARED -DQT_THREAD_SUPPORT -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_BUILD_GUI_LIB -DQT_NO_USING_NAMESPACE -DQT_MAKEDLL -DQT_NO_CAST_TO_ASCII -DQT_ASCII_CAST_WARNINGS -DQT_MOC_COMPAT -D_USE_MATH_DEFINES -DQT_NO_IMAGEFORMAT_PNG -DQT_RASTER_IMAGEENGINE -DQT_RASTER_PAINTENGINE -DQT_NO_CUPS -DQT_NO_LPR -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQ_INTERNAL_QAPP_SRC -DQT_DLL -DQT_NO_DEBUG -DQT_CORE_LIB -I&quot;$(QTDIR)\include\QtCore&quot; -I&quot;$(QTDIR)\include&quot; -I&quot;$(QTDIR)\include\QtGui&quot; -I&quot;tmp\rcc\debug_shared&quot; -I&quot;tmp&quot; -I&quot;$(QTDIR)\include\ActiveQt&quot; -I&quot;tmp\moc\release_shared&quot; -I&quot;.&quot; -I$(QTDIR)\mkspecs\win32-msvc2008 -D_MSC_VER=1500 -DWIN32 kernel\qpalette.h -o tmp\moc\release_shared\moc_qpalette.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;kernel\qpalette.h"
 						Outputs="tmp\moc\release_shared\moc_qpalette.cpp"
-						Path="$(QTDIR)\bin"/>
+					/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="painting\qpathclipper_p.h"/>
+				RelativePath="painting\qpathclipper_p.h"
+				>
+			</File>
 			<File
-				RelativePath="painting\qpen.h"/>
+				RelativePath="painting\qpen.h"
+				>
+			</File>
 			<File
-				RelativePath="image\qpixmap.h"/>
+				RelativePath="image\qpixmap.h"
+				>
+			</File>
 			<File
-				RelativePath="image\qpixmap_raster_p.h"/>
+				RelativePath="image\qpixmap_raster_p.h"
+				>
+			</File>
 			<File
-				RelativePath="image\qpixmapcache.h"/>
+				RelativePath="image\qpixmapcache.h"
+				>
+			</File>
 			<File
-				RelativePath="image\qpixmapdata_p.h"/>
+				RelativePath="image\qpixmapdata_p.h"
+				>
+			</File>
 			<File
-				RelativePath="painting\qpolygon.h"/>
+				RelativePath="painting\qpolygon.h"
+				>
+			</File>
 			<File
-				RelativePath="painting\qpolygonclipper_p.h"/>
+				RelativePath="painting\qpolygonclipper_p.h"
+				>
+			</File>
 			<File
-				RelativePath="image\qppmhandler_p.h"/>
+				RelativePath="image\qppmhandler_p.h"
+				>
+			</File>
 			<File
-				RelativePath="painting\qrasterdefs_p.h"/>
+				RelativePath="painting\qrasterdefs_p.h"
+				>
+			</File>
 			<File
-				RelativePath="painting\qrasterizer_p.h"/>
+				RelativePath="painting\qrasterizer_p.h"
+				>
+			</File>
 			<File
-				RelativePath="painting\qregion.h"/>
+				RelativePath="painting\qregion.h"
+				>
+			</File>
 			<File
-				RelativePath="painting\qstroker_p.h"/>
+				RelativePath="painting\qstroker_p.h"
+				>
+			</File>
 			<File
-				RelativePath="painting\qtessellator_p.h"/>
+				RelativePath="painting\qtessellator_p.h"
+				>
+			</File>
 			<File
-				RelativePath="painting\qtransform.h"/>
+				RelativePath="painting\qtransform.h"
+				>
+			</File>
 			<File
-				RelativePath="kernel\qwindowdefs.h"/>
+				RelativePath="kernel\qwindowdefs.h"
+				>
+			</File>
 			<File
-				RelativePath="kernel\qwindowdefs_win.h"/>
+				RelativePath="kernel\qwindowdefs_win.h"
+				>
+			</File>
 			<File
-				RelativePath="image\qxbmhandler_p.h"/>
+				RelativePath="image\qxbmhandler_p.h"
+				>
+			</File>
 			<File
-				RelativePath="image\qxpmhandler_p.h"/>
+				RelativePath="image\qxpmhandler_p.h"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Generated Files"
 			Filter="cpp;c;cxx;moc;h;def;odl;idl;res;"
-			UniqueIdentifier="{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}">
+			UniqueIdentifier="{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}"
+			>
 			<File
-				RelativePath="tmp\obj\release_shared\QtGui_resource.res">
-				<FileConfiguration
-					Name="Debug|Win32"
-					ExcludedFromBuild="true"/>
-			</File>
-			<File
-				RelativePath="tmp\obj\debug_shared\QtGuid_resource.res">
+				RelativePath="tmp\moc\debug_shared\moc_qbrush.cpp"
+				>
 				<FileConfiguration
 					Name="Release|Win32"
-					ExcludedFromBuild="true"/>
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="tmp\moc\debug_shared\moc_qbrush.cpp">
-				<FileConfiguration
-					Name="Release|Win32"
-					ExcludedFromBuild="true"/>
-			</File>
-			<File
-				RelativePath="tmp\moc\release_shared\moc_qbrush.cpp">
-				<FileConfiguration
-					Name="Debug|Win32"
-					ExcludedFromBuild="true"/>
-			</File>
-			<File
-				RelativePath="tmp\moc\debug_shared\moc_qimageiohandler.cpp">
-				<FileConfiguration
-					Name="Release|Win32"
-					ExcludedFromBuild="true"/>
-			</File>
-			<File
-				RelativePath="tmp\moc\release_shared\moc_qimageiohandler.cpp">
+				RelativePath="tmp\moc\release_shared\moc_qbrush.cpp"
+				>
 				<FileConfiguration
 					Name="Debug|Win32"
-					ExcludedFromBuild="true"/>
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="tmp\moc\debug_shared\moc_qpainter.cpp">
+				RelativePath="tmp\moc\debug_shared\moc_qimageiohandler.cpp"
+				>
 				<FileConfiguration
 					Name="Release|Win32"
-					ExcludedFromBuild="true"/>
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="tmp\moc\release_shared\moc_qpainter.cpp">
+				RelativePath="tmp\moc\release_shared\moc_qimageiohandler.cpp"
+				>
 				<FileConfiguration
 					Name="Debug|Win32"
-					ExcludedFromBuild="true"/>
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="tmp\moc\debug_shared\moc_qpalette.cpp">
+				RelativePath="tmp\moc\debug_shared\moc_qpainter.cpp"
+				>
 				<FileConfiguration
 					Name="Release|Win32"
-					ExcludedFromBuild="true"/>
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="tmp\moc\release_shared\moc_qpalette.cpp">
+				RelativePath="tmp\moc\release_shared\moc_qpainter.cpp"
+				>
 				<FileConfiguration
 					Name="Debug|Win32"
-					ExcludedFromBuild="true"/>
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="tmp\moc\release_shared\moc_qpalette.cpp"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="tmp\moc\debug_shared\moc_qpalette.cpp"
+				>
+				<FileConfiguration
+					Name="Release|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="tmp\obj\release_shared\QtGui_resource.res"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="tmp\obj\debug_shared\QtGuid_resource.res"
+				>
+				<FileConfiguration
+					Name="Release|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
 			</File>
 		</Filter>
 		<File
-			RelativePath="d:\qt-win-opensource-src-4.5.1\src\gui\QtGui_resource.rc">
+			RelativePath="d:\qt-win-opensource-src-4.5.1\src\gui\QtGui_resource.rc"
+			>
 			<FileConfiguration
 				Name="Debug|Win32"
-				ExcludedFromBuild="true"/>
+				ExcludedFromBuild="true"
+				>
+				<Tool
+					Name="VCResourceCompilerTool"
+				/>
+			</FileConfiguration>
 		</File>
 		<File
-			RelativePath="d:\qt-win-opensource-src-4.5.1\src\gui\QtGuid_resource.rc">
+			RelativePath="d:\qt-win-opensource-src-4.5.1\src\gui\QtGuid_resource.rc"
+			>
 			<FileConfiguration
 				Name="Release|Win32"
-				ExcludedFromBuild="true"/>
+				ExcludedFromBuild="true"
+				>
+				<Tool
+					Name="VCResourceCompilerTool"
+				/>
+			</FileConfiguration>
 		</File>
 	</Files>
 	<Globals>
+		<Global
+			Name="QtVersion"
+			Value="QT4.5.1"
+		/>
+		<Global
+			Name="QtVersion Win32"
+			Value="QT4.5.1"
+		/>
 	</Globals>
 </VisualStudioProject>
