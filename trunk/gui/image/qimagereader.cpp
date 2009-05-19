@@ -130,7 +130,7 @@
 #include <qvariant.h>
 
 // factory loader
-#include <qcoreapplication.h>
+// #include <qcoreapplication.h>
 #include <private/qfactoryloader_p.h>
 
 // image handlers

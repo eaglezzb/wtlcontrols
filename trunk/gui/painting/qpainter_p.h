@@ -61,7 +61,8 @@
 #include "QtGui/qpainter.h"
 #include "QtGui/qpainterpath.h"
 #include "QtGui/qpaintengine.h"
-#include <QtCore/qhash.h>
+// #include <QtCore/qhash.h>
+#include "core/qhash.h"
 
 #include "qpen_p.h"
 
@@ -253,7 +254,7 @@ public:
 
 Q_GUI_EXPORT void qt_draw_helper(QPainterPrivate *p, const QPainterPath &path, QPainterPrivate::DrawOperation operation);
 
-QString qt_generate_brush_key(const QBrush &brush);
+// QString qt_generate_brush_key(const QBrush &brush);
 
 QT_END_NAMESPACE
 

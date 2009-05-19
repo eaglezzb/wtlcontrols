@@ -53,12 +53,18 @@
 // We mean it.
 //
 
-#include "QtCore/qpoint.h"
-#include "QtCore/qline.h"
-#include "QtCore/qrect.h"
-#include "QtCore/qvector.h"
-#include "QtCore/qlist.h"
-#include "QtCore/qpair.h"
+// #include "QtCore/qpoint.h"
+// #include "QtCore/qline.h"
+// #include "QtCore/qrect.h"
+// #include "QtCore/qvector.h"
+// #include "QtCore/qlist.h"
+// #include "QtCore/qpair.h"
+#include "core/qpoint.h"
+#include "core/qline.h"
+#include "core/qrect.h"
+#include "core/qvector.h"
+#include "core/qlist.h"
+#include "core/qpair.h"
 
 QT_BEGIN_NAMESPACE
 

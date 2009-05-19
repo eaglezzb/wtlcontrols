@@ -40,12 +40,13 @@
 ****************************************************************************/
 
 #include "qpolygon.h"
-#include "qrect.h"
-#include "qdatastream.h"
+// #include "qrect.h"
+#include "core/qrect.h"
+// #include "qdatastream.h"
 #include "qmatrix.h"
-#include "qdebug.h"
+// #include "qdebug.h"
 #include "qpainterpath.h"
-#include "qvariant.h"
+// #include "qvariant.h"
 #include "qpainterpath_p.h"
 #include "qbezier_p.h"
 
@@ -643,115 +644,115 @@ QPolygon QPolygonF::toPolygon() const
 /*!
    Returns the polygon as a QVariant
 */
-QPolygon::operator QVariant() const
-{
-    return QVariant(QVariant::Polygon, this);
-}
+// QPolygon::operator QVariant() const
+// {
+//     return QVariant(QVariant::Polygon, this);
+// }
 
 /*****************************************************************************
   QPolygon stream functions
  *****************************************************************************/
-#ifndef QT_NO_DATASTREAM
-/*!
-    \fn QDataStream &operator<<(QDataStream &stream, const QPolygon &polygon)
-    \since 4.4
-    \relates QPolygon
-
-    Writes the given \a polygon to the given \a stream, and returns a
-    reference to the stream.
-
-    \sa {Format of the QDataStream Operators}
-*/
-QDataStream &operator<<(QDataStream &s, const QPolygon &a)
-{
-    const QVector<QPoint> &v = a;
-    return s << v;
-}
-
-/*!
-    \fn QDataStream &operator>>(QDataStream &stream, QPolygon &polygon)
-    \since 4.4
-    \relates QPolygon
-
-    Reads a polygon from the given \a stream into the given \a
-    polygon, and returns a reference to the stream.
-
-    \sa {Format of the QDataStream Operators}
-*/
-QDataStream &operator>>(QDataStream &s, QPolygon &a)
-{
-    QVector<QPoint> &v = a;
-    return s >> v;
-}
-#endif
+// #ifndef QT_NO_DATASTREAM
+// /*!
+//     \fn QDataStream &operator<<(QDataStream &stream, const QPolygon &polygon)
+//     \since 4.4
+//     \relates QPolygon
+// 
+//     Writes the given \a polygon to the given \a stream, and returns a
+//     reference to the stream.
+// 
+//     \sa {Format of the QDataStream Operators}
+// */
+// QDataStream &operator<<(QDataStream &s, const QPolygon &a)
+// {
+//     const QVector<QPoint> &v = a;
+//     return s << v;
+// }
+// 
+// /*!
+//     \fn QDataStream &operator>>(QDataStream &stream, QPolygon &polygon)
+//     \since 4.4
+//     \relates QPolygon
+// 
+//     Reads a polygon from the given \a stream into the given \a
+//     polygon, and returns a reference to the stream.
+// 
+//     \sa {Format of the QDataStream Operators}
+// */
+// QDataStream &operator>>(QDataStream &s, QPolygon &a)
+// {
+//     QVector<QPoint> &v = a;
+//     return s >> v;
+// }
+// #endif
 
 /*****************************************************************************
   QPolygonF stream functions
  *****************************************************************************/
-#ifndef QT_NO_DATASTREAM
-/*!
-    \fn QDataStream &operator<<(QDataStream &stream, const QPolygonF &polygon)
-    \relates QPolygonF
-
-    Writes the given \a polygon to the given \a stream, and returns a
-    reference to the stream.
-
-    \sa {Format of the QDataStream Operators}
-*/
-
-QDataStream &operator<<(QDataStream &s, const QPolygonF &a)
-{
-    quint32 len = a.size();
-    uint i;
-
-    s << len;
-    for (i = 0; i < len; ++i)
-        s << a.at(i);
-    return s;
-}
-
-/*!
-    \fn QDataStream &operator>>(QDataStream &stream, QPolygonF &polygon)
-    \relates QPolygonF
-
-    Reads a polygon from the given \a stream into the given \a
-    polygon, and returns a reference to the stream.
-
-    \sa {Format of the QDataStream Operators}
-*/
-
-QDataStream &operator>>(QDataStream &s, QPolygonF &a)
-{
-    quint32 len;
-    uint i;
-
-    s >> len;
-    a.reserve(a.size() + (int)len);
-    QPointF p;
-    for (i = 0; i < len; ++i) {
-        s >> p;
-        a.insert(i, p);
-    }
-    return s;
-}
-#endif //QT_NO_DATASTREAM
-
-#ifndef QT_NO_DEBUG_STREAM
-QDebug operator<<(QDebug dbg, const QPolygonF &a)
-{
-#ifndef Q_BROKEN_DEBUG_STREAM
-    dbg.nospace() << "QPolygonF(";
-    for (int i = 0; i < a.count(); ++i)
-        dbg.nospace() << a.at(i);
-    dbg.nospace() << ')';
-    return dbg.space();
-#else
-    qWarning("This compiler doesn't support streaming QPolygonF to QDebug");
-    return dbg;
-    Q_UNUSED(a);
-#endif
-}
-#endif
+// #ifndef QT_NO_DATASTREAM
+// /*!
+//     \fn QDataStream &operator<<(QDataStream &stream, const QPolygonF &polygon)
+//     \relates QPolygonF
+// 
+//     Writes the given \a polygon to the given \a stream, and returns a
+//     reference to the stream.
+// 
+//     \sa {Format of the QDataStream Operators}
+// */
+// 
+// QDataStream &operator<<(QDataStream &s, const QPolygonF &a)
+// {
+//     quint32 len = a.size();
+//     uint i;
+// 
+//     s << len;
+//     for (i = 0; i < len; ++i)
+//         s << a.at(i);
+//     return s;
+// }
+// 
+// /*!
+//     \fn QDataStream &operator>>(QDataStream &stream, QPolygonF &polygon)
+//     \relates QPolygonF
+// 
+//     Reads a polygon from the given \a stream into the given \a
+//     polygon, and returns a reference to the stream.
+// 
+//     \sa {Format of the QDataStream Operators}
+// */
+// 
+// QDataStream &operator>>(QDataStream &s, QPolygonF &a)
+// {
+//     quint32 len;
+//     uint i;
+// 
+//     s >> len;
+//     a.reserve(a.size() + (int)len);
+//     QPointF p;
+//     for (i = 0; i < len; ++i) {
+//         s >> p;
+//         a.insert(i, p);
+//     }
+//     return s;
+// }
+// #endif //QT_NO_DATASTREAM
+// 
+// #ifndef QT_NO_DEBUG_STREAM
+// QDebug operator<<(QDebug dbg, const QPolygonF &a)
+// {
+// #ifndef Q_BROKEN_DEBUG_STREAM
+//     dbg.nospace() << "QPolygonF(";
+//     for (int i = 0; i < a.count(); ++i)
+//         dbg.nospace() << a.at(i);
+//     dbg.nospace() << ')';
+//     return dbg.space();
+// #else
+//     qWarning("This compiler doesn't support streaming QPolygonF to QDebug");
+//     return dbg;
+//     Q_UNUSED(a);
+// #endif
+// }
+// #endif
 
 
 /*!

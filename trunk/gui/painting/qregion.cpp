@@ -42,12 +42,13 @@
 #include "qregion.h"
 #include "qpainterpath.h"
 #include "qpolygon.h"
-#include "qbuffer.h"
-#include "qdatastream.h"
-#include "qvariant.h"
-#include "qvarlengtharray.h"
+// #include "qbuffer.h"
+// #include "qdatastream.h"
+// #include "qvariant.h"
+// #include "qvarlengtharray.h"
+#include "core/qvarlengtharray.h"
 
-#include <qdebug.h>
+// #include <qdebug.h>
 
 #if defined(Q_OS_UNIX) || defined(Q_OS_WINCE)
 #include "qimage.h"
@@ -299,163 +300,163 @@ void QRegion::detach()
 #define QRGN_RECTS            10
 
 
-#ifndef QT_NO_DATASTREAM
+// #ifndef QT_NO_DATASTREAM
+// 
+// /*
+//     Executes region commands in the internal buffer and rebuilds the
+//     original region.
+// 
+//     We do this when we read a region from the data stream.
+// 
+//     If \a ver is non-0, uses the format version \a ver on reading the
+//     byte array.
+// */
+// void QRegion::exec(const QByteArray &buffer, int ver, QDataStream::ByteOrder byteOrder)
+// {
+//     QByteArray copy = buffer;
+//     QDataStream s(&copy, QIODevice::ReadOnly);
+//     if (ver)
+//         s.setVersion(ver);
+//     s.setByteOrder(byteOrder);
+//     QRegion rgn;
+// #ifndef QT_NO_DEBUG
+//     int test_cnt = 0;
+// #endif
+//     while (!s.atEnd()) {
+//         qint32 id;
+//         if (s.version() == 1) {
+//             int id_int;
+//             s >> id_int;
+//             id = id_int;
+//         } else {
+//             s >> id;
+//         }
+// #ifndef QT_NO_DEBUG
+//         if (test_cnt > 0 && id != QRGN_TRANSLATE)
+//             qWarning("QRegion::exec: Internal error");
+//         test_cnt++;
+// #endif
+//         if (id == QRGN_SETRECT || id == QRGN_SETELLIPSE) {
+//             QRect r;
+//             s >> r;
+//             rgn = QRegion(r, id == QRGN_SETRECT ? Rectangle : Ellipse);
+//         } else if (id == QRGN_SETPTARRAY_ALT || id == QRGN_SETPTARRAY_WIND) {
+//             QPolygon a;
+//             s >> a;
+//             rgn = QRegion(a, id == QRGN_SETPTARRAY_WIND ? Qt::WindingFill : Qt::OddEvenFill);
+//         } else if (id == QRGN_TRANSLATE) {
+//             QPoint p;
+//             s >> p;
+//             rgn.translate(p.x(), p.y());
+//         } else if (id >= QRGN_OR && id <= QRGN_XOR) {
+//             QByteArray bop1, bop2;
+//             QRegion r1, r2;
+//             s >> bop1;
+//             r1.exec(bop1);
+//             s >> bop2;
+//             r2.exec(bop2);
+// 
+//             switch (id) {
+//                 case QRGN_OR:
+//                     rgn = r1.united(r2);
+//                     break;
+//                 case QRGN_AND:
+//                     rgn = r1.intersected(r2);
+//                     break;
+//                 case QRGN_SUB:
+//                     rgn = r1.subtracted(r2);
+//                     break;
+//                 case QRGN_XOR:
+//                     rgn = r1.xored(r2);
+//                     break;
+//             }
+//         } else if (id == QRGN_RECTS) {
+//             // (This is the only form used in Qt 2.0)
+//             quint32 n;
+//             s >> n;
+//             QRect r;
+//             for (int i=0; i<(int)n; i++) {
+//                 s >> r;
+//                 rgn = rgn.united(QRegion(r));
+//             }
+//         }
+//     }
+//     *this = rgn;
+// }
+// 
+// 
+// /*****************************************************************************
+//   QRegion stream functions
+//  *****************************************************************************/
+// 
+// /*!
+//     \fn QRegion &QRegion::operator=(const QRegion &r)
+// 
+//     Assigns \a r to this region and returns a reference to the region.
+// */
+// 
+// /*!
+//     \relates QRegion
+// 
+//     Writes the region \a r to the stream \a s and returns a reference
+//     to the stream.
+// 
+//     \sa \link datastreamformat.html Format of the QDataStream operators \endlink
+// */
+// 
+// QDataStream &operator<<(QDataStream &s, const QRegion &r)
+// {
+//     QVector<QRect> a = r.rects();
+//     if (a.isEmpty()) {
+//         s << (quint32)0;
+//     } else {
+//         if (s.version() == 1) {
+//             int i;
+//             for (i = a.size() - 1; i > 0; --i) {
+//                 s << (quint32)(12 + i * 24);
+//                 s << (int)QRGN_OR;
+//             }
+//             for (i = 0; i < a.size(); ++i) {
+//                 s << (quint32)(4+8) << (int)QRGN_SETRECT << a[i];
+//             }
+//         } else {
+//             s << (quint32)(4 + 4 + 16 * a.size()); // 16: storage size of QRect
+//             s << (qint32)QRGN_RECTS;
+//             s << a;
+//         }
+//     }
+//     return s;
+// }
+// 
+// /*!
+//     \relates QRegion
+// 
+//     Reads a region from the stream \a s into \a r and returns a
+//     reference to the stream.
+// 
+//     \sa \link datastreamformat.html Format of the QDataStream operators \endlink
+// */
+// 
+// QDataStream &operator>>(QDataStream &s, QRegion &r)
+// {
+//     QByteArray b;
+//     s >> b;
+//     r.exec(b, s.version(), s.byteOrder());
+//     return s;
+// }
+// #endif //QT_NO_DATASTREAM
 
-/*
-    Executes region commands in the internal buffer and rebuilds the
-    original region.
-
-    We do this when we read a region from the data stream.
-
-    If \a ver is non-0, uses the format version \a ver on reading the
-    byte array.
-*/
-void QRegion::exec(const QByteArray &buffer, int ver, QDataStream::ByteOrder byteOrder)
-{
-    QByteArray copy = buffer;
-    QDataStream s(&copy, QIODevice::ReadOnly);
-    if (ver)
-        s.setVersion(ver);
-    s.setByteOrder(byteOrder);
-    QRegion rgn;
-#ifndef QT_NO_DEBUG
-    int test_cnt = 0;
-#endif
-    while (!s.atEnd()) {
-        qint32 id;
-        if (s.version() == 1) {
-            int id_int;
-            s >> id_int;
-            id = id_int;
-        } else {
-            s >> id;
-        }
-#ifndef QT_NO_DEBUG
-        if (test_cnt > 0 && id != QRGN_TRANSLATE)
-            qWarning("QRegion::exec: Internal error");
-        test_cnt++;
-#endif
-        if (id == QRGN_SETRECT || id == QRGN_SETELLIPSE) {
-            QRect r;
-            s >> r;
-            rgn = QRegion(r, id == QRGN_SETRECT ? Rectangle : Ellipse);
-        } else if (id == QRGN_SETPTARRAY_ALT || id == QRGN_SETPTARRAY_WIND) {
-            QPolygon a;
-            s >> a;
-            rgn = QRegion(a, id == QRGN_SETPTARRAY_WIND ? Qt::WindingFill : Qt::OddEvenFill);
-        } else if (id == QRGN_TRANSLATE) {
-            QPoint p;
-            s >> p;
-            rgn.translate(p.x(), p.y());
-        } else if (id >= QRGN_OR && id <= QRGN_XOR) {
-            QByteArray bop1, bop2;
-            QRegion r1, r2;
-            s >> bop1;
-            r1.exec(bop1);
-            s >> bop2;
-            r2.exec(bop2);
-
-            switch (id) {
-                case QRGN_OR:
-                    rgn = r1.united(r2);
-                    break;
-                case QRGN_AND:
-                    rgn = r1.intersected(r2);
-                    break;
-                case QRGN_SUB:
-                    rgn = r1.subtracted(r2);
-                    break;
-                case QRGN_XOR:
-                    rgn = r1.xored(r2);
-                    break;
-            }
-        } else if (id == QRGN_RECTS) {
-            // (This is the only form used in Qt 2.0)
-            quint32 n;
-            s >> n;
-            QRect r;
-            for (int i=0; i<(int)n; i++) {
-                s >> r;
-                rgn = rgn.united(QRegion(r));
-            }
-        }
-    }
-    *this = rgn;
-}
-
-
-/*****************************************************************************
-  QRegion stream functions
- *****************************************************************************/
-
-/*!
-    \fn QRegion &QRegion::operator=(const QRegion &r)
-
-    Assigns \a r to this region and returns a reference to the region.
-*/
-
-/*!
-    \relates QRegion
-
-    Writes the region \a r to the stream \a s and returns a reference
-    to the stream.
-
-    \sa \link datastreamformat.html Format of the QDataStream operators \endlink
-*/
-
-QDataStream &operator<<(QDataStream &s, const QRegion &r)
-{
-    QVector<QRect> a = r.rects();
-    if (a.isEmpty()) {
-        s << (quint32)0;
-    } else {
-        if (s.version() == 1) {
-            int i;
-            for (i = a.size() - 1; i > 0; --i) {
-                s << (quint32)(12 + i * 24);
-                s << (int)QRGN_OR;
-            }
-            for (i = 0; i < a.size(); ++i) {
-                s << (quint32)(4+8) << (int)QRGN_SETRECT << a[i];
-            }
-        } else {
-            s << (quint32)(4 + 4 + 16 * a.size()); // 16: storage size of QRect
-            s << (qint32)QRGN_RECTS;
-            s << a;
-        }
-    }
-    return s;
-}
-
-/*!
-    \relates QRegion
-
-    Reads a region from the stream \a s into \a r and returns a
-    reference to the stream.
-
-    \sa \link datastreamformat.html Format of the QDataStream operators \endlink
-*/
-
-QDataStream &operator>>(QDataStream &s, QRegion &r)
-{
-    QByteArray b;
-    s >> b;
-    r.exec(b, s.version(), s.byteOrder());
-    return s;
-}
-#endif //QT_NO_DATASTREAM
-
-#ifndef QT_NO_DEBUG_STREAM
-QDebug operator<<(QDebug s, const QRegion &r)
-{
-    QVector<QRect> rects = r.rects();
-    s.nospace() << "QRegion(size=" << rects.size() << "), "
-                << "bounds = " << r.boundingRect() << "\n";
-    for (int i=0; i<rects.size(); ++i)
-        s << "- " << i << rects.at(i) << "\n";
-    return s;
-}
-#endif
+// #ifndef QT_NO_DEBUG_STREAM
+// QDebug operator<<(QDebug s, const QRegion &r)
+// {
+//     QVector<QRect> rects = r.rects();
+//     s.nospace() << "QRegion(size=" << rects.size() << "), "
+//                 << "bounds = " << r.boundingRect() << "\n";
+//     for (int i=0; i<rects.size(); ++i)
+//         s << "- " << i << rects.at(i) << "\n";
+//     return s;
+// }
+// #endif
 
 
 // These are not inline - they can be implemented better on some platforms
@@ -620,10 +621,10 @@ QRegion& QRegion::operator^=(const QRegion &r)
 /*!
    Returns the region as a QVariant
 */
-QRegion::operator QVariant() const
-{
-    return QVariant(QVariant::Region, this);
-}
+// QRegion::operator QVariant() const
+// {
+//     return QVariant(QVariant::Region, this);
+// }
 
 /*!
     \fn bool QRegion::operator==(const QRegion &r) const

@@ -55,10 +55,10 @@ class Q_GUI_EXPORT QPixmapCache
 public:
 	static int cacheLimit() {return 0;}
 	static void setCacheLimit(int) {}
-	static QPixmap *find(const QString &key) {return 0;}
-	static bool find(const QString &key, QPixmap&) {return false;}
-	static bool insert(const QString &key, const QPixmap&) {return false;}
-	static void remove(const QString &key) {}
+// 	static QPixmap *find(const QString &key) {return 0;}
+// 	static bool find(const QString &key, QPixmap&) {return false;}
+// 	static bool insert(const QString &key, const QPixmap&) {return false;}
+// 	static void remove(const QString &key) {}
 	static void clear() {}
 };
 

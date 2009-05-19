@@ -40,11 +40,12 @@
 ****************************************************************************/
 
 #include "qbitmap.h"
-#include "qbuffer.h"
+// #include "qbuffer.h"
 #include "qimage.h"
 #include "qpolygon.h"
 #include "qregion.h"
-#include "qt_windows.h"
+// #include "qt_windows.h"
+#include "core/qt_windows.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -358,7 +359,8 @@ QRegion QRegion::winCombine(const QRegion &r, int op) const
             left = right = RGN_COPY;
             break;
         default:
-            qWarning("QRegion: Internal error in winCombine");
+			;
+//             qWarning("QRegion: Internal error in winCombine");
     }
 
     int allCombineRgnResults = NULLREGION;

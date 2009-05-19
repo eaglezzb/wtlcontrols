@@ -54,7 +54,8 @@
 //
 
 #include <QtGui/qpainterpath.h>
-#include <QtCore/qlist.h>
+// #include <QtCore/qlist.h>
+#include "core/qlist.h"
 
 #include <private/qbezier_p.h>
 #include <private/qdatabuffer_p.h>

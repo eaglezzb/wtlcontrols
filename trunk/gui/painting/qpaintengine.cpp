@@ -44,10 +44,12 @@
 #include "qpolygon.h"
 #include "qbitmap.h"
 //modify #include "qapplication.h"
-#include <qdebug.h>
-#include <qmath.h>
+// #include <qdebug.h>
+// #include <qmath.h>
+#include "core/qmath.h"
 // #include <private/qtextengine_p.h>
-#include <qvarlengtharray.h>
+// #include <qvarlengtharray.h>
+#include "core/qvarlengtharray.h"
 // #include <private/qfontengine_p.h>
 
 

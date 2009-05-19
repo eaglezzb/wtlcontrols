@@ -42,9 +42,12 @@
 #ifndef QPAINTER_H
 #define QPAINTER_H
 
-#include <QtCore/qnamespace.h>
-#include <QtCore/qrect.h>
-#include <QtCore/qpoint.h>
+// #include <QtCore/qnamespace.h>
+// #include <QtCore/qrect.h>
+// #include <QtCore/qpoint.h>
+#include "core/qnamespace.h"
+#include "core/qrect.h"
+#include "core/qpoint.h"
 #include <QtGui/qpixmap.h>
 #include <QtGui/qimage.h>
 // #include <QtGui/qtextoption.h>
@@ -81,8 +84,8 @@ class QTransform;
 class Q_GUI_EXPORT QPainter
 {
     Q_DECLARE_PRIVATE(QPainter)
-    Q_GADGET
-    Q_FLAGS(RenderHint RenderHints)
+//     Q_GADGET
+//     Q_FLAGS(RenderHint RenderHints)
 
 public:
     enum RenderHint {
@@ -415,8 +418,8 @@ public:
 
     QPaintEngine *paintEngine() const;
 
-    static void setRedirected(const QPaintDevice *device, QPaintDevice *replacement,
-                              const QPoint& offset = QPoint());
+//     static void setRedirected(const QPaintDevice *device, QPaintDevice *replacement,
+//                               const QPoint& offset = QPoint());
     static QPaintDevice *redirected(const QPaintDevice *device, QPoint *offset = 0);
     static void restoreRedirected(const QPaintDevice *device);
 

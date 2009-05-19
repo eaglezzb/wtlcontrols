@@ -53,12 +53,15 @@
 // We mean it.
 //
 
-#include <QtCore/qglobal.h>
+// #include <QtCore/qglobal.h>
 
-#include <QVector>
+#include "core/qglobal.h"
+// #include <QVector>
+#include "core/qvector.h"
 
 #ifndef QT_NO_IMAGE_TEXT
-#include <QMap>
+// #include <QMap>
+#include "core/qmap.h"
 #endif
 
 QT_BEGIN_NAMESPACE
@@ -100,7 +103,7 @@ struct QImageData {        // internal image data
 #ifndef QT_NO_IMAGE_TEXT
     QMap<QString, QString> text;
 #endif
-    bool doImageIO(const QImage *image, QImageWriter* io, int quality) const;
+//     bool doImageIO(const QImage *image, QImageWriter* io, int quality) const;
 
     QPaintEngine *paintEngine;
 };

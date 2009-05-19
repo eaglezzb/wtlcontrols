@@ -55,10 +55,12 @@
 
 #include "QtGui/qpainterpath.h"
 #include "QtGui/qregion.h"
-#include "QtCore/qlist.h"
-#include "QtCore/qvarlengtharray.h"
+// #include "QtCore/qlist.h"
+#include "core/qlist.h"
+// #include "QtCore/qvarlengtharray.h"
+#include "core/qvarlengtharray.h"
 
-#include <qdebug.h>
+// #include <qdebug.h>
 
 #include <private/qvectorpath_p.h>
 #include <private/qstroker_p.h>

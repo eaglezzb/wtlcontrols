@@ -42,7 +42,7 @@
 #include "qbitmap.h"
 #include "qpixmapdata_p.h"
 #include "qimage.h"
-#include "qvariant.h"
+// #include "qvariant.h"
 #include <qpainter.h>
 //modify #include <private/qgraphicssystem_p.h>
 //modify #include <private/qapplication_p.h>
@@ -170,11 +170,11 @@ QBitmap::QBitmap(const QPixmap &pixmap)
     \sa QPixmap::isNull(), QImageReader::imageFormat()
 */
 
-QBitmap::QBitmap(const QString& fileName, const char *format)
-    : QPixmap(QSize(0, 0), QPixmapData::BitmapType)
-{
-    load(fileName, format, Qt::MonoOnly);
-}
+// QBitmap::QBitmap(const QString& fileName, const char *format)
+//     : QPixmap(QSize(0, 0), QPixmapData::BitmapType)
+// {
+//     load(fileName, format, Qt::MonoOnly);
+// }
 
 /*!
     \overload
@@ -227,10 +227,10 @@ QBitmap::~QBitmap()
 /*!
    Returns the bitmap as a QVariant.
 */
-QBitmap::operator QVariant() const
-{
-    return QVariant(QVariant::Bitmap, this);
-}
+// QBitmap::operator QVariant() const
+// {
+//     return QVariant(QVariant::Bitmap, this);
+// }
 
 /*!
     \fn QBitmap &QBitmap::operator=(const QImage &image)

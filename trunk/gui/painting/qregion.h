@@ -42,13 +42,15 @@
 #ifndef QREGION_H
 #define QREGION_H
 
-#include <QtCore/qatomic.h>
-#include <QtCore/qrect.h>
+#include "core/qatomic.h"
+#include "core/qrect.h"
+// #include <QtCore/qatomic.h>
+// #include <QtCore/qrect.h>
 #include <QtGui/qwindowdefs.h>
 
-#ifndef QT_NO_DATASTREAM
-#include <QtCore/qdatastream.h>
-#endif
+// #ifndef QT_NO_DATASTREAM
+// #include <QtCore/qdatastream.h>
+// #endif
 
 QT_BEGIN_HEADER
 
@@ -57,7 +59,7 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(Gui)
 
 template <class T> class QVector;
-class QVariant;
+//class QVariant;
 
 #if defined(Q_WS_QWS) || defined(Q_WS_X11) || defined(Q_WS_MAC) || defined(Q_OS_WINCE)
 struct QRegionPrivate;
@@ -135,7 +137,7 @@ public:
 
     bool operator==(const QRegion &r) const;
     inline bool operator!=(const QRegion &r) const { return !(operator==(r)); }
-    operator QVariant() const;
+    //operator QVariant() const;
 
 #ifdef qdoc
     Handle handle() const;
@@ -163,11 +165,11 @@ public:
     inline void *handle() const { return d->qt_rgn; }
 #endif
 #endif
-
-#ifndef QT_NO_DATASTREAM
-    friend Q_GUI_EXPORT QDataStream &operator<<(QDataStream &, const QRegion &);
-    friend Q_GUI_EXPORT QDataStream &operator>>(QDataStream &, QRegion &);
-#endif
+// 
+// #ifndef QT_NO_DATASTREAM
+//     friend Q_GUI_EXPORT QDataStream &operator<<(QDataStream &, const QRegion &);
+//     friend Q_GUI_EXPORT QDataStream &operator>>(QDataStream &, QRegion &);
+// #endif
 private:
     QRegion copy() const;   // helper of detach.
     void detach();
@@ -185,10 +187,10 @@ private:
     friend bool qt_region_strictContains(const QRegion &region,
                                          const QRect &rect);
     friend struct QRegionPrivate;
-
-#ifndef QT_NO_DATASTREAM
-    void exec(const QByteArray &ba, int ver = 0, QDataStream::ByteOrder byteOrder = QDataStream::BigEndian);
-#endif
+// 
+// #ifndef QT_NO_DATASTREAM
+//     void exec(const QByteArray &ba, int ver = 0, QDataStream::ByteOrder byteOrder = QDataStream::BigEndian);
+// #endif
     struct QRegionData {
         QBasicAtomicInt ref;
 #if defined(Q_WS_WIN)
@@ -214,15 +216,15 @@ private:
 /*****************************************************************************
   QRegion stream functions
  *****************************************************************************/
-
-#ifndef QT_NO_DATASTREAM
-Q_GUI_EXPORT QDataStream &operator<<(QDataStream &, const QRegion &);
-Q_GUI_EXPORT QDataStream &operator>>(QDataStream &, QRegion &);
-#endif
-
-#ifndef QT_NO_DEBUG_STREAM
-Q_GUI_EXPORT QDebug operator<<(QDebug, const QRegion &);
-#endif
+// 
+// #ifndef QT_NO_DATASTREAM
+// Q_GUI_EXPORT QDataStream &operator<<(QDataStream &, const QRegion &);
+// Q_GUI_EXPORT QDataStream &operator>>(QDataStream &, QRegion &);
+// #endif
+// 
+// #ifndef QT_NO_DEBUG_STREAM
+// Q_GUI_EXPORT QDebug operator<<(QDebug, const QRegion &);
+// #endif
 
 QT_END_NAMESPACE
 

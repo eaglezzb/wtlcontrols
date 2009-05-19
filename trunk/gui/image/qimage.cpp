@@ -40,15 +40,15 @@
 ****************************************************************************/
 
 #include "qimage.h"
-#include "qdatastream.h"
-#include "qbuffer.h"
-#include "qmap.h"
+// #include "qdatastream.h"
+// #include "qbuffer.h"
+#include "core/qmap.h"
 #include "qmatrix.h"
 #include "qtransform.h"
-#include "qimagereader.h"
-#include "qimagewriter.h"
-#include "qstringlist.h"
-#include "qvariant.h"
+// #include "qimagereader.h"
+// #include "qimagewriter.h"
+// #include "qstringlist.h"
+// #include "qvariant.h"
 #include <ctype.h>
 #include <stdlib.h>
 #include <limits.h>
@@ -58,7 +58,8 @@
 #include <private/qpixmapdata_p.h>
 #include <private/qimagescale_p.h>
 
-#include <qhash.h>
+// #include <qhash.h>
+#include "core/qhash.h"
 
 #ifdef QT_RASTER_IMAGEENGINE
 #include <private/qpaintengine_raster_p.h>
@@ -1006,12 +1007,12 @@ QImage::QImage(const uchar *data, int width, int height, int bytesPerLine, Forma
     \sa isNull(), {QImage#Reading and Writing Image Files}{Reading and Writing Image Files}
 */
 
-QImage::QImage(const QString &fileName, const char *format)
-    : QPaintDevice()
-{
-    d = 0;
-    load(fileName, format);
-}
+// QImage::QImage(const QString &fileName, const char *format)
+//     : QPaintDevice()
+// {
+//     d = 0;
+//     load(fileName, format);
+// }
 
 /*!
     Constructs an image and tries to load the image from the file with
@@ -1327,10 +1328,10 @@ int QImage::devType() const
 /*!
    Returns the image as a QVariant.
 */
-QImage::operator QVariant() const
-{
-    return QVariant(QVariant::Image, this);
-}
+// QImage::operator QVariant() const
+// {
+//     return QVariant(QVariant::Image, this);
+// }
 
 /*!
     \internal
@@ -4555,18 +4556,18 @@ QImage QImage::rgbSwapped() const
     \sa {QImage#Reading and Writing Image Files}{Reading and Writing Image Files}
 */
 
-bool QImage::load(const QString &fileName, const char* format)
-{
-    if (fileName.isEmpty())
-        return false;
-
-    QImage image = QImageReader(fileName, format).read();
-    if (!image.isNull()) {
-        operator=(image);
-        return true;
-    }
-    return false;
-}
+// bool QImage::load(const QString &fileName, const char* format)
+// {
+//     if (fileName.isEmpty())
+//         return false;
+// 
+//     QImage image = QImageReader(fileName, format).read();
+//     if (!image.isNull()) {
+//         operator=(image);
+//         return true;
+//     }
+//     return false;
+// }
 
 /*!
     \overload
@@ -4575,16 +4576,16 @@ bool QImage::load(const QString &fileName, const char* format)
     for example, be used to load an image directly into a QByteArray.
 */
 
-bool QImage::load(QIODevice* device, const char* format)
-{
-    QImage image = QImageReader(device, format).read();
-    if(!image.isNull()) {
-        operator=(image);
-        return true;
-    }
-    return false;
-}
-
+// bool QImage::load(QIODevice* device, const char* format)
+// {
+//     QImage image = QImageReader(device, format).read();
+//     if(!image.isNull()) {
+//         operator=(image);
+//         return true;
+//     }
+//     return false;
+// }
+// 
 /*!
     \fn bool QImage::loadFromData(const uchar *data, int len, const char *format)
 
@@ -4599,16 +4600,16 @@ bool QImage::load(QIODevice* device, const char* format)
     \sa {QImage#Reading and Writing Image Files}{Reading and Writing Image Files}
 */
 
-bool QImage::loadFromData(const uchar *data, int len, const char *format)
-{
-    QImage image = fromData(data, len, format);
-    if (!image.isNull()) {
-        operator=(image);
-        return true;
-    }
-    return false;
-}
-
+// bool QImage::loadFromData(const uchar *data, int len, const char *format)
+// {
+//     QImage image = fromData(data, len, format);
+//     if (!image.isNull()) {
+//         operator=(image);
+//         return true;
+//     }
+//     return false;
+// }
+// 
 /*!
     \fn bool QImage::loadFromData(const QByteArray &data, const char *format)
 
@@ -4630,15 +4631,15 @@ bool QImage::loadFromData(const uchar *data, int len, const char *format)
     \sa load(), save(), {QImage#Reading and Writing Image
     Files}{Reading and Writing Image Files}
 */
-QImage QImage::fromData(const uchar *data, int size, const char *format)
-{
-    QByteArray a = QByteArray::fromRawData(reinterpret_cast<const char *>(data), size);
-    QBuffer b;
-    b.setData(a);
-    b.open(QIODevice::ReadOnly);
-    return QImageReader(&b, format).read();
-}
-
+// QImage QImage::fromData(const uchar *data, int size, const char *format)
+// {
+// 	QByteArray a = QByteArray::fromRawData(reinterpret_cast<const char *>(data), size);
+// 	QBuffer b;
+// 	b.setData(a);
+// 	b.open(QIODevice::ReadOnly);
+// 	return QImageReader(&b, format).read();
+// }
+// 
 /*!
     \fn QImage QImage::fromData(const QByteArray &data, const char *format)
 
@@ -4663,13 +4664,13 @@ QImage QImage::fromData(const uchar *data, int size, const char *format)
     \sa {QImage#Reading and Writing Image Files}{Reading and Writing
     Image Files}
 */
-bool QImage::save(const QString &fileName, const char *format, int quality) const
-{
-    if (isNull())
-        return false;
-    QImageWriter writer(fileName, format);
-    return d->doImageIO(this, &writer, quality);
-}
+// bool QImage::save(const QString &fileName, const char *format, int quality) const
+// {
+//     if (isNull())
+//         return false;
+//     QImageWriter writer(fileName, format);
+//     return d->doImageIO(this, &writer, quality);
+// }
 
 /*!
     \overload
@@ -4682,81 +4683,81 @@ bool QImage::save(const QString &fileName, const char *format, int quality) cons
     \snippet doc/src/snippets/image/image.cpp 0
 */
 
-bool QImage::save(QIODevice* device, const char* format, int quality) const
-{
-    if (isNull())
-        return false;                                // nothing to save
-    QImageWriter writer(device, format);
-    return d->doImageIO(this, &writer, quality);
-}
+// bool QImage::save(QIODevice* device, const char* format, int quality) const
+// {
+//     if (isNull())
+//         return false;                                // nothing to save
+//     QImageWriter writer(device, format);
+//     return d->doImageIO(this, &writer, quality);
+// }
 
 /* \internal
 */
 
-bool QImageData::doImageIO(const QImage *image, QImageWriter *writer, int quality) const
-{
-    if (quality > 100  || quality < -1)
-        qWarning("QPixmap::save: Quality out of range [-1, 100]");
-    if (quality >= 0)
-        writer->setQuality(qMin(quality,100));
-    return writer->write(*image);
-}
+// bool QImageData::doImageIO(const QImage *image, QImageWriter *writer, int quality) const
+// {
+//     if (quality > 100  || quality < -1)
+//         qWarning("QPixmap::save: Quality out of range [-1, 100]");
+//     if (quality >= 0)
+//         writer->setQuality(qMin(quality,100));
+//     return writer->write(*image);
+// }
 
 /*****************************************************************************
   QImage stream functions
  *****************************************************************************/
-#if !defined(QT_NO_DATASTREAM)
-/*!
-    \fn QDataStream &operator<<(QDataStream &stream, const QImage &image)
-    \relates QImage
-
-    Writes the given \a image to the given \a stream as a PNG image,
-    or as a BMP image if the stream's version is 1. Note that writing
-    the stream to a file will not produce a valid image file.
-
-    \sa QImage::save(), {Format of the QDataStream Operators}
-*/
-
-QDataStream &operator<<(QDataStream &s, const QImage &image)
-{
-    if (s.version() >= 5) {
-        if (image.isNull()) {
-            s << (qint32) 0; // null image marker
-            return s;
-        } else {
-            s << (qint32) 1;
-            // continue ...
-        }
-    }
-    QImageWriter writer(s.device(), s.version() == 1 ? "bmp" : "png");
-    writer.write(image);
-    return s;
-}
-
-/*!
-    \fn QDataStream &operator>>(QDataStream &stream, QImage &image)
-    \relates QImage
-
-    Reads an image from the given \a stream and stores it in the given
-    \a image.
-
-    \sa QImage::load(), {Format of the QDataStream Operators}
-*/
-
-QDataStream &operator>>(QDataStream &s, QImage &image)
-{
-    if (s.version() >= 5) {
-        qint32 nullMarker;
-        s >> nullMarker;
-        if (!nullMarker) {
-            image = QImage(); // null image
-            return s;
-        }
-    }
-    image = QImageReader(s.device(), 0).read();
-    return s;
-}
-#endif
+// #if !defined(QT_NO_DATASTREAM)
+// /*!
+//     \fn QDataStream &operator<<(QDataStream &stream, const QImage &image)
+//     \relates QImage
+// 
+//     Writes the given \a image to the given \a stream as a PNG image,
+//     or as a BMP image if the stream's version is 1. Note that writing
+//     the stream to a file will not produce a valid image file.
+// 
+//     \sa QImage::save(), {Format of the QDataStream Operators}
+// */
+// 
+// QDataStream &operator<<(QDataStream &s, const QImage &image)
+// {
+//     if (s.version() >= 5) {
+//         if (image.isNull()) {
+//             s << (qint32) 0; // null image marker
+//             return s;
+//         } else {
+//             s << (qint32) 1;
+//             // continue ...
+//         }
+//     }
+//     QImageWriter writer(s.device(), s.version() == 1 ? "bmp" : "png");
+//     writer.write(image);
+//     return s;
+// }
+// 
+// /*!
+//     \fn QDataStream &operator>>(QDataStream &stream, QImage &image)
+//     \relates QImage
+// 
+//     Reads an image from the given \a stream and stores it in the given
+//     \a image.
+// 
+//     \sa QImage::load(), {Format of the QDataStream Operators}
+// */
+// 
+// QDataStream &operator>>(QDataStream &s, QImage &image)
+// {
+//     if (s.version() >= 5) {
+//         qint32 nullMarker;
+//         s >> nullMarker;
+//         if (!nullMarker) {
+//             image = QImage(); // null image
+//             return s;
+//         }
+//     }
+//     image = QImageReader(s.device(), 0).read();
+//     return s;
+// }
+// #endif
 
 
 #ifdef QT3_SUPPORT

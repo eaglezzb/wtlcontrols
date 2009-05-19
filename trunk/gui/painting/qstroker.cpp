@@ -42,9 +42,11 @@
 #include "private/qstroker_p.h"
 #include "private/qbezier_p.h"
 #include "private/qmath_p.h"
-#include "qline.h"
+// #include "qline.h"
+#include "core/qline.h"
 #include "qtransform.h"
-#include <qmath.h>
+// #include <qmath.h>
+#include "core/qmath.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -104,7 +106,7 @@ public:
             ce.type = QPainterPath::CurveToDataElement;
             break;
         default:
-            qWarning("QSubpathReverseIterator::next: Case %d unhandled", ce.type);
+//             qWarning("QSubpathReverseIterator::next: Case %d unhandled", ce.type);
             break;
         }
         --m_pos;
@@ -830,7 +832,7 @@ QPointF qt_curves_for_arc(const QRectF &rect, qreal startAngle, qreal sweepLengt
     *point_count = 0;
     if (qt_is_nan(rect.x()) || qt_is_nan(rect.y()) || qt_is_nan(rect.width()) || qt_is_nan(rect.height())
         || qt_is_nan(startAngle) || qt_is_nan(sweepLength)) {
-        qWarning("QPainterPath::arcTo: Adding arc where a parameter is NaN, results are undefined");
+//         qWarning("QPainterPath::arcTo: Adding arc where a parameter is NaN, results are undefined");
         return QPointF();
     }
 

@@ -40,14 +40,15 @@
 ****************************************************************************/
 
 #include "qbezier_p.h"
-#include <qdebug.h>
-#include <qline.h>
+// #include <qdebug.h>
+// #include <qline.h>
 #include <qpolygon.h>
-#include <qvector.h>
-#include <qlist.h>
-#include <qmath.h>
+// #include <qvector.h>
+// #include <qlist.h>
+// #include <qmath.h>
+#include "core/qmath.h"
 
-#include <private/qnumeric_p.h>
+#include "core/qnumeric_p.h"
 #include <private/qmath_p.h>
 
 QT_BEGIN_NAMESPACE

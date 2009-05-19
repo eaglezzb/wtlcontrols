@@ -42,9 +42,12 @@
 #ifndef QPOLYGON_H
 #define QPOLYGON_H
 
-#include <QtCore/qvector.h>
-#include <QtCore/qpoint.h>
-#include <QtCore/qrect.h>
+// #include <QtCore/qvector.h>
+// #include <QtCore/qpoint.h>
+// #include <QtCore/qrect.h>
+#include "core/qvector.h"
+#include "core/qpoint.h"
+#include "core/qrect.h"
 
 QT_BEGIN_HEADER
 
@@ -55,7 +58,7 @@ QT_MODULE(Gui)
 class QMatrix;
 class QTransform;
 class QRect;
-class QVariant;
+//class QVariant;
 
 class Q_GUI_EXPORT QPolygon : public QVector<QPoint>
 {
@@ -67,7 +70,7 @@ public:
     inline QPolygon(const QVector<QPoint> &v) : QVector<QPoint>(v) {}
     QPolygon(const QRect &r, bool closed=false);
     QPolygon(int nPoints, const int *points);
-    operator QVariant() const;
+    //operator QVariant() const;
 
     void translate(int dx, int dy);
     void translate(const QPoint &offset);
@@ -99,10 +102,10 @@ Q_GUI_EXPORT QDebug operator<<(QDebug, const QPolygon &);
 /*****************************************************************************
   QPolygon stream functions
  *****************************************************************************/
-#ifndef QT_NO_DATASTREAM
-Q_GUI_EXPORT QDataStream &operator<<(QDataStream &stream, const QPolygon &polygon);
-Q_GUI_EXPORT QDataStream &operator>>(QDataStream &stream, QPolygon &polygon);
-#endif
+// #ifndef QT_NO_DATASTREAM
+// Q_GUI_EXPORT QDataStream &operator<<(QDataStream &stream, const QPolygon &polygon);
+// Q_GUI_EXPORT QDataStream &operator>>(QDataStream &stream, QPolygon &polygon);
+// #endif
 
 /*****************************************************************************
   Misc. QPolygon functions
@@ -158,10 +161,10 @@ Q_GUI_EXPORT QDebug operator<<(QDebug, const QPolygonF &);
 /*****************************************************************************
   QPolygonF stream functions
  *****************************************************************************/
-#ifndef QT_NO_DATASTREAM
-Q_GUI_EXPORT QDataStream &operator<<(QDataStream &stream, const QPolygonF &array);
-Q_GUI_EXPORT QDataStream &operator>>(QDataStream &stream, QPolygonF &array);
-#endif
+// #ifndef QT_NO_DATASTREAM
+// Q_GUI_EXPORT QDataStream &operator<<(QDataStream &stream, const QPolygonF &array);
+// Q_GUI_EXPORT QDataStream &operator>>(QDataStream &stream, QPolygonF &array);
+// #endif
 
 inline void QPolygonF::translate(qreal dx, qreal dy)
 { translate(QPointF(dx, dy)); }

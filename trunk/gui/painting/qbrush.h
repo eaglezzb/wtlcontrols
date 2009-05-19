@@ -42,9 +42,12 @@
 #ifndef QBRUSH_H
 #define QBRUSH_H
 
-#include <QtCore/qpair.h>
-#include <QtCore/qpoint.h>
-#include <QtCore/qvector.h>
+// #include <QtCore/qpair.h>
+// #include <QtCore/qpoint.h>
+// #include <QtCore/qvector.h>
+#include "core/qpair.h"
+#include "core/qpoint.h"
+#include "core/qvector.h"
 #include <QtGui/qcolor.h>
 #include <QtGui/qmatrix.h>
 #include <QtGui/qtransform.h>
@@ -60,7 +63,7 @@ QT_MODULE(Gui)
 struct QBrushData;
 class QPixmap;
 class QGradient;
-class QVariant;
+// class QVariant;
 
 class Q_GUI_EXPORT QBrush
 {
@@ -81,7 +84,7 @@ public:
 
     ~QBrush();
     QBrush &operator=(const QBrush &brush);
-    operator QVariant() const;
+//     operator QVariant() const;
 
     inline Qt::BrushStyle style() const;
     void setStyle(Qt::BrushStyle);
@@ -145,14 +148,14 @@ Q_DECLARE_SHARED(QBrush)
   QBrush stream functions
  *****************************************************************************/
 
-#ifndef QT_NO_DATASTREAM
-Q_GUI_EXPORT QDataStream &operator<<(QDataStream &, const QBrush &);
-Q_GUI_EXPORT QDataStream &operator>>(QDataStream &, QBrush &);
-#endif
-
-#ifndef QT_NO_DEBUG_STREAM
-Q_GUI_EXPORT QDebug operator<<(QDebug, const QBrush &);
-#endif
+// #ifndef QT_NO_DATASTREAM
+// Q_GUI_EXPORT QDataStream &operator<<(QDataStream &, const QBrush &);
+// Q_GUI_EXPORT QDataStream &operator>>(QDataStream &, QBrush &);
+// #endif
+// 
+// #ifndef QT_NO_DEBUG_STREAM
+// Q_GUI_EXPORT QDebug operator<<(QDebug, const QBrush &);
+// #endif
 
 struct QBrushData
 {
@@ -183,8 +186,8 @@ typedef QVector<QGradientStop> QGradientStops;
 
 class Q_GUI_EXPORT QGradient
 {
-    Q_GADGET
-    Q_ENUMS(Type Spread CoordinateMode)
+//     Q_GADGET
+//     Q_ENUMS(Type Spread CoordinateMode)
 public:
     enum Type {
         LinearGradient,

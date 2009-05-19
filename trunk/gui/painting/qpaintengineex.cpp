@@ -44,8 +44,9 @@
 #include "qstroker_p.h"
 #include <private/qpainterpath_p.h>
 
-#include <qvarlengtharray.h>
-#include <qdebug.h>
+// #include <qvarlengtharray.h>
+#include "core/qvarlengtharray.h"
+// #include <qdebug.h>
 
 
 QT_BEGIN_NAMESPACE

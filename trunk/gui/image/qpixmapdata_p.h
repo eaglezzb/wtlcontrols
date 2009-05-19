@@ -54,7 +54,8 @@
 //
 
 #include <QtGui/qpixmap.h>
-#include <QtCore/qatomic.h>
+// #include <QtCore/qatomic.h>
+#include "core/qatomic.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -75,8 +76,8 @@ public:
     virtual void resize(int width, int height) = 0;
     virtual void fromImage(const QImage &image,
                            Qt::ImageConversionFlags flags) = 0;
-    virtual void fromFile(const QString &filename, const char *format,
-                          Qt::ImageConversionFlags flags);
+//     virtual void fromFile(const QString &filename, const char *format,
+//                           Qt::ImageConversionFlags flags);
     virtual void copy(const QPixmapData *data, const QRect &rect);
 
     virtual int metric(QPaintDevice::PaintDeviceMetric metric) const = 0;

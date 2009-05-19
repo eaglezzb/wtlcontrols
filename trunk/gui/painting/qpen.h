@@ -51,15 +51,15 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(Gui)
 
-class QVariant;
+//class QVariant;
 class QPenPrivate;
 class QBrush;
 class QPen;
 
-#ifndef QT_NO_DATASTREAM
-Q_GUI_EXPORT QDataStream &operator<<(QDataStream &, const QPen &);
-Q_GUI_EXPORT QDataStream &operator>>(QDataStream &, QPen &);
-#endif
+// #ifndef QT_NO_DATASTREAM
+// Q_GUI_EXPORT QDataStream &operator<<(QDataStream &, const QPen &);
+// Q_GUI_EXPORT QDataStream &operator>>(QDataStream &, QPen &);
+// #endif
 
 class Q_GUI_EXPORT QPen
 {
@@ -112,12 +112,12 @@ public:
 
     bool operator==(const QPen &p) const;
     inline bool operator!=(const QPen &p) const { return !(operator==(p)); }
-    operator QVariant() const;
+    //operator QVariant() const;
 
     bool isDetached();
 private:
-    friend Q_GUI_EXPORT QDataStream &operator>>(QDataStream &, QPen &);
-    friend Q_GUI_EXPORT QDataStream &operator<<(QDataStream &, const QPen &);
+//     friend Q_GUI_EXPORT QDataStream &operator>>(QDataStream &, QPen &);
+//     friend Q_GUI_EXPORT QDataStream &operator<<(QDataStream &, const QPen &);
 
     void detach();
     class QPenPrivate *d;
@@ -129,9 +129,9 @@ public:
 Q_DECLARE_TYPEINFO(QPen, Q_MOVABLE_TYPE);
 Q_DECLARE_SHARED(QPen)
 
-#ifndef QT_NO_DEBUG_STREAM
-Q_GUI_EXPORT QDebug operator<<(QDebug, const QPen &);
-#endif
+// #ifndef QT_NO_DEBUG_STREAM
+// Q_GUI_EXPORT QDebug operator<<(QDebug, const QPen &);
+// #endif
 
 QT_END_NAMESPACE
 

@@ -56,12 +56,12 @@ QT_MODULE(Gui)
 class QColorGroup;
 #endif
 class QPalettePrivate;
-class QVariant;
+//class QVariant;
 
 class Q_GUI_EXPORT QPalette
 {
-    Q_GADGET
-    Q_ENUMS(ColorGroup ColorRole)
+//     Q_GADGET
+//     Q_ENUMS(ColorGroup ColorRole)
 public:
     QPalette();
     QPalette(const QColor &button);
@@ -78,7 +78,7 @@ public:
     QPalette(const QPalette &palette);
     ~QPalette();
     QPalette &operator=(const QPalette &palette);
-    operator QVariant() const;
+    //operator QVariant() const;
 
     // Do not change the order, the serialization format depends on it
     enum ColorGroup { Active, Disabled, Inactive, NColorGroups, Current, All, Normal = Active };
@@ -234,11 +234,11 @@ public:
     inline QT3_SUPPORT const QColor &link() const { return color(Link); }
     inline QT3_SUPPORT const QColor &linkVisited() const { return color(LinkVisited); }
 };
-
-#ifndef QT_NO_DATASTREAM
-Q_GUI_EXPORT QT3_SUPPORT QDataStream &operator<<(QDataStream &ds, const QColorGroup &cg);
-Q_GUI_EXPORT QT3_SUPPORT QDataStream &operator>>(QDataStream &ds, QColorGroup &cg);
-#endif
+// 
+// #ifndef QT_NO_DATASTREAM
+// Q_GUI_EXPORT QT3_SUPPORT QDataStream &operator<<(QDataStream &ds, const QColorGroup &cg);
+// Q_GUI_EXPORT QT3_SUPPORT QDataStream &operator>>(QDataStream &ds, QColorGroup &cg);
+// #endif
 
 inline QColorGroup QPalette::inactive() const { return createColorGroup(Inactive); }
 inline QColorGroup QPalette::disabled() const { return createColorGroup(Disabled); }
@@ -250,10 +250,10 @@ inline QColorGroup QPalette::normal() const { return createColorGroup(Active); }
 /*****************************************************************************
   QPalette stream functions
  *****************************************************************************/
-#ifndef QT_NO_DATASTREAM
-Q_GUI_EXPORT QDataStream &operator<<(QDataStream &ds, const QPalette &p);
-Q_GUI_EXPORT QDataStream &operator>>(QDataStream &ds, QPalette &p);
-#endif // QT_NO_DATASTREAM
+// #ifndef QT_NO_DATASTREAM
+// Q_GUI_EXPORT QDataStream &operator<<(QDataStream &ds, const QPalette &p);
+// Q_GUI_EXPORT QDataStream &operator>>(QDataStream &ds, QPalette &p);
+// #endif // QT_NO_DATASTREAM
 
 QT_END_NAMESPACE
 

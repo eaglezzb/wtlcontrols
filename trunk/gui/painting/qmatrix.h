@@ -45,9 +45,12 @@
 #include <QtGui/qpolygon.h>
 #include <QtGui/qregion.h>
 #include <QtGui/qwindowdefs.h>
-#include <QtCore/qline.h>
-#include <QtCore/qpoint.h>
-#include <QtCore/qrect.h>
+// #include <QtCore/qline.h>
+// #include <QtCore/qpoint.h>
+// #include <QtCore/qrect.h>
+#include "core/qline.h"
+#include "core/qpoint.h"
+#include "core/qrect.h"
 
 QT_BEGIN_HEADER
 
@@ -56,7 +59,7 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(Gui)
 
 class QPainterPath;
-class QVariant;
+//class QVariant;
 
 class Q_GUI_EXPORT QMatrix // 2D transform matrix
 {
@@ -112,7 +115,7 @@ public:
 
     QMatrix &operator=(const QMatrix &);
 
-    operator QVariant() const;
+    //operator QVariant() const;
 
 #ifdef QT3_SUPPORT
     inline QT3_SUPPORT QMatrix invert(bool *invertible=0) const { return inverted(invertible); }

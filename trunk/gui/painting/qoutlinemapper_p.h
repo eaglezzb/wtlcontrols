@@ -53,7 +53,8 @@
 // We mean it.
 //
 
-#include <QtCore/qrect.h>
+// #include <QtCore/qrect.h>
+#include "core/qrect.h"
 
 #include <QtGui/qtransform.h>
 #include <QtGui/qpainterpath.h>

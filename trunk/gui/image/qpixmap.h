@@ -44,10 +44,11 @@
 
 #include <QtGui/qpaintdevice.h>
 #include <QtGui/qcolor.h>
-#include <QtCore/qnamespace.h>
-#include <QtCore/qstring.h> // char*->QString conversion
+// #include <QtCore/qnamespace.h>
+#include "core/qnamespace.h"
+// #include <QtCore/qstring.h> // char*->QString conversion
 //modify
-#include <QtCore/QVariant>
+//#include <QtCore/QVariant>
 #include <QtGui/qimage.h>
 #include <QtGui/qtransform.h>
 
@@ -57,9 +58,9 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(Gui)
 
-class QImageWriter;
+//class QImageWriter;
 class QColor;
-class QVariant;
+//class QVariant;
 class QX11Info;
 
 class QPixmapData;
@@ -71,7 +72,7 @@ public:
     explicit QPixmap(QPixmapData *data);
     QPixmap(int w, int h);
     QPixmap(const QSize &);
-    QPixmap(const QString& fileName, const char *format = 0, Qt::ImageConversionFlags flags = Qt::AutoColor);
+//     QPixmap(const QString& fileName, const char *format = 0, Qt::ImageConversionFlags flags = Qt::AutoColor);
 #ifndef QT_NO_IMAGEFORMAT_XPM
     QPixmap(const char * const xpm[]);
 #endif
@@ -79,7 +80,7 @@ public:
     ~QPixmap();
 
     QPixmap &operator=(const QPixmap &);
-    operator QVariant() const;
+    //operator QVariant() const;
 
     bool isNull() const;
     int devType() const;
@@ -126,10 +127,10 @@ public:
     QImage toImage() const;
     static QPixmap fromImage(const QImage &image, Qt::ImageConversionFlags flags = Qt::AutoColor);
 
-    bool load(const QString& fileName, const char *format = 0, Qt::ImageConversionFlags flags = Qt::AutoColor);
-    bool loadFromData(const uchar *buf, uint len, const char* format = 0, Qt::ImageConversionFlags flags = Qt::AutoColor);
-    inline bool loadFromData(const QByteArray &data, const char* format = 0, Qt::ImageConversionFlags flags = Qt::AutoColor);
-    bool save(const QString& fileName, const char* format = 0, int quality = -1) const;
+//     bool load(const QString& fileName, const char *format = 0, Qt::ImageConversionFlags flags = Qt::AutoColor);
+//     bool loadFromData(const uchar *buf, uint len, const char* format = 0, Qt::ImageConversionFlags flags = Qt::AutoColor);
+//     inline bool loadFromData(const QByteArray &data, const char* format = 0, Qt::ImageConversionFlags flags = Qt::AutoColor);
+//     bool save(const QString& fileName, const char* format = 0, int quality = -1) const;
     bool save(QIODevice* device, const char* format = 0, int quality = -1) const;
 
 #if defined(Q_WS_WIN)
@@ -214,7 +215,7 @@ public:
 private:
     QPixmapData *data;
 
-    bool doImageIO(QImageWriter *io, int quality) const;
+//     bool doImageIO(QImageWriter *io, int quality) const;
 
     // ### Qt5: remove the following three lines
     enum Type { PixmapType, BitmapType }; // must match QPixmapData::PixelType
@@ -248,9 +249,9 @@ private:
     friend class QDirect3DPaintEngine;
     friend class QDirect3DPaintEnginePrivate;
     friend class QDetachedPixmap;
-#if !defined(QT_NO_DATASTREAM)
-    friend Q_GUI_EXPORT QDataStream &operator>>(QDataStream &, QPixmap &);
-#endif
+// #if !defined(QT_NO_DATASTREAM)
+//     friend Q_GUI_EXPORT QDataStream &operator>>(QDataStream &, QPixmap &);
+// #endif
     friend Q_GUI_EXPORT qint64 qt_pixmap_id(const QPixmap &pixmap);
 
 public:
@@ -268,20 +269,20 @@ inline QPixmap QPixmap::copy(int ax, int ay, int awidth, int aheight) const
     return copy(QRect(ax, ay, awidth, aheight));
 }
 
-inline bool QPixmap::loadFromData(const QByteArray &buf, const char *format,
-                                  Qt::ImageConversionFlags flags)
-{
-    return loadFromData(reinterpret_cast<const uchar *>(buf.constData()), buf.size(), format, flags);
-}
+// inline bool QPixmap::loadFromData(const QByteArray &buf, const char *format,
+//                                   Qt::ImageConversionFlags flags)
+// {
+//     return loadFromData(reinterpret_cast<const uchar *>(buf.constData()), buf.size(), format, flags);
+// }
 
 /*****************************************************************************
  QPixmap stream functions
 *****************************************************************************/
-
-#if !defined(QT_NO_DATASTREAM)
-Q_GUI_EXPORT QDataStream &operator<<(QDataStream &, const QPixmap &);
-Q_GUI_EXPORT QDataStream &operator>>(QDataStream &, QPixmap &);
-#endif
+// 
+// #if !defined(QT_NO_DATASTREAM)
+// Q_GUI_EXPORT QDataStream &operator<<(QDataStream &, const QPixmap &);
+// Q_GUI_EXPORT QDataStream &operator>>(QDataStream &, QPixmap &);
+// #endif
 
 /*****************************************************************************
  QPixmap (and QImage) helper functions

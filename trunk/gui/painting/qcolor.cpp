@@ -41,11 +41,13 @@
 
 #include "qcolor.h"
 #include "qcolor_p.h"
-#include "qnamespace.h"
+// #include "qnamespace.h"
+#include "core/qglobal.h"
+#include "core/qnamespace.h"
 #include "qcolormap.h"
-#include "qdatastream.h"
-#include "qvariant.h"
-#include "qdebug.h"
+// #include "qdatastream.h"
+// #include "qvariant.h"
+// #include "qdebug.h"
 
 #ifdef Q_WS_X11
 #  include "qapplication.h"
@@ -269,7 +271,6 @@ QT_BEGIN_NAMESPACE
 #define QCOLOR_INT_RANGE_CHECK(fn, var) \
     do { \
         if (var < 0 || var > 255) { \
-            qWarning(#fn": invalid value %d", var); \
             var = qMax(0, qMin(var, 255)); \
         } \
     } while (0)
@@ -483,12 +484,12 @@ QColor::QColor(Spec spec)
     \sa setNamedColor()
 */
 
-QString QColor::name() const
-{
-    QString s;
-    s.sprintf("#%02x%02x%02x", red(), green(), blue());
-    return s;
-}
+// QString QColor::name() const
+// {
+//     QString s;
+//     s.sprintf("#%02x%02x%02x", red(), green(), blue());
+//     return s;
+// }
 
 /*!
     Sets the RGB value of this QColor to \a name, which may be in one
@@ -514,60 +515,60 @@ QString QColor::name() const
     \sa QColor(), name(), isValid(), allowX11ColorNames()
 */
 
-void QColor::setNamedColor(const QString &name)
-{
-    if (name.isEmpty()) {
-        invalidate();
-        return;
-    }
-
-    if (name.startsWith(QLatin1Char('#'))) {
-        QRgb rgb;
-        if (qt_get_hex_rgb(name.constData(), name.length(), &rgb)) {
-            setRgb(rgb);
-        } else {
-            invalidate();
-        }
-        return;
-    }
-
-#ifndef QT_NO_COLORNAMES
-    QRgb rgb;
-    if (qt_get_named_rgb(name.constData(), name.length(), &rgb)) {
-        setRgba(rgb);
-    } else
-#endif
-    {
-#ifdef Q_WS_X11
-        XColor result;
-        if (allowX11ColorNames()
-            && QApplication::instance()
-            && QX11Info::display()
-            && XParseColor(QX11Info::display(), QX11Info::appColormap(), name.toLatin1().constData(), &result)) {
-            setRgb(result.red >> 8, result.green >> 8, result.blue >> 8);
-        } else
-#endif
-        {
-            qWarning("QColor::setNamedColor: Unknown color name '%s'", name.toLatin1().constData());
-            invalidate();
-        }
-    }
-}
-
+// void QColor::setNamedColor(const QString &name)
+// {
+//     if (name.isEmpty()) {
+//         invalidate();
+//         return;
+//     }
+// 
+//     if (name.startsWith(QLatin1Char('#'))) {
+//         QRgb rgb;
+//         if (qt_get_hex_rgb(name.constData(), name.length(), &rgb)) {
+//             setRgb(rgb);
+//         } else {
+//             invalidate();
+//         }
+//         return;
+//     }
+// 
+// #ifndef QT_NO_COLORNAMES
+//     QRgb rgb;
+//     if (qt_get_named_rgb(name.constData(), name.length(), &rgb)) {
+//         setRgba(rgb);
+//     } else
+// #endif
+//     {
+// #ifdef Q_WS_X11
+//         XColor result;
+//         if (allowX11ColorNames()
+//             && QApplication::instance()
+//             && QX11Info::display()
+//             && XParseColor(QX11Info::display(), QX11Info::appColormap(), name.toLatin1().constData(), &result)) {
+//             setRgb(result.red >> 8, result.green >> 8, result.blue >> 8);
+//         } else
+// #endif
+//         {
+//             qWarning("QColor::setNamedColor: Unknown color name '%s'", name.toLatin1().constData());
+//             invalidate();
+//         }
+//     }
+// }
+// 
 /*!
     Returns a QStringList containing the color names Qt knows about.
 
     \sa {QColor#Predefined Colors}{Predefined Colors}
 */
-QStringList QColor::colorNames()
-{
-#ifndef QT_NO_COLORNAMES
-    return qt_get_colornames();
-#else
-    return QStringList();
-#endif
-}
-
+// QStringList QColor::colorNames()
+// {
+// #ifndef QT_NO_COLORNAMES
+//     return qt_get_colornames();
+// #else
+//     return QStringList();
+// #endif
+// }
+// 
 /*!
     Sets the contents pointed to by \a h, \a s, \a v, and \a a, to the hue,
     saturation, value, and alpha-channel (transparency) components of the
@@ -1938,10 +1939,10 @@ bool QColor::operator!=(const QColor &color) const
 /*!
     Returns the color as a QVariant
 */
-QColor::operator QVariant() const
-{
-    return QVariant(QVariant::Color, this);
-}
+// QColor::operator QVariant() const
+// {
+//     return QVariant(QVariant::Color, this);
+// }
 
 #ifdef Q_WS_X11
 /*!
@@ -2015,108 +2016,108 @@ uint QColor::pixel(int screen) const
   QColor stream functions
  *****************************************************************************/
 
-#ifndef QT_NO_DEBUG_STREAM
-QDebug operator<<(QDebug dbg, const QColor &c)
-{
-#ifndef Q_BROKEN_DEBUG_STREAM
-    if (!c.isValid())
-        dbg.nospace() << "QColor(Invalid)";
-    else if (c.spec() == QColor::Rgb)
-        dbg.nospace() << "QColor(ARGB " << c.alphaF() << ", " << c.redF() << ", " << c.greenF() << ", " << c.blueF() << ")";
-    else if (c.spec() == QColor::Hsv)
-        dbg.nospace() << "QColor(AHSV " << c.alphaF() << ", " << c.hueF() << ", " << c.saturationF() << ", " << c.valueF() << ")";
-    else if (c.spec() == QColor::Cmyk)
-        dbg.nospace() << "QColor(ACMYK " << c.alphaF() << ", " << c.cyanF() << ", " << c.magentaF() << ", " << c.yellowF() << ", "
-                      << c.blackF()<< ")";
+// #ifndef QT_NO_DEBUG_STREAM
+// QDebug operator<<(QDebug dbg, const QColor &c)
+// {
+// #ifndef Q_BROKEN_DEBUG_STREAM
+//     if (!c.isValid())
+//         dbg.nospace() << "QColor(Invalid)";
+//     else if (c.spec() == QColor::Rgb)
+//         dbg.nospace() << "QColor(ARGB " << c.alphaF() << ", " << c.redF() << ", " << c.greenF() << ", " << c.blueF() << ")";
+//     else if (c.spec() == QColor::Hsv)
+//         dbg.nospace() << "QColor(AHSV " << c.alphaF() << ", " << c.hueF() << ", " << c.saturationF() << ", " << c.valueF() << ")";
+//     else if (c.spec() == QColor::Cmyk)
+//         dbg.nospace() << "QColor(ACMYK " << c.alphaF() << ", " << c.cyanF() << ", " << c.magentaF() << ", " << c.yellowF() << ", "
+//                       << c.blackF()<< ")";
+// 
+//     return dbg.space();
+// #else
+//     qWarning("This compiler doesn't support streaming QColor to QDebug");
+//     return dbg;
+//     Q_UNUSED(c);
+// #endif
+// }
+// #endif
 
-    return dbg.space();
-#else
-    qWarning("This compiler doesn't support streaming QColor to QDebug");
-    return dbg;
-    Q_UNUSED(c);
-#endif
-}
-#endif
-
-#ifndef QT_NO_DATASTREAM
-/*!
-    \fn QDataStream &operator<<(QDataStream &stream, const QColor &color)
-    \relates QColor
-
-    Writes the \a color to the \a stream.
-
-    \sa {Format of the QDataStream Operators}
-*/
-QDataStream &operator<<(QDataStream &stream, const QColor &color)
-{
-    if (stream.version() < 7) {
-        if (!color.isValid())
-            return stream << quint32(0x49000000);
-        quint32 p = (quint32)color.rgb();
-        if (stream.version() == 1) // Swap red and blue
-            p = ((p << 16) & 0xff0000) | ((p >> 16) & 0xff) | (p & 0xff00ff00);
-        return stream << p;
-    }
-
-    qint8   s = color.cspec;
-    quint16 a = color.ct.argb.alpha;
-    quint16 r = color.ct.argb.red;
-    quint16 g = color.ct.argb.green;
-    quint16 b = color.ct.argb.blue;
-    quint16 p = color.ct.argb.pad;
-
-    stream << s;
-    stream << a;
-    stream << r;
-    stream << g;
-    stream << b;
-    stream << p;
-
-    return stream;
-}
-
-/*!
-    \fn QDataStream &operator>>(QDataStream &stream, QColor &color)
-    \relates QColor
-
-    Reads the \a color from the \a stream.
-
-    \sa { Format of the QDataStream Operators}
-*/
-QDataStream &operator>>(QDataStream &stream, QColor &color)
-{
-    if (stream.version() < 7) {
-        quint32 p;
-        stream >> p;
-        if (p == 0x49000000) {
-            color.invalidate();
-            return stream;
-        }
-        if (stream.version() == 1) // Swap red and blue
-            p = ((p << 16) & 0xff0000) | ((p >> 16) & 0xff) | (p & 0xff00ff00);
-        color.setRgb(p);
-        return stream;
-    }
-
-    qint8 s;
-    quint16 a, r, g, b, p;
-    stream >> s;
-    stream >> a;
-    stream >> r;
-    stream >> g;
-    stream >> b;
-    stream >> p;
-
-    color.cspec = QColor::Spec(s);
-    color.ct.argb.alpha = a;
-    color.ct.argb.red   = r;
-    color.ct.argb.green = g;
-    color.ct.argb.blue  = b;
-    color.ct.argb.pad   = p;
-
-    return stream;
-}
-#endif
+// #ifndef QT_NO_DATASTREAM
+// /*!
+//     \fn QDataStream &operator<<(QDataStream &stream, const QColor &color)
+//     \relates QColor
+// 
+//     Writes the \a color to the \a stream.
+// 
+//     \sa {Format of the QDataStream Operators}
+// */
+// QDataStream &operator<<(QDataStream &stream, const QColor &color)
+// {
+//     if (stream.version() < 7) {
+//         if (!color.isValid())
+//             return stream << quint32(0x49000000);
+//         quint32 p = (quint32)color.rgb();
+//         if (stream.version() == 1) // Swap red and blue
+//             p = ((p << 16) & 0xff0000) | ((p >> 16) & 0xff) | (p & 0xff00ff00);
+//         return stream << p;
+//     }
+// 
+//     qint8   s = color.cspec;
+//     quint16 a = color.ct.argb.alpha;
+//     quint16 r = color.ct.argb.red;
+//     quint16 g = color.ct.argb.green;
+//     quint16 b = color.ct.argb.blue;
+//     quint16 p = color.ct.argb.pad;
+// 
+//     stream << s;
+//     stream << a;
+//     stream << r;
+//     stream << g;
+//     stream << b;
+//     stream << p;
+// 
+//     return stream;
+// }
+// 
+// /*!
+//     \fn QDataStream &operator>>(QDataStream &stream, QColor &color)
+//     \relates QColor
+// 
+//     Reads the \a color from the \a stream.
+// 
+//     \sa { Format of the QDataStream Operators}
+// */
+// QDataStream &operator>>(QDataStream &stream, QColor &color)
+// {
+//     if (stream.version() < 7) {
+//         quint32 p;
+//         stream >> p;
+//         if (p == 0x49000000) {
+//             color.invalidate();
+//             return stream;
+//         }
+//         if (stream.version() == 1) // Swap red and blue
+//             p = ((p << 16) & 0xff0000) | ((p >> 16) & 0xff) | (p & 0xff00ff00);
+//         color.setRgb(p);
+//         return stream;
+//     }
+// 
+//     qint8 s;
+//     quint16 a, r, g, b, p;
+//     stream >> s;
+//     stream >> a;
+//     stream >> r;
+//     stream >> g;
+//     stream >> b;
+//     stream >> p;
+// 
+//     color.cspec = QColor::Spec(s);
+//     color.ct.argb.alpha = a;
+//     color.ct.argb.red   = r;
+//     color.ct.argb.green = g;
+//     color.ct.argb.blue  = b;
+//     color.ct.argb.pad   = p;
+// 
+//     return stream;
+// }
+// #endif
 
 
 

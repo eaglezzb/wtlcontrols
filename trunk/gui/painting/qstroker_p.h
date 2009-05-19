@@ -55,7 +55,7 @@
 
 #include "QtGui/qpainterpath.h"
 #include "private/qdatabuffer_p.h"
-#include "private/qnumeric_p.h"
+#include "core/qnumeric_p.h"
 
 QT_BEGIN_NAMESPACE
 

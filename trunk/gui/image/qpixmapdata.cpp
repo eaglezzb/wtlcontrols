@@ -41,7 +41,7 @@
 
 #include "qpixmapdata_p.h"
 #include <QtGui/qbitmap.h>
-#include <QtGui/qimagereader.h>
+// #include <QtGui/qimagereader.h>
 
 QT_BEGIN_NAMESPACE
 
@@ -58,15 +58,15 @@ QPixmapData::~QPixmapData()
 {
 }
 
-void QPixmapData::fromFile(const QString &fileName, const char *format,
-                           Qt::ImageConversionFlags flags)
-{
-    const QImage image = QImageReader(fileName, format).read();
-    if (image.isNull())
-        return;
-
-    fromImage(image, flags);
-}
+// void QPixmapData::fromFile(const QString &fileName, const char *format,
+//                            Qt::ImageConversionFlags flags)
+// {
+//     const QImage image = QImageReader(fileName, format).read();
+//     if (image.isNull())
+//         return;
+// 
+//     fromImage(image, flags);
+// }
 
 void QPixmapData::copy(const QPixmapData *data, const QRect &rect)
 {

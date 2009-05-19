@@ -42,8 +42,9 @@
 #ifndef QDRAWUTIL_H
 #define QDRAWUTIL_H
 
-#include <QtCore/qnamespace.h>
-#include <QtCore/qstring.h> // char*->QString conversion
+// #include <QtCore/qnamespace.h>
+// #include <QtCore/qstring.h> // char*->QString conversion
+#include "core/qnamespace.h"
 
 QT_BEGIN_HEADER
 
