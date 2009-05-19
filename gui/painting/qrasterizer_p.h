@@ -53,7 +53,8 @@
 // We mean it.
 //
 
-#include "QtCore/qglobal.h"
+// #include "QtCore/qglobal.h"
+#include "core/qglobal.h"
 #include "QtGui/qpainter.h"
 
 #include <private/qdrawhelper_p.h>

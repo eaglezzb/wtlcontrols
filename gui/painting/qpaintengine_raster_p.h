@@ -222,9 +222,9 @@ public:
 
     QSize size() const;
 
-#ifndef QT_NO_DEBUG
-    void saveBuffer(const QString &s) const;
-#endif
+// #ifndef QT_NO_DEBUG
+//     void saveBuffer(const QString &s) const;
+// #endif
 
 #ifdef Q_WS_MAC
     void setCGContext(CGContextRef ref);

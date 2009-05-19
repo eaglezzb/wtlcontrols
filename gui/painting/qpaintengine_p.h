@@ -56,7 +56,7 @@
 #include "QtGui/qpainter.h"
 #include "QtGui/qpaintengine.h"
 #include "QtGui/qregion.h"
-#include "private/qobject_p.h"
+// #include "private/qobject_p.h"
 
 QT_BEGIN_NAMESPACE
 

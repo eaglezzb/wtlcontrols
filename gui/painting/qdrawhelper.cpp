@@ -43,7 +43,8 @@
 #include <private/qpainter_p.h>
 #include <private/qdrawhelper_x86_p.h>
 #include <private/qmath_p.h>
-#include <qmath.h>
+// #include <qmath.h>
+#include "core/qmath.h"
 
 QT_BEGIN_NAMESPACE
 

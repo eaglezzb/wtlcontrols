@@ -53,8 +53,10 @@
 // We mean it.
 //
 
-#include <qpoint.h>
-#include <qrect.h>
+// #include <qpoint.h>
+// #include <qrect.h>
+#include "core/qpoint.h"
+#include "core/qrect.h"
 
 QT_BEGIN_NAMESPACE
 

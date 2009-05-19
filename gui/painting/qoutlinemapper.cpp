@@ -41,7 +41,7 @@
 
 #include "qoutlinemapper_p.h"
 
-#include "qmath.h"
+#include "core/qmath.h"
 
 #include <stdlib.h>
 

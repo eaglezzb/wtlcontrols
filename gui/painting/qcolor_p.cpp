@@ -39,15 +39,16 @@
 **
 ****************************************************************************/
 
-#include "qglobal.h"
-
+// #include "qglobal.h"
+#include "core/qglobal.h"
+#include <string.h>
 #if defined(Q_CC_BOR)
 // needed for qsort() because of a std namespace problem on Borland
 #include "qplatformdefs.h"
 #endif
 
 #include "qrgb.h"
-#include "qstringlist.h"
+// #include "qstringlist.h"
 
 #if defined(Q_OS_WINCE)
 #include "qguifunctions_wince.h"
@@ -81,7 +82,7 @@ bool qt_get_hex_rgb(const char *name, QRgb *rgb)
     if(name[0] != '#')
         return false;
     name++;
-    int len = qstrlen(name);
+    int len = strlen(name);
     int r, g, b;
     if (len == 12) {
         r = hex2int(name);
@@ -110,17 +111,17 @@ bool qt_get_hex_rgb(const char *name, QRgb *rgb)
     return true;
 }
 
-bool qt_get_hex_rgb(const QChar *str, int len, QRgb *rgb)
-{
-    if (len > 13)
-        return false;
-    char tmp[16];
-    for(int i = 0; i < len; ++i)
-        tmp[i] = str[i].toLatin1();
-    tmp[len] = 0;
-    return qt_get_hex_rgb(tmp, rgb);
-}
-
+// bool qt_get_hex_rgb(const QChar *str, int len, QRgb *rgb)
+// {
+//     if (len > 13)
+//         return false;
+//     char tmp[16];
+//     for(int i = 0; i < len; ++i)
+//         tmp[i] = str[i].toLatin1();
+//     tmp[len] = 0;
+//     return qt_get_hex_rgb(tmp, rgb);
+// }
+// 
 #ifndef QT_NO_COLORNAMES
 
 /*
@@ -339,37 +340,37 @@ bool qt_get_named_rgb(const char *name, QRgb* rgb)
     return get_named_rgb(name_no_space, rgb);
 }
 
-bool qt_get_named_rgb(const QChar *name, int len, QRgb *rgb)
-{
-    if(len > 255)
-        return false;
-    char name_no_space[256];
-    int pos = 0;
-    for(int i = 0; i < len; i++) {
-        if(name[i] != QLatin1Char('\t') && name[i] != QLatin1Char(' '))
-            name_no_space[pos++] = name[i].toLatin1();
-    }
-    name_no_space[pos] = 0;
-    return get_named_rgb(name_no_space, rgb);
-}
-
-
-uint qt_get_rgb_val(const char *name)
-{
-    QRgb r = 0;
-    qt_get_named_rgb(name,&r);
-    return r;
-}
-
-QStringList qt_get_colornames()
-{
-    int i = 0;
-    QStringList lst;
-    for (i = 0; i < rgbTblSize; i++)
-        lst << QLatin1String(rgbTbl[i].name);
-    return lst;
-}
-
+// bool qt_get_named_rgb(const QChar *name, int len, QRgb *rgb)
+// {
+//     if(len > 255)
+//         return false;
+//     char name_no_space[256];
+//     int pos = 0;
+//     for(int i = 0; i < len; i++) {
+//         if(name[i] != QLatin1Char('\t') && name[i] != QLatin1Char(' '))
+//             name_no_space[pos++] = name[i].toLatin1();
+//     }
+//     name_no_space[pos] = 0;
+//     return get_named_rgb(name_no_space, rgb);
+// }
+// 
+// 
+// uint qt_get_rgb_val(const char *name)
+// {
+//     QRgb r = 0;
+//     qt_get_named_rgb(name,&r);
+//     return r;
+// }
+// 
+// QStringList qt_get_colornames()
+// {
+//     int i = 0;
+//     QStringList lst;
+//     for (i = 0; i < rgbTblSize; i++)
+//         lst << QLatin1String(rgbTbl[i].name);
+//     return lst;
+// }
+// 
 #else
 
 bool qt_get_named_rgb(const char *, QRgb*)
@@ -381,10 +382,10 @@ uint qt_get_rgb_val(const char *)
 {
     return 0;
 }
-QStringList qt_get_colornames()
-{
-    return QStringList();
-}
+// QStringList qt_get_colornames()
+// {
+//     return QStringList();
+// }
 #endif // QT_NO_COLORNAMES
 
 QT_END_NAMESPACE

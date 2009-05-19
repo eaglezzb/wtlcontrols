@@ -43,8 +43,9 @@
 #define QCOLOR_H
 
 #include <QtGui/qrgb.h>
-#include <QtCore/qnamespace.h>
-#include <QtCore/qstringlist.h>
+// #include <QtCore/qnamespace.h>
+// #include <QtCore/qstringlist.h>
+#include "core/qnamespace.h"
 
 QT_BEGIN_HEADER
 
@@ -54,15 +55,15 @@ QT_MODULE(Gui)
 
 class QColor;
 class QColormap;
-class QVariant;
+//class QVariant;
 
-#ifndef QT_NO_DEBUG_STREAM
-Q_GUI_EXPORT QDebug operator<<(QDebug, const QColor &);
-#endif
-#ifndef QT_NO_DATASTREAM
-Q_GUI_EXPORT QDataStream &operator<<(QDataStream &, const QColor &);
-Q_GUI_EXPORT QDataStream &operator>>(QDataStream &, QColor &);
-#endif
+// #ifndef QT_NO_DEBUG_STREAM
+// Q_GUI_EXPORT QDebug operator<<(QDebug, const QColor &);
+// #endif
+// #ifndef QT_NO_DATASTREAM
+// Q_GUI_EXPORT QDataStream &operator<<(QDataStream &, const QColor &);
+// Q_GUI_EXPORT QDataStream &operator>>(QDataStream &, QColor &);
+// #endif
 
 class Q_GUI_EXPORT QColor
 {
@@ -73,17 +74,17 @@ public:
     QColor(Qt::GlobalColor color);
     QColor(int r, int g, int b, int a = 255);
     QColor(QRgb rgb);
-    QColor(const QString& name);
+//     QColor(const QString& name);
     QColor(const char *name);
     QColor(const QColor &color);
     QColor(Spec spec);
 
     bool isValid() const;
 
-    QString name() const;
-    void setNamedColor(const QString& name);
+//     QString name() const;
+//     void setNamedColor(const QString& name);
 
-    static QStringList colorNames();
+//     static QStringList colorNames();
 
     inline Spec spec() const
     { return cspec; }
@@ -179,7 +180,7 @@ public:
     bool operator==(const QColor &c) const;
     bool operator!=(const QColor &c) const;
 
-    operator QVariant() const;
+    //operator QVariant() const;
 
 #ifdef Q_WS_X11
     static bool allowX11ColorNames();
@@ -237,10 +238,10 @@ private:
     } ct;
 
     friend class QColormap;
-#ifndef QT_NO_DATASTREAM
-    friend Q_GUI_EXPORT QDataStream &operator<<(QDataStream &, const QColor &);
-    friend Q_GUI_EXPORT QDataStream &operator>>(QDataStream &, QColor &);
-#endif
+// #ifndef QT_NO_DATASTREAM
+//     friend Q_GUI_EXPORT QDataStream &operator<<(QDataStream &, const QColor &);
+//     friend Q_GUI_EXPORT QDataStream &operator>>(QDataStream &, QColor &);
+// #endif
 };
 
 inline QColor::QColor()
@@ -249,11 +250,11 @@ inline QColor::QColor()
 inline QColor::QColor(int r, int g, int b, int a)
 { setRgb(r, g, b, a); }
 
-inline QColor::QColor(const char *aname)
-{ setNamedColor(QLatin1String(aname)); }
+// inline QColor::QColor(const char *aname)
+// { setNamedColor(QLatin1String(aname)); }
 
-inline QColor::QColor(const QString& aname)
-{ setNamedColor(aname); }
+// inline QColor::QColor(const QString& aname)
+// { setNamedColor(aname); }
 
 inline QColor::QColor(const QColor &acolor)
     : cspec(acolor.cspec)

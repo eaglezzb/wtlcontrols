@@ -42,9 +42,11 @@
 #ifndef QCOLORMAP_H
 #define QCOLORMAP_H
 
-#include <QtCore/qatomic.h>
+// #include <QtCore/qatomic.h>
+#include "core/qatomic.h"
 #include <QtGui/qrgb.h>
-#include <QtCore/qvector.h>
+// #include <QtCore/qvector.h>
+#include "core/qvector.h"
 #include <QtGui/qwindowdefs.h>
 
 QT_BEGIN_HEADER

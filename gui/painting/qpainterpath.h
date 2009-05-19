@@ -43,10 +43,14 @@
 #define QPAINTERPATH_H
 
 #include <QtGui/qmatrix.h>
-#include <QtCore/qglobal.h>
-#include <QtCore/qrect.h>
-#include <QtCore/qline.h>
-#include <QtCore/qvector.h>
+// #include <QtCore/qglobal.h>
+#include "core/qglobal.h"
+#include "core/qrect.h"
+#include "core/qline.h"
+#include "core/qrect.h"
+// #include <QtCore/qrect.h>
+// #include <QtCore/qline.h>
+// #include <QtCore/qvector.h>
 
 QT_BEGIN_HEADER
 
@@ -213,11 +217,11 @@ private:
     friend class QMatrix;
     friend class QTransform;
     friend Q_GUI_EXPORT const QVectorPath &qtVectorPathForPath(const QPainterPath &);
-
-#ifndef QT_NO_DATASTREAM
-    friend Q_GUI_EXPORT QDataStream &operator<<(QDataStream &, const QPainterPath &);
-    friend Q_GUI_EXPORT QDataStream &operator>>(QDataStream &, QPainterPath &);
-#endif
+// 
+// #ifndef QT_NO_DATASTREAM
+//     friend Q_GUI_EXPORT QDataStream &operator<<(QDataStream &, const QPainterPath &);
+//     friend Q_GUI_EXPORT QDataStream &operator>>(QDataStream &, QPainterPath &);
+// #endif
 };
 
 class QPainterPathPrivate
@@ -229,21 +233,21 @@ public:
     friend class QPainterPathStrokerPrivate;
     friend class QMatrix;
     friend class QTransform;
-#ifndef QT_NO_DATASTREAM
-    friend Q_GUI_EXPORT QDataStream &operator<<(QDataStream &, const QPainterPath &);
-    friend Q_GUI_EXPORT QDataStream &operator>>(QDataStream &, QPainterPath &);
-#endif
+// #ifndef QT_NO_DATASTREAM
+//     friend Q_GUI_EXPORT QDataStream &operator<<(QDataStream &, const QPainterPath &);
+//     friend Q_GUI_EXPORT QDataStream &operator>>(QDataStream &, QPainterPath &);
+// #endif
 private:
     QAtomicInt ref;
     QVector<QPainterPath::Element> elements;
 };
 
 Q_DECLARE_TYPEINFO(QPainterPath::Element, Q_PRIMITIVE_TYPE);
-
-#ifndef QT_NO_DATASTREAM
-Q_GUI_EXPORT QDataStream &operator<<(QDataStream &, const QPainterPath &);
-Q_GUI_EXPORT QDataStream &operator>>(QDataStream &, QPainterPath &);
-#endif
+// 
+// #ifndef QT_NO_DATASTREAM
+// Q_GUI_EXPORT QDataStream &operator<<(QDataStream &, const QPainterPath &);
+// Q_GUI_EXPORT QDataStream &operator>>(QDataStream &, QPainterPath &);
+// #endif
 
 class Q_GUI_EXPORT QPainterPathStroker
 {

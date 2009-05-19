@@ -41,8 +41,8 @@
 
 #include "qpalette.h"
 //modify #include "qapplication.h"
-#include "qdatastream.h"
-#include "qvariant.h"
+// #include "qdatastream.h"
+// #include "qvariant.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -65,67 +65,67 @@ static QColor qt_mix_colors(QColor a, QColor b)
 
 #ifdef QT3_SUPPORT
 
-#ifndef QT_NO_DATASTREAM
-QDataStream &qt_stream_out_qcolorgroup(QDataStream &s, const QColorGroup &g)
-{
-    if(s.version() == 1) {
-        // Qt 1.x
-        s << g.color(QPalette::Foreground) << g.color(QPalette::Background)
-          << g.color(QPalette::Light) << g.color(QPalette::Dark)
-          << g.color(QPalette::Mid) << g.color(QPalette::Text) << g.color(QPalette::Base);
-    } else {
-        int max = QPalette::NColorRoles;
-        if (s.version() <= QDataStream::Qt_2_1)
-            max = QPalette::HighlightedText + 1;
-        else if (s.version() <= QDataStream::Qt_4_3)
-            max = QPalette::AlternateBase + 1;
-        for(int r = 0 ; r < max ; r++)
-            s << g.brush((QPalette::ColorRole)r);
-    }
-    return s;
-}
-
-QDataStream &qt_stream_in_qcolorgroup(QDataStream &s, QColorGroup &g)
-{
-    if(s.version() == 1) {         // Qt 1.x
-        QColor fg, bg, light, dark, mid, text, base;
-        s >> fg >> bg >> light >> dark >> mid >> text >> base;
-        QPalette p(bg);
-        p.setColor(QPalette::Active, QPalette::Foreground, fg);
-        p.setColor(QPalette::Active, QPalette::Light, light);
-        p.setColor(QPalette::Active, QPalette::Dark, dark);
-        p.setColor(QPalette::Active, QPalette::Mid, mid);
-        p.setColor(QPalette::Active, QPalette::Text, text);
-        p.setColor(QPalette::Active, QPalette::Base, base);
-        g = p;
-        g.setCurrentColorGroup(QPalette::Active);
-    } else {
-        int max = QPalette::NColorRoles;
-        if (s.version() <= QDataStream::Qt_2_1)
-            max = QPalette::HighlightedText + 1;
-        else if (s.version() <= QDataStream::Qt_3_0)
-            max = QPalette::LinkVisited + 1;
-        else if (s.version() <= QDataStream::Qt_4_3)
-            max = QPalette::AlternateBase + 1;
-        QBrush tmp;
-        for(int r = 0 ; r < max; r++) {
-            s >> tmp;
-            g.setBrush((QPalette::ColorRole)r, tmp);
-        }
-    }
-    return s;
-}
-
-QDataStream &operator<<(QDataStream &s, const QColorGroup &g)
-{
-    return qt_stream_out_qcolorgroup(s, g);
-}
-
-QDataStream &operator>>(QDataStream &s, QColorGroup &g)
-{
-    return qt_stream_in_qcolorgroup(s, g);
-}
-#endif
+// #ifndef QT_NO_DATASTREAM
+// QDataStream &qt_stream_out_qcolorgroup(QDataStream &s, const QColorGroup &g)
+// {
+//     if(s.version() == 1) {
+//         // Qt 1.x
+//         s << g.color(QPalette::Foreground) << g.color(QPalette::Background)
+//           << g.color(QPalette::Light) << g.color(QPalette::Dark)
+//           << g.color(QPalette::Mid) << g.color(QPalette::Text) << g.color(QPalette::Base);
+//     } else {
+//         int max = QPalette::NColorRoles;
+//         if (s.version() <= QDataStream::Qt_2_1)
+//             max = QPalette::HighlightedText + 1;
+//         else if (s.version() <= QDataStream::Qt_4_3)
+//             max = QPalette::AlternateBase + 1;
+//         for(int r = 0 ; r < max ; r++)
+//             s << g.brush((QPalette::ColorRole)r);
+//     }
+//     return s;
+// }
+// 
+// QDataStream &qt_stream_in_qcolorgroup(QDataStream &s, QColorGroup &g)
+// {
+//     if(s.version() == 1) {         // Qt 1.x
+//         QColor fg, bg, light, dark, mid, text, base;
+//         s >> fg >> bg >> light >> dark >> mid >> text >> base;
+//         QPalette p(bg);
+//         p.setColor(QPalette::Active, QPalette::Foreground, fg);
+//         p.setColor(QPalette::Active, QPalette::Light, light);
+//         p.setColor(QPalette::Active, QPalette::Dark, dark);
+//         p.setColor(QPalette::Active, QPalette::Mid, mid);
+//         p.setColor(QPalette::Active, QPalette::Text, text);
+//         p.setColor(QPalette::Active, QPalette::Base, base);
+//         g = p;
+//         g.setCurrentColorGroup(QPalette::Active);
+//     } else {
+//         int max = QPalette::NColorRoles;
+//         if (s.version() <= QDataStream::Qt_2_1)
+//             max = QPalette::HighlightedText + 1;
+//         else if (s.version() <= QDataStream::Qt_3_0)
+//             max = QPalette::LinkVisited + 1;
+//         else if (s.version() <= QDataStream::Qt_4_3)
+//             max = QPalette::AlternateBase + 1;
+//         QBrush tmp;
+//         for(int r = 0 ; r < max; r++) {
+//             s >> tmp;
+//             g.setBrush((QPalette::ColorRole)r, tmp);
+//         }
+//     }
+//     return s;
+// }
+// 
+// QDataStream &operator<<(QDataStream &s, const QColorGroup &g)
+// {
+//     return qt_stream_out_qcolorgroup(s, g);
+// }
+// 
+// QDataStream &operator>>(QDataStream &s, QColorGroup &g)
+// {
+//     return qt_stream_in_qcolorgroup(s, g);
+// }
+// #endif
 
 /*!
     Constructs a palette with the specified \a active, \a disabled and
@@ -757,10 +757,10 @@ QPalette &QPalette::operator=(const QPalette &p)
 /*!
    Returns the palette as a QVariant
 */
-QPalette::operator QVariant() const
-{
-    return QVariant(QVariant::Palette, this);
-}
+// QPalette::operator QVariant() const
+// {
+//     return QVariant(QVariant::Palette, this);
+// }
 
 /*!
     \fn const QColor &QPalette::color(ColorGroup group, ColorRole role) const
@@ -786,7 +786,7 @@ const QBrush &QPalette::brush(ColorGroup gr, ColorRole cr) const
         if(gr == Current) {
             gr = (ColorGroup)current_group;
         } else {
-            qWarning("QPalette::brush: Unknown ColorGroup: %d", (int)gr);
+//             qWarning("QPalette::brush: Unknown ColorGroup: %d", (int)gr);
             gr = Active;
         }
     }
@@ -824,7 +824,7 @@ void QPalette::setBrush(ColorGroup cg, ColorRole cr, const QBrush &b)
         } else if(cg == Current) {
             cg = (ColorGroup)current_group;
         } else {
-            qWarning("QPalette::setBrush: Unknown ColorGroup: %d", (int)cg);
+//             qWarning("QPalette::setBrush: Unknown ColorGroup: %d", (int)cg);
             cg = Active;
         }
     }
@@ -921,7 +921,7 @@ bool QPalette::isEqual(QPalette::ColorGroup group1, QPalette::ColorGroup group2)
         if(group1 == Current) {
             group1 = (ColorGroup)current_group;
         } else {
-            qWarning("QPalette::brush: Unknown ColorGroup(1): %d", (int)group1);
+//             qWarning("QPalette::brush: Unknown ColorGroup(1): %d", (int)group1);
             group1 = Active;
         }
     }
@@ -929,7 +929,7 @@ bool QPalette::isEqual(QPalette::ColorGroup group1, QPalette::ColorGroup group2)
         if(group2 == Current) {
             group2 = (ColorGroup)current_group;
         } else {
-            qWarning("QPalette::brush: Unknown ColorGroup(2): %d", (int)group2);
+//             qWarning("QPalette::brush: Unknown ColorGroup(2): %d", (int)group2);
             group2 = Active;
         }
     }
@@ -1013,87 +1013,87 @@ QPalette QPalette::resolve(const QPalette &other) const
   QPalette stream functions
  *****************************************************************************/
 
-#ifndef QT_NO_DATASTREAM
-
-static const int NumOldRoles = 7;
-static const int oldRoles[7] = { QPalette::Foreground, QPalette::Background, QPalette::Light,
-                                 QPalette::Dark, QPalette::Mid, QPalette::Text, QPalette::Base };
-
-/*!
-    \relates QPalette
-
-    Writes the palette, \a p to the stream \a s and returns a
-    reference to the stream.
-
-    \sa \link datastreamformat.html Format of the QDataStream operators \endlink
-*/
-
-QDataStream &operator<<(QDataStream &s, const QPalette &p)
-{
-    for (int grp = 0; grp < (int)QPalette::NColorGroups; grp++) {
-        if (s.version() == 1) {
-            // Qt 1.x
-            for (int i = 0; i < NumOldRoles; ++i)
-                s << p.d->br[grp][oldRoles[i]].color();
-        } else {
-            int max = QPalette::ToolTipText + 1;
-            if (s.version() <= QDataStream::Qt_2_1)
-                max = QPalette::HighlightedText + 1;
-            else if (s.version() <= QDataStream::Qt_4_3)
-                max = QPalette::AlternateBase + 1;
-            for (int r = 0; r < max; r++)
-                s << p.d->br[grp][r];
-        }
-    }
-    return s;
-}
-
-static void readV1ColorGroup(QDataStream &s, QPalette &pal, QPalette::ColorGroup grp)
-{
-    for (int i = 0; i < NumOldRoles; ++i) {
-        QColor col;
-        s >> col;
-        pal.setColor(grp, (QPalette::ColorRole)oldRoles[i], col);
-    }
-}
-
-/*!
-    \relates QPalette
-
-    Reads a palette from the stream, \a s into the palette \a p, and
-    returns a reference to the stream.
-
-    \sa \link datastreamformat.html Format of the QDataStream operators \endlink
-*/
-
-QDataStream &operator>>(QDataStream &s, QPalette &p)
-{
-    if(s.version() == 1) {
-        p = QPalette();
-        readV1ColorGroup(s, p, QPalette::Active);
-        readV1ColorGroup(s, p, QPalette::Disabled);
-        readV1ColorGroup(s, p, QPalette::Inactive);
-    } else {
-        int max = QPalette::NColorRoles;
-        if (s.version() <= QDataStream::Qt_2_1) {
-            p = QPalette();
-            max = QPalette::HighlightedText + 1;
-        } else if (s.version() <= QDataStream::Qt_4_3) {
-            p = QPalette();
-            max = QPalette::AlternateBase + 1;
-        }
-
-        QBrush tmp;
-        for(int grp = 0; grp < (int)QPalette::NColorGroups; ++grp) {
-            for(int role = 0; role < max; ++role) {
-                s >> tmp;
-                p.setBrush((QPalette::ColorGroup)grp, (QPalette::ColorRole)role, tmp);
-            }
-        }
-    }
-    return s;
-}
-#endif //QT_NO_DATASTREAM
+// #ifndef QT_NO_DATASTREAM
+// 
+// static const int NumOldRoles = 7;
+// static const int oldRoles[7] = { QPalette::Foreground, QPalette::Background, QPalette::Light,
+//                                  QPalette::Dark, QPalette::Mid, QPalette::Text, QPalette::Base };
+// 
+// /*!
+//     \relates QPalette
+// 
+//     Writes the palette, \a p to the stream \a s and returns a
+//     reference to the stream.
+// 
+//     \sa \link datastreamformat.html Format of the QDataStream operators \endlink
+// */
+// 
+// QDataStream &operator<<(QDataStream &s, const QPalette &p)
+// {
+//     for (int grp = 0; grp < (int)QPalette::NColorGroups; grp++) {
+//         if (s.version() == 1) {
+//             // Qt 1.x
+//             for (int i = 0; i < NumOldRoles; ++i)
+//                 s << p.d->br[grp][oldRoles[i]].color();
+//         } else {
+//             int max = QPalette::ToolTipText + 1;
+//             if (s.version() <= QDataStream::Qt_2_1)
+//                 max = QPalette::HighlightedText + 1;
+//             else if (s.version() <= QDataStream::Qt_4_3)
+//                 max = QPalette::AlternateBase + 1;
+//             for (int r = 0; r < max; r++)
+//                 s << p.d->br[grp][r];
+//         }
+//     }
+//     return s;
+// }
+// 
+// static void readV1ColorGroup(QDataStream &s, QPalette &pal, QPalette::ColorGroup grp)
+// {
+//     for (int i = 0; i < NumOldRoles; ++i) {
+//         QColor col;
+//         s >> col;
+//         pal.setColor(grp, (QPalette::ColorRole)oldRoles[i], col);
+//     }
+// }
+// 
+// /*!
+//     \relates QPalette
+// 
+//     Reads a palette from the stream, \a s into the palette \a p, and
+//     returns a reference to the stream.
+// 
+//     \sa \link datastreamformat.html Format of the QDataStream operators \endlink
+// */
+// 
+// QDataStream &operator>>(QDataStream &s, QPalette &p)
+// {
+//     if(s.version() == 1) {
+//         p = QPalette();
+//         readV1ColorGroup(s, p, QPalette::Active);
+//         readV1ColorGroup(s, p, QPalette::Disabled);
+//         readV1ColorGroup(s, p, QPalette::Inactive);
+//     } else {
+//         int max = QPalette::NColorRoles;
+//         if (s.version() <= QDataStream::Qt_2_1) {
+//             p = QPalette();
+//             max = QPalette::HighlightedText + 1;
+//         } else if (s.version() <= QDataStream::Qt_4_3) {
+//             p = QPalette();
+//             max = QPalette::AlternateBase + 1;
+//         }
+// 
+//         QBrush tmp;
+//         for(int grp = 0; grp < (int)QPalette::NColorGroups; ++grp) {
+//             for(int role = 0; role < max; ++role) {
+//                 s >> tmp;
+//                 p.setBrush((QPalette::ColorGroup)grp, (QPalette::ColorRole)role, tmp);
+//             }
+//         }
+//     }
+//     return s;
+// }
+// #endif //QT_NO_DATASTREAM
 
 /*!
     Returns true if this palette and \a p are copies of each other,

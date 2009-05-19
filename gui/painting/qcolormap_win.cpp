@@ -41,8 +41,8 @@
 
 #include "qcolor.h"
 #include "qcolormap.h"
-#include "qvector.h"
-#include "qt_windows.h"
+#include "core/qvector.h"
+#include "core/qt_windows.h"
 
 #if defined(Q_OS_WINCE)
 #include "qguifunctions_wince.h"

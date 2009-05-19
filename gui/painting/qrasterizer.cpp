@@ -41,8 +41,10 @@
 
 #include "qrasterizer_p.h"
 
-#include <QPoint>
-#include <QRect>
+// #include <QPoint>
+// #include <QRect>
+#include "core/qpoint.h"
+#include "core/qrect.h"
 
 #include <private/qmath_p.h>
 #include <private/qdatabuffer_p.h>

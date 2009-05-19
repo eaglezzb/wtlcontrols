@@ -39,7 +39,8 @@
 **
 ****************************************************************************/
 
-#include <qglobal.h>
+// #include <qglobal.h>
+#include "core/qglobal.h"
 
 #include "qpixmap.h"
 #include "qpixmapdata_p.h"
@@ -49,21 +50,21 @@
 #include "qimage.h"
 //modify #include "qwidget.h"
 #include "qpainter.h"
-#include "qdatastream.h"
-#include "qbuffer.h"
+// #include "qdatastream.h"
+// #include "qbuffer.h"
 //modify #include "qapplication.h"
 //modify #include <private/qapplication_p.h>
 //modify #include <private/qgraphicssystem_p.h>
 //modify #include <private/qwidget_p.h>
 //modify #include "qevent.h"
-#include "qfile.h"
-#include "qfileinfo.h"
+// #include "qfile.h"
+// #include "qfileinfo.h"
 #include "qpixmapcache.h"
-#include "qdatetime.h"
-#include "qimagereader.h"
-#include "qimagewriter.h"
+//#include "qdatetime.h"
+// #include "qimagereader.h"
+// #include "qimagewriter.h"
 #include "qpaintengine.h"
-#include "qthread.h"
+// #include "qthread.h"
 
 #ifdef Q_WS_MAC
 # include "private/qt_mac_p.h"
@@ -259,16 +260,16 @@ QPixmap::QPixmap(QPixmapData *d)
     Image Files}
 */
 
-QPixmap::QPixmap(const QString& fileName, const char *format, Qt::ImageConversionFlags flags)
-    : QPaintDevice()
-{
-    init(0, 0, QPixmapData::PixmapType);
-    if (!qt_pixmap_thread_test())
-        return;
-
-    load(fileName, format, flags);
-}
-
+// QPixmap::QPixmap(const QString& fileName, const char *format, Qt::ImageConversionFlags flags)
+//     : QPaintDevice()
+// {
+//     init(0, 0, QPixmapData::PixmapType);
+//     if (!qt_pixmap_thread_test())
+//         return;
+// 
+//     load(fileName, format, flags);
+// }
+// 
 /*!
     Constructs a pixmap that is a copy of the given \a pixmap.
 
@@ -391,7 +392,7 @@ QPixmap QPixmap::copy(const QRect &rect) const
 QPixmap &QPixmap::operator=(const QPixmap &pixmap)
 {
     if (paintingActive()) {
-        qWarning("QPixmap::operator=: Cannot assign to pixmap during painting");
+//         qWarning("QPixmap::operator=: Cannot assign to pixmap during painting");
         return *this;
     }
     if (pixmap.paintingActive()) {                // make a deep copy
@@ -407,10 +408,10 @@ QPixmap &QPixmap::operator=(const QPixmap &pixmap)
 /*!
    Returns the pixmap as a QVariant.
 */
-QPixmap::operator QVariant() const
-{
-    return QVariant(QVariant::Pixmap, this);
-}
+// QPixmap::operator QVariant() const
+// {
+//     return QVariant(QVariant::Pixmap, this);
+// }
 
 /*!
     \fn bool QPixmap::operator!() const
@@ -685,12 +686,12 @@ void QPixmap::resize_helper(const QSize &s)
 void QPixmap::setMask(const QBitmap &mask)
 {
     if (paintingActive()) {
-        qWarning("QPixmap::setMask: Cannot set mask while pixmap is being painted on");
+//         qWarning("QPixmap::setMask: Cannot set mask while pixmap is being painted on");
         return;
     }
 
     if (!mask.isNull() && mask.size() != size()) {
-        qWarning("QPixmap::setMask() mask size differs from pixmap size");
+//         qWarning("QPixmap::setMask() mask size differs from pixmap size");
         return;
     }
 
@@ -785,34 +786,34 @@ QBitmap QPixmap::createMaskFromColor(const QColor &maskColor) const
     Files}{Reading and Writing Image Files}
 */
 
-bool QPixmap::load(const QString &fileName, const char *format, Qt::ImageConversionFlags flags)
-{
-    if (fileName.isEmpty())
-        return false;
-
-    QFileInfo info(fileName);
-    QString key = QLatin1String("qt_pixmap_") + info.absoluteFilePath() + QLatin1Char('_') + QString::number(info.lastModified().toTime_t()) + QLatin1Char('_') +
-                  QString::number(info.size()) + QLatin1Char('_') + QString::number(data->pixelType());
-
-    if (QPixmapCache::find(key, *this))
-        return true;
-
-    QImage image = QImageReader(fileName, format).read();
-    if (image.isNull())
-        return false;
-    QPixmap pm;
-    if (data->pixelType() == QPixmapData::BitmapType)
-        pm = QBitmap::fromImage(image, flags);
-    else
-        pm = fromImage(image, flags);
-    if (!pm.isNull()) {
-        *this = pm;
-        QPixmapCache::insert(key, *this);
-        return true;
-    }
-    return false;
-}
-
+// bool QPixmap::load(const QString &fileName, const char *format, Qt::ImageConversionFlags flags)
+// {
+//     if (fileName.isEmpty())
+//         return false;
+// 
+//     QFileInfo info(fileName);
+//     QString key = QLatin1String("qt_pixmap_") + info.absoluteFilePath() + QLatin1Char('_') + QString::number(info.lastModified().toTime_t()) + QLatin1Char('_') +
+//                   QString::number(info.size()) + QLatin1Char('_') + QString::number(data->pixelType());
+// 
+//     if (QPixmapCache::find(key, *this))
+//         return true;
+// 
+//     QImage image = QImageReader(fileName, format).read();
+//     if (image.isNull())
+//         return false;
+//     QPixmap pm;
+//     if (data->pixelType() == QPixmapData::BitmapType)
+//         pm = QBitmap::fromImage(image, flags);
+//     else
+//         pm = fromImage(image, flags);
+//     if (!pm.isNull()) {
+//         *this = pm;
+//         QPixmapCache::insert(key, *this);
+//         return true;
+//     }
+//     return false;
+// }
+// 
 /*!
     \fn bool QPixmap::loadFromData(const uchar *data, uint len, const char *format, Qt::ImageConversionFlags flags)
 
@@ -832,25 +833,25 @@ bool QPixmap::load(const QString &fileName, const char *format, Qt::ImageConvers
     Writing Image Files}
 */
 
-bool QPixmap::loadFromData(const uchar *buf, uint len, const char *format, Qt::ImageConversionFlags flags)
-{
-    QByteArray a = QByteArray::fromRawData(reinterpret_cast<const char *>(buf), len);
-    QBuffer b(&a);
-    b.open(QIODevice::ReadOnly);
-
-    QImage image = QImageReader(&b, format).read();
-    QPixmap pm;
-    if (data->pixelType() == QPixmapData::BitmapType)
-        pm = QBitmap::fromImage(image, flags);
-    else
-        pm = fromImage(image, flags);
-    if (!pm.isNull()) {
-        *this = pm;
-        return true;
-    }
-    return false;
-}
-
+// bool QPixmap::loadFromData(const uchar *buf, uint len, const char *format, Qt::ImageConversionFlags flags)
+// {
+//     QByteArray a = QByteArray::fromRawData(reinterpret_cast<const char *>(buf), len);
+//     QBuffer b(&a);
+//     b.open(QIODevice::ReadOnly);
+// 
+//     QImage image = QImageReader(&b, format).read();
+//     QPixmap pm;
+//     if (data->pixelType() == QPixmapData::BitmapType)
+//         pm = QBitmap::fromImage(image, flags);
+//     else
+//         pm = fromImage(image, flags);
+//     if (!pm.isNull()) {
+//         *this = pm;
+//         return true;
+//     }
+//     return false;
+// }
+// 
 /*!
     \fn bool QPixmap::loadFromData(const QByteArray &data, const char *format, Qt::ImageConversionFlags flags)
 
@@ -877,14 +878,14 @@ bool QPixmap::loadFromData(const uchar *buf, uint len, const char *format, Qt::I
     Image Files}
 */
 
-bool QPixmap::save(const QString &fileName, const char *format, int quality) const
-{
-    if (isNull())
-        return false;                                // nothing to save
-    QImageWriter writer(fileName, format);
-    return doImageIO(&writer, quality);
-}
-
+// bool QPixmap::save(const QString &fileName, const char *format, int quality) const
+// {
+//     if (isNull())
+//         return false;                                // nothing to save
+//     QImageWriter writer(fileName, format);
+//     return doImageIO(&writer, quality);
+// }
+// 
 /*!
     \overload
 
@@ -895,26 +896,26 @@ bool QPixmap::save(const QString &fileName, const char *format, int quality) con
     \snippet doc/src/snippets/image/image.cpp 1
 */
 
-bool QPixmap::save(QIODevice* device, const char* format, int quality) const
-{
-    if (isNull())
-        return false;                                // nothing to save
-    QImageWriter writer(device, format);
-    return doImageIO(&writer, quality);
-}
-
+// bool QPixmap::save(QIODevice* device, const char* format, int quality) const
+// {
+//     if (isNull())
+//         return false;                                // nothing to save
+//     QImageWriter writer(device, format);
+//     return doImageIO(&writer, quality);
+// }
+// 
 /*! \internal
 */
-bool QPixmap::doImageIO(QImageWriter *writer, int quality) const
-{
-    if (quality > 100  || quality < -1)
-        qWarning("QPixmap::save: quality out of range [-1,100]");
-    if (quality >= 0)
-        writer->setQuality(qMin(quality,100));
-    return writer->write(toImage());
-}
-
-
+// bool QPixmap::doImageIO(QImageWriter *writer, int quality) const
+// {
+//     if (quality > 100  || quality < -1)
+//         qWarning("QPixmap::save: quality out of range [-1,100]");
+//     if (quality >= 0)
+//         writer->setQuality(qMin(quality,100));
+//     return writer->write(toImage());
+// }
+// 
+// 
 // The implementation (and documentation) of
 // QPixmap::fill(const QWidget *, const QPoint &)
 // is in qwidget.cpp
@@ -1196,46 +1197,46 @@ bool QPixmap::convertFromImage(const QImage &image, ColorMode mode)
 /*****************************************************************************
   QPixmap stream functions
  *****************************************************************************/
-#if !defined(QT_NO_DATASTREAM)
-/*!
-    \relates QPixmap
-
-    Writes the given \a pixmap to the the given \a stream as a PNG
-    image. Note that writing the stream to a file will not produce a
-    valid image file.
-
-    \sa QPixmap::save(), {Format of the QDataStream Operators}
-*/
-
-QDataStream &operator<<(QDataStream &stream, const QPixmap &pixmap)
-{
-    return stream << pixmap.toImage();
-}
-
-/*!
-    \relates QPixmap
-
-    Reads an image from the given \a stream into the given \a pixmap.
-
-    \sa QPixmap::load(), {Format of the QDataStream Operators}
-*/
-
-QDataStream &operator>>(QDataStream &stream, QPixmap &pixmap)
-{
-    QImage image;
-    stream >> image;
-
-    if (image.isNull()) {
-        pixmap = QPixmap();
-    } else if (image.depth() == 1) {
-        pixmap = QBitmap::fromImage(image);
-    } else {
-        pixmap = QPixmap::fromImage(image);
-    }
-    return stream;
-}
-
-#endif //QT_NO_DATASTREAM
+// #if !defined(QT_NO_DATASTREAM)
+// /*!
+//     \relates QPixmap
+// 
+//     Writes the given \a pixmap to the the given \a stream as a PNG
+//     image. Note that writing the stream to a file will not produce a
+//     valid image file.
+// 
+//     \sa QPixmap::save(), {Format of the QDataStream Operators}
+// */
+// 
+// QDataStream &operator<<(QDataStream &stream, const QPixmap &pixmap)
+// {
+//     return stream << pixmap.toImage();
+// }
+// 
+// /*!
+//     \relates QPixmap
+// 
+//     Reads an image from the given \a stream into the given \a pixmap.
+// 
+//     \sa QPixmap::load(), {Format of the QDataStream Operators}
+// */
+// 
+// QDataStream &operator>>(QDataStream &stream, QPixmap &pixmap)
+// {
+//     QImage image;
+//     stream >> image;
+// 
+//     if (image.isNull()) {
+//         pixmap = QPixmap();
+//     } else if (image.depth() == 1) {
+//         pixmap = QBitmap::fromImage(image);
+//     } else {
+//         pixmap = QPixmap::fromImage(image);
+//     }
+//     return stream;
+// }
+// 
+// #endif //QT_NO_DATASTREAM
 
 #ifdef QT3_SUPPORT
 Q_GUI_EXPORT void copyBlt(QPixmap *dst, int dx, int dy,
@@ -1355,7 +1356,7 @@ void QPixmap::deref()
 QPixmap QPixmap::scaled(const QSize& s, Qt::AspectRatioMode aspectMode, Qt::TransformationMode mode) const
 {
     if (isNull()) {
-        qWarning("QPixmap::scaled: Pixmap is a null pixmap");
+//         qWarning("QPixmap::scaled: Pixmap is a null pixmap");
         return QPixmap();
     }
     if (s.isEmpty())
@@ -1390,7 +1391,7 @@ QPixmap QPixmap::scaled(const QSize& s, Qt::AspectRatioMode aspectMode, Qt::Tran
 QPixmap QPixmap::scaledToWidth(int w, Qt::TransformationMode mode) const
 {
     if (isNull()) {
-        qWarning("QPixmap::scaleWidth: Pixmap is a null pixmap");
+//         qWarning("QPixmap::scaleWidth: Pixmap is a null pixmap");
         return copy();
     }
     if (w <= 0)
@@ -1419,7 +1420,7 @@ QPixmap QPixmap::scaledToWidth(int w, Qt::TransformationMode mode) const
 QPixmap QPixmap::scaledToHeight(int h, Qt::TransformationMode mode) const
 {
     if (isNull()) {
-        qWarning("QPixmap::scaleHeight: Pixmap is a null pixmap");
+//         qWarning("QPixmap::scaleHeight: Pixmap is a null pixmap");
         return copy();
     }
     if (h <= 0)
@@ -1728,14 +1729,14 @@ void QPixmap::setAlphaChannel(const QPixmap &alphaChannel)
         return;
 
     if (paintingActive()) {
-        qWarning("QPixmap::setAlphaChannel: "
-                 "Cannot set alpha channel while pixmap is being painted on");
+//         qWarning("QPixmap::setAlphaChannel: "
+//                  "Cannot set alpha channel while pixmap is being painted on");
         return;
     }
 
     if (width() != alphaChannel.width() && height() != alphaChannel.height()) {
-        qWarning("QPixmap::setAlphaChannel: "
-                 "The pixmap and the alpha channel pixmap must have the same size");
+//         qWarning("QPixmap::setAlphaChannel: "
+//                  "The pixmap and the alpha channel pixmap must have the same size");
         return;
     }
 

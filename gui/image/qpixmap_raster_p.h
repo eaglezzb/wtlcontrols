@@ -57,7 +57,8 @@
 // #include <QtGui/private/qpixmapdatafactory_p.h>
 
 #ifdef Q_WS_WIN
-# include "qt_windows.h"
+// # include "qt_windows.h"
+#include "core/qt_windows.h"
 # ifndef QT_NO_DIRECT3D
 #  include <d3d9.h>
 # endif
@@ -72,7 +73,7 @@ public:
     ~QRasterPixmapData();
 
     void resize(int width, int height);
-    void fromFile(const QString &filename, Qt::ImageConversionFlags flags);
+//     void fromFile(const QString &filename, Qt::ImageConversionFlags flags);
     void fromImage(const QImage &image, Qt::ImageConversionFlags flags);
 
     void fill(const QColor &color);

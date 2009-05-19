@@ -50,7 +50,7 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(Gui)
 
-class QVariant;
+// class QVariant;
 
 class Q_GUI_EXPORT QBitmap : public QPixmap
 {
@@ -59,11 +59,11 @@ public:
     QBitmap(const QPixmap &);
     QBitmap(int w, int h);
     explicit QBitmap(const QSize &);
-    explicit QBitmap(const QString &fileName, const char *format=0);
+//     explicit QBitmap(const QString &fileName, const char *format=0);
     ~QBitmap();
 
     QBitmap &operator=(const QPixmap &);
-    operator QVariant() const;
+//     operator QVariant() const;
 
     inline void clear() { fill(Qt::color0); }
 

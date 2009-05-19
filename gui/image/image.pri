@@ -7,21 +7,15 @@ HEADERS += \
         image/qbitmap.h \
         image/qimage.h \
         image/qimage_p.h \
-        image/qimageiohandler.h \
-        image/qimagereader.h \
-        image/qimagewriter.h \
         image/qnativeimage_p.h \
         image/qpixmap.h \
         image/qpixmap_raster_p.h \
         image/qpixmapcache.h \
-        image/qpixmapdata_p.h \
+        image/qpixmapdata_p.h 
 
 SOURCES += \
         image/qbitmap.cpp \
         image/qimage.cpp \
-        image/qimageiohandler.cpp \
-        image/qimagereader.cpp \
-        image/qimagewriter.cpp \
         image/qpixmap.cpp \
         image/qpixmapcache.cpp \
         image/qpixmapdata.cpp \
@@ -43,17 +37,3 @@ mac {
     SOURCES += image/qpixmap_mac.cpp
 }
 
-# Built-in image format support
-HEADERS += \
-        image/qbmphandler_p.h \
-        image/qppmhandler_p.h \
-        image/qxbmhandler_p.h \
-        image/qxpmhandler_p.h
-
-SOURCES += \
-        image/qbmphandler.cpp \
-        image/qppmhandler.cpp \
-        image/qxbmhandler.cpp \
-        image/qxpmhandler.cpp
-
-DEFINES *= QT_NO_IMAGEFORMAT_PNG

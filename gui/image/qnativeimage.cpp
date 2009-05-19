@@ -39,7 +39,7 @@
 **
 ****************************************************************************/
 
-#include <qdebug.h>
+// #include <qdebug.h>
 #include "qnativeimage_p.h"
 #include "qcolormap.h"
 
@@ -103,7 +103,7 @@ QNativeImage::QNativeImage(int width, int height, QImage::Format format, bool is
     //modify HDC display_dc = GetDC(0);
 	HDC display_dc = drawDC;
     hdc = CreateCompatibleDC(display_dc);
-    ReleaseDC(0, display_dc);
+//     ReleaseDC(0, display_dc);
     Q_ASSERT(hdc);
 
     uchar *bits = 0;

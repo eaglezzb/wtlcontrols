@@ -39,7 +39,8 @@
 **
 ****************************************************************************/
 
-#include <QtCore/qglobal.h>
+// #include <QtCore/qglobal.h>
+#include "core/qglobal.h"
 
 #define QT_FT_BEGIN_HEADER
 #define QT_FT_END_HEADER
@@ -48,11 +49,13 @@
 #include <private/qgrayraster_p.h>
 
 #include <qpainterpath.h>
-#include <qdebug.h>
-#include <qhash.h>
+// #include <qdebug.h>
+// #include <qhash.h>
+#include "core/qhash.h"
 //modify #include <qlabel.h>
 #include <qbitmap.h>
-#include <qmath.h>
+// #include <qmath.h>
+#include "core/qmath.h"
 
 #if defined (Q_WS_X11)
 #  include <private/qfontengine_ft_p.h>
@@ -73,8 +76,10 @@
 #include "qoutlinemapper_p.h"
 
 #if defined(Q_WS_WIN)
-#  include <qt_windows.h>
-#  include <qvarlengtharray.h>
+// #  include <qt_windows.h>
+// #  include <qvarlengtharray.h>
+#include "core/qt_windows.h"
+#include "core/qvarlengtharray.h"
 //#  include <private/qfontengine_p.h>
 #  if defined(Q_OS_WINCE)
 #    include "qguifunctions_wince.h"
@@ -568,13 +573,13 @@ QSize QRasterPaintEngine::size() const
 /*!
     \internal
 */
-#ifndef QT_NO_DEBUG
-void QRasterPaintEngine::saveBuffer(const QString &s) const
-{
-    Q_D(const QRasterPaintEngine);
-    d->rasterBuffer->bufferImage().save(s, "PNG");
-}
-#endif
+// #ifndef QT_NO_DEBUG
+// void QRasterPaintEngine::saveBuffer(const QString &s) const
+// {
+//     Q_D(const QRasterPaintEngine);
+//     d->rasterBuffer->bufferImage().save(s, "PNG");
+// }
+// #endif
 
 /*!
     \internal

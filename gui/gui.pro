@@ -1,6 +1,5 @@
 TARGET     = QtGui
 QPRO_PWD   = $$PWD
-QT = core
 DEFINES   += QT_BUILD_GUI_LIB QT_NO_USING_NAMESPACE
 win32-msvc*|win32-icc:QMAKE_LFLAGS += /BASE:0x65000000
 
@@ -22,6 +21,7 @@ embedded:include(embedded/embedded.pri)
 include(kernel/kernel.pri)
 include(image/image.pri)
 include(painting/painting.pri)
+include(core/core.pri)
 #include(text/text.pri)
 #include(styles/styles.pri)
 #include(widgets/widgets.pri)

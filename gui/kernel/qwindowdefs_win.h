@@ -42,7 +42,8 @@
 #ifndef QWINDOWDEFS_WIN_H
 #define QWINDOWDEFS_WIN_H
 
-#include <QtCore/qglobal.h>
+// #include <QtCore/qglobal.h>
+#include "core/qglobal.h"
 
 QT_BEGIN_HEADER
 
@@ -120,8 +121,8 @@ typedef HWND WId;
 
 QT_BEGIN_NAMESPACE
 
-Q_CORE_EXPORT HINSTANCE qWinAppInst();
-Q_CORE_EXPORT HINSTANCE qWinAppPrevInst();
+Q_GUI_EXPORT HINSTANCE qWinAppInst();
+Q_GUI_EXPORT HINSTANCE qWinAppPrevInst();
 Q_GUI_EXPORT int           qWinAppCmdShow();
 Q_GUI_EXPORT HDC           qt_win_display_dc();
 

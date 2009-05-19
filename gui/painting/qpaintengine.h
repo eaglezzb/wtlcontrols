@@ -42,8 +42,9 @@
 #ifndef QPAINTENGINE_H
 #define QPAINTENGINE_H
 
-#include <QtCore/qnamespace.h>
-#include <QtCore/qobjectdefs.h>
+// #include <QtCore/qnamespace.h>
+// #include <QtCore/qobjectdefs.h>
+#include "core/qnamespace.h"
 #include <QtGui/qpainter.h>
 
 QT_BEGIN_HEADER

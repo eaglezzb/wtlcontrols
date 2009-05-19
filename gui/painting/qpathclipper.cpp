@@ -43,7 +43,8 @@
 
 #include <private/qbezier_p.h>
 #include <private/qdatabuffer_p.h>
-#include <qmath.h>
+// #include <qmath.h>
+#include "core/qmath.h"
 
 #include <QImage>
 #include <QPainter>
@@ -64,7 +65,7 @@
  9. Convert the resulting winged edge structure to a painter path.
  */
 
-#include <qdebug.h>
+// #include <qdebug.h>
 
 QT_BEGIN_NAMESPACE
 

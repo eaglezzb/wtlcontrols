@@ -43,20 +43,24 @@
 #include "qpainterpath_p.h"
 
 #include <qbitmap.h>
-#include <qdebug.h>
-#include <qiodevice.h>
-#include <qlist.h>
+// #include <qdebug.h>
+// #include <qiodevice.h>
+// #include <qlist.h>
+#include "core/qlist.h"
 #include <qmatrix.h>
 #include <qpen.h>
 #include <qpolygon.h>
 // #include <qtextlayout.h>
-#include <qvarlengtharray.h>
-#include <qmath.h>
+// #include <qvarlengtharray.h>
+// #include <qmath.h>
+#include "core/qvarlengtharray.h"
+#include "core/qmath.h"
 
 #include <private/qbezier_p.h>
 // #include <private/qfontengine_p.h>
-#include <private/qnumeric_p.h>
-#include <private/qobject_p.h>
+// #include <private/qnumeric_p.h>
+#include "core/qnumeric_p.h"
+// #include <private/qobject_p.h>
 #include <private/qpathclipper_p.h>
 #include <private/qstroker_p.h>
 // #include <private/qtextengine_p.h>
@@ -625,10 +629,10 @@ void QPainterPath::moveTo(const QPointF &p)
 #ifdef QPP_DEBUG
     printf("QPainterPath::moveTo() (%.2f,%.2f)\n", p.x(), p.y());
 #endif
-#ifndef QT_NO_DEBUG
-    if (qt_is_nan(p.x()) || qt_is_nan(p.y()))
-        qWarning("QPainterPath::moveTo: Adding point where x or y is NaN, results are undefined");
-#endif
+// #ifndef QT_NO_DEBUG
+//     if (qt_is_nan(p.x()) || qt_is_nan(p.y()))
+//         qWarning("QPainterPath::moveTo: Adding point where x or y is NaN, results are undefined");
+// #endif
     ensureData();
     detach();
 
@@ -671,10 +675,10 @@ void QPainterPath::lineTo(const QPointF &p)
 #ifdef QPP_DEBUG
     printf("QPainterPath::lineTo() (%.2f,%.2f)\n", p.x(), p.y());
 #endif
-#ifndef QT_NO_DEBUG
-    if (qt_is_nan(p.x()) || qt_is_nan(p.y()))
-        qWarning("QPainterPath::lineTo: Adding point where x or y is NaN, results are undefined");
-#endif
+// #ifndef QT_NO_DEBUG
+//     if (qt_is_nan(p.x()) || qt_is_nan(p.y()))
+//         qWarning("QPainterPath::lineTo: Adding point where x or y is NaN, results are undefined");
+// #endif
     ensureData();
     detach();
 
@@ -724,11 +728,11 @@ void QPainterPath::cubicTo(const QPointF &c1, const QPointF &c2, const QPointF &
     printf("QPainterPath::cubicTo() (%.2f,%.2f), (%.2f,%.2f), (%.2f,%.2f)\n",
            c1.x(), c1.y(), c2.x(), c2.y(), e.x(), e.y());
 #endif
-#ifndef QT_NO_DEBUG
-    if (qt_is_nan(c1.x()) || qt_is_nan(c1.y()) || qt_is_nan(c2.x()) || qt_is_nan(c2.y())
-        || qt_is_nan(e.x()) || qt_is_nan(e.y()))
-        qWarning("QPainterPath::cubicTo: Adding point where x or y is NaN, results are undefined");
-#endif
+// #ifndef QT_NO_DEBUG
+//     if (qt_is_nan(c1.x()) || qt_is_nan(c1.y()) || qt_is_nan(c2.x()) || qt_is_nan(c2.y())
+//         || qt_is_nan(e.x()) || qt_is_nan(e.y()))
+//         qWarning("QPainterPath::cubicTo: Adding point where x or y is NaN, results are undefined");
+// #endif
     ensureData();
     detach();
 
@@ -2235,82 +2239,82 @@ QPainterPath &QPainterPath::operator-=(const QPainterPath &other)
 {
     return *this = (*this - other);
 }
-
-#ifndef QT_NO_DATASTREAM
-/*!
-    \fn QDataStream &operator<<(QDataStream &stream, const QPainterPath &path)
-    \relates QPainterPath
-
-    Writes the given painter \a path to the given \a stream, and
-    returns a reference to the \a stream.
-
-    \sa {Format of the QDataStream Operators}
-*/
-QDataStream &operator<<(QDataStream &s, const QPainterPath &p)
-{
-    if (p.isEmpty()) {
-        s << 0;
-        return s;
-    }
-
-    s << p.elementCount();
-    for (int i=0; i < p.d_func()->elements.size(); ++i) {
-        const QPainterPath::Element &e = p.d_func()->elements.at(i);
-        s << int(e.type);
-        s << double(e.x) << double(e.y);
-    }
-    s << p.d_func()->cStart;
-    s << int(p.d_func()->fillRule);
-    return s;
-}
-
-/*!
-    \fn QDataStream &operator>>(QDataStream &stream, QPainterPath &path)
-    \relates QPainterPath
-
-    Reads a painter path from the given \a stream into the specified \a path,
-    and returns a reference to the \a stream.
-
-    \sa {Format of the QDataStream Operators}
-*/
-QDataStream &operator>>(QDataStream &s, QPainterPath &p)
-{
-    int size;
-    s >> size;
-
-    if (size == 0)
-        return s;
-
-    p.ensureData(); // in case if p.d_func() == 0
-    if (p.d_func()->elements.size() == 1) {
-        Q_ASSERT(p.d_func()->elements.at(0).type == QPainterPath::MoveToElement);
-        p.d_func()->elements.clear();
-    }
-    p.d_func()->elements.reserve(p.d_func()->elements.size() + size);
-    for (int i=0; i<size; ++i) {
-        int type;
-        double x, y;
-        s >> type;
-        s >> x;
-        s >> y;
-        Q_ASSERT(type >= 0 && type <= 3);
-#ifndef QT_NO_DEBUG
-        if (qt_is_nan(x) || qt_is_nan(y))
-            qWarning("QDataStream::operator>>: Adding a NaN element to path, results are undefined");
-#endif
-        QPainterPath::Element elm = { x, y, QPainterPath::ElementType(type) };
-        p.d_func()->elements.append(elm);
-    }
-    s >> p.d_func()->cStart;
-    int fillRule;
-    s >> fillRule;
-    Q_ASSERT(fillRule == Qt::OddEvenFill || Qt::WindingFill);
-    p.d_func()->fillRule = Qt::FillRule(fillRule);
-    p.d_func()->dirtyBounds = true;
-    p.d_func()->dirtyControlBounds = true;
-    return s;
-}
-#endif
+// 
+// #ifndef QT_NO_DATASTREAM
+// /*!
+//     \fn QDataStream &operator<<(QDataStream &stream, const QPainterPath &path)
+//     \relates QPainterPath
+// 
+//     Writes the given painter \a path to the given \a stream, and
+//     returns a reference to the \a stream.
+// 
+//     \sa {Format of the QDataStream Operators}
+// */
+// QDataStream &operator<<(QDataStream &s, const QPainterPath &p)
+// {
+//     if (p.isEmpty()) {
+//         s << 0;
+//         return s;
+//     }
+// 
+//     s << p.elementCount();
+//     for (int i=0; i < p.d_func()->elements.size(); ++i) {
+//         const QPainterPath::Element &e = p.d_func()->elements.at(i);
+//         s << int(e.type);
+//         s << double(e.x) << double(e.y);
+//     }
+//     s << p.d_func()->cStart;
+//     s << int(p.d_func()->fillRule);
+//     return s;
+// }
+// 
+// /*!
+//     \fn QDataStream &operator>>(QDataStream &stream, QPainterPath &path)
+//     \relates QPainterPath
+// 
+//     Reads a painter path from the given \a stream into the specified \a path,
+//     and returns a reference to the \a stream.
+// 
+//     \sa {Format of the QDataStream Operators}
+// */
+// QDataStream &operator>>(QDataStream &s, QPainterPath &p)
+// {
+//     int size;
+//     s >> size;
+// 
+//     if (size == 0)
+//         return s;
+// 
+//     p.ensureData(); // in case if p.d_func() == 0
+//     if (p.d_func()->elements.size() == 1) {
+//         Q_ASSERT(p.d_func()->elements.at(0).type == QPainterPath::MoveToElement);
+//         p.d_func()->elements.clear();
+//     }
+//     p.d_func()->elements.reserve(p.d_func()->elements.size() + size);
+//     for (int i=0; i<size; ++i) {
+//         int type;
+//         double x, y;
+//         s >> type;
+//         s >> x;
+//         s >> y;
+//         Q_ASSERT(type >= 0 && type <= 3);
+// #ifndef QT_NO_DEBUG
+//         if (qt_is_nan(x) || qt_is_nan(y))
+//             qWarning("QDataStream::operator>>: Adding a NaN element to path, results are undefined");
+// #endif
+//         QPainterPath::Element elm = { x, y, QPainterPath::ElementType(type) };
+//         p.d_func()->elements.append(elm);
+//     }
+//     s >> p.d_func()->cStart;
+//     int fillRule;
+//     s >> fillRule;
+//     Q_ASSERT(fillRule == Qt::OddEvenFill || Qt::WindingFill);
+//     p.d_func()->fillRule = Qt::FillRule(fillRule);
+//     p.d_func()->dirtyBounds = true;
+//     p.d_func()->dirtyControlBounds = true;
+//     return s;
+// }
+// #endif
 
 
 /*******************************************************************************
@@ -2820,7 +2824,7 @@ static inline QBezier bezierAtT(const QPainterPath &path, qreal t, qreal *starti
 QPointF QPainterPath::pointAtPercent(qreal t) const
 {
     if (t < 0 || t > 1) {
-        qWarning("QPainterPath::pointAtPercent accepts only values between 0 and 1");
+//         qWarning("QPainterPath::pointAtPercent accepts only values between 0 and 1");
         return QPointF();
     }
 
@@ -2851,7 +2855,7 @@ QPointF QPainterPath::pointAtPercent(qreal t) const
 qreal QPainterPath::angleAtPercent(qreal t) const
 {
     if (t < 0 || t > 1) {
-        qWarning("QPainterPath::angleAtPercent accepts only values between 0 and 1");
+//         qWarning("QPainterPath::angleAtPercent accepts only values between 0 and 1");
         return 0;
     }
 
@@ -2883,7 +2887,7 @@ qreal QPainterPath::angleAtPercent(qreal t) const
 qreal QPainterPath::slopeAtPercent(qreal t) const
 {
     if (t < 0 || t > 1) {
-        qWarning("QPainterPath::slopeAtPercent accepts only values between 0 and 1");
+//         qWarning("QPainterPath::slopeAtPercent accepts only values between 0 and 1");
         return 0;
     }
 

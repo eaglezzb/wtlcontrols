@@ -46,18 +46,18 @@
 #include "qimage.h"
 //modify #include "qwidget.h"
 #include "qpainter.h"
-#include "qdatastream.h"
-#include "qbuffer.h"
+// #include "qdatastream.h"
+// #include "qbuffer.h"
 //modify  #include "qapplication.h"
 //modify #include "qevent.h"
-#include "qfile.h"
-#include "qfileinfo.h"
-#include "qdatetime.h"
+// #include "qfile.h"
+// #include "qfileinfo.h"
+// #include "qdatetime.h"
 #include "qpixmapcache.h"
-#include "qimagereader.h"
-#include "qimagewriter.h"
-#include "qdebug.h"
-#include "qt_windows.h"
+// #include "qimagereader.h"
+// #include "qimagewriter.h"
+// #include "qdebug.h"
+#include "core/qt_windows.h"
 
 #if defined(Q_OS_WINCE)
 #include <winbase.h>
@@ -281,7 +281,7 @@ QPixmap QPixmap::fromWinHBITMAP(HBITMAP bitmap, HBitmapFormat format)
         }
         result = image;
     } else {
-        qWarning("QPixmap::fromWinHBITMAP(), failed to get bitmap bits");
+//         qWarning("QPixmap::fromWinHBITMAP(), failed to get bitmap bits");
     }
     ReleaseDC(0, display_dc);
     qFree(data);
@@ -318,7 +318,7 @@ static QImage qt_fromWinHBITMAP(HDC hdc, HBITMAP bitmap, int w, int h)
             memcpy(dest, src, image.bytesPerLine());
         }
     } else {
-        qWarning("qt_fromWinHBITMAP(), failed to get bitmap bits");
+//         qWarning("qt_fromWinHBITMAP(), failed to get bitmap bits");
     }
 
     return image;
@@ -333,8 +333,8 @@ QPixmap convertHIconToPixmap( const HICON icon)
 
     ICONINFO iconinfo;
     bool result = GetIconInfo(icon, &iconinfo); //x and y Hotspot describes the icon center
-    if (!result)
-        qWarning("convertHIconToPixmap(), failed to GetIconInfo()");
+//     if (!result)
+//         qWarning("convertHIconToPixmap(), failed to GetIconInfo()");
 
     int w = iconinfo.xHotspot * 2;
     int h = iconinfo.yHotspot * 2;

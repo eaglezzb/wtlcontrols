@@ -45,9 +45,12 @@
 #include <QtGui/qtransform.h>
 #include <QtGui/qpaintdevice.h>
 #include <QtGui/qrgb.h>
-#include <QtCore/qbytearray.h>
-#include <QtCore/qrect.h>
-#include <QtCore/qstring.h>
+// #include <QtCore/qbytearray.h>
+// #include <QtCore/qrect.h>
+// #include <QtCore/qstring.h>
+#include "core/qbytearray.h"
+#include "core/qrect.h"
+#include "core/qfeatures.h"
 
 QT_BEGIN_HEADER
 
@@ -56,10 +59,10 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(Gui)
 
 class QIODevice;
-class QStringList;
+// class QStringList;
 class QMatrix;
 class QTransform;
-class QVariant;
+//class QVariant;
 template <class T> class QList;
 template <class T> class QVector;
 
@@ -131,7 +134,7 @@ public:
 #ifndef QT_NO_IMAGEFORMAT_XPM
     explicit QImage(const char * const xpm[]);
 #endif
-    explicit QImage(const QString &fileName, const char *format = 0);
+//     explicit QImage(const QString &fileName, const char *format = 0);
 #ifndef QT_NO_CAST_FROM_ASCII
     explicit QImage(const char *fileName, const char *format = 0);
 #endif
@@ -146,7 +149,7 @@ public:
 
     bool operator==(const QImage &) const;
     bool operator!=(const QImage &) const;
-    operator QVariant() const;
+    //operator QVariant() const;
     void detach();
     bool isDetached() const;
 
@@ -224,18 +227,18 @@ public:
     void invertPixels(InvertMode = InvertRgb);
 
 
-    bool load(QIODevice *device, const char* format);
-    bool load(const QString &fileName, const char* format=0);
-    bool loadFromData(const uchar *buf, int len, const char *format = 0);
-    inline bool loadFromData(const QByteArray &data, const char* aformat=0)
-        { return loadFromData(reinterpret_cast<const uchar *>(data.constData()), data.size(), aformat); }
+//     bool load(QIODevice *device, const char* format);
+//     bool load(const QString &fileName, const char* format=0);
+//     bool loadFromData(const uchar *buf, int len, const char *format = 0);
+//     inline bool loadFromData(const QByteArray &data, const char* aformat=0)
+//         { return loadFromData(reinterpret_cast<const uchar *>(data.constData()), data.size(), aformat); }
 
-    bool save(const QString &fileName, const char* format=0, int quality=-1) const;
-    bool save(QIODevice *device, const char* format=0, int quality=-1) const;
+//     bool save(const QString &fileName, const char* format=0, int quality=-1) const;
+//     bool save(QIODevice *device, const char* format=0, int quality=-1) const;
 
-    static QImage fromData(const uchar *data, int size, const char *format = 0);
-    inline static QImage fromData(const QByteArray &data, const char *format = 0)
-        { return fromData(reinterpret_cast<const uchar *>(data.constData()), data.size(), format); }
+//     static QImage fromData(const uchar *data, int size, const char *format = 0);
+//     inline static QImage fromData(const QByteArray &data, const char *format = 0)
+//         { return fromData(reinterpret_cast<const uchar *>(data.constData()), data.size(), format); }
 
     int serialNumber() const;
     qint64 cacheKey() const;
@@ -335,10 +338,10 @@ Q_GUI_EXPORT_INLINE void QImage::setPixel(const QPoint &pt, uint index_or_rgb) {
 
 // QImage stream functions
 
-#if !defined(QT_NO_DATASTREAM)
-Q_GUI_EXPORT QDataStream &operator<<(QDataStream &, const QImage &);
-Q_GUI_EXPORT QDataStream &operator>>(QDataStream &, QImage &);
-#endif
+// #if !defined(QT_NO_DATASTREAM)
+// Q_GUI_EXPORT QDataStream &operator<<(QDataStream &, const QImage &);
+// Q_GUI_EXPORT QDataStream &operator>>(QDataStream &, QImage &);
+// #endif
 
 #ifdef QT3_SUPPORT
 Q_GUI_EXPORT QT3_SUPPORT void bitBlt(QImage* dst, int dx, int dy, const QImage* src,

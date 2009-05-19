@@ -53,7 +53,7 @@
 // We mean it.
 //
 
-#include "QtCore/qbytearray.h"
+#include "core/qbytearray.h"
 
 QT_BEGIN_NAMESPACE
 

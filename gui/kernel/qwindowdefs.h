@@ -42,8 +42,9 @@
 #ifndef QWINDOWDEFS_H
 #define QWINDOWDEFS_H
 
-#include <QtCore/qobjectdefs.h>
-#include <QtCore/qnamespace.h>
+// #include <QtCore/qobjectdefs.h>
+// #include <QtCore/qnamespace.h>
+#include "core/qnamespace.h"
 
 QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE
@@ -82,7 +83,7 @@ class QPicture;
 class QTimer;
 class QTime;
 class QClipboard;
-class QString;
+// class QString;
 class QByteArray;
 // class QApplication;
 

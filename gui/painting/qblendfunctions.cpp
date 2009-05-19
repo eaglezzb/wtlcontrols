@@ -39,7 +39,8 @@
 **
 ****************************************************************************/
 
-#include <qmath.h>
+// #include <qmath.h>
+#include "core/qmath.h"
 #include "qdrawhelper_p.h"
 
 QT_BEGIN_NAMESPACE

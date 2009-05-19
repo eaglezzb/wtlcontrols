@@ -46,9 +46,13 @@
 #include <QtGui/qpolygon.h>
 #include <QtGui/qregion.h>
 #include <QtGui/qwindowdefs.h>
-#include <QtCore/qline.h>
-#include <QtCore/qpoint.h>
-#include <QtCore/qrect.h>
+// #include <QtCore/qline.h>
+// #include <QtCore/qpoint.h>
+// #include <QtCore/qrect.h>
+#include "core/qglobal.h"
+#include "core/qline.h"
+#include "core/qpoint.h"
+#include "core/qrect.h"
 
 QT_BEGIN_HEADER
 
@@ -56,11 +60,11 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(Gui)
 
-class QVariant;
+//class QVariant;
 
 class Q_GUI_EXPORT QTransform
 {
-    Q_ENUMS(TransformationType)
+//     Q_ENUMS(TransformationType)
 public:
     enum TransformationType {
         TxNone      = 0x00,
@@ -131,7 +135,7 @@ public:
 
     QTransform &operator=(const QTransform &);
 
-    operator QVariant() const;
+    //operator QVariant() const;
 
     void reset();
     QPoint       map(const QPoint &p) const;
@@ -310,14 +314,13 @@ inline QTransform &QTransform::operator-=(qreal num)
     m_dirty     |= TxProject;
     return *this;
 }
+// 
+// #ifndef QT_NO_DATASTREAM
+// /****** stream functions *******************/
+// Q_GUI_EXPORT QDataStream &operator<<(QDataStream &, const QTransform &);
+// Q_GUI_EXPORT QDataStream &operator>>(QDataStream &, QTransform &);
+// #endif
 
-/****** stream functions *******************/
-Q_GUI_EXPORT QDataStream &operator<<(QDataStream &, const QTransform &);
-Q_GUI_EXPORT QDataStream &operator>>(QDataStream &, QTransform &);
-
-#ifndef QT_NO_DEBUG_STREAM
-Q_GUI_EXPORT QDebug operator<<(QDebug, const QTransform &);
-#endif
 /****** end stream functions *******************/
 
 // mathematical semantics

@@ -53,18 +53,20 @@
 // We mean it.
 //
 
-#include "QtCore/qglobal.h"
+// #include "QtCore/qglobal.h"
+#include "core/qglobal.h"
 #include "QtGui/qrgb.h"
-#include "QtCore/qstringlist.h"
+// #include "QtCore/qstringlist.h"
+
 
 QT_BEGIN_NAMESPACE
 
 uint qt_get_rgb_val(const char *name);
 bool qt_get_named_rgb(const char *, QRgb*);
-bool qt_get_named_rgb(const QChar *, int len, QRgb*);
+// bool qt_get_named_rgb(const QChar *, int len, QRgb*);
 bool qt_get_hex_rgb(const char *, QRgb *);
-bool qt_get_hex_rgb(const QChar *, int len, QRgb *);
-QStringList qt_get_colornames();
+// bool qt_get_hex_rgb(const QChar *, int len, QRgb *);
+// QStringList qt_get_colornames();
 
 QT_END_NAMESPACE
 

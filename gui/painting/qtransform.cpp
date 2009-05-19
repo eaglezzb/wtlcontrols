@@ -40,13 +40,14 @@
 ****************************************************************************/
 #include "qtransform.h"
 
-#include "qdatastream.h"
-#include "qdebug.h"
+// #include "qdatastream.h"
+// #include "qdebug.h"
 #include "qmatrix.h"
 #include "qregion.h"
 #include "qpainterpath.h"
-#include "qvariant.h"
-#include <qmath.h>
+// #include "qvariant.h"
+// #include <qmath.h>
+#include "core/qmath.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -884,82 +885,65 @@ void QTransform::reset()
     m_type = TxNone;
     m_dirty = TxNone;
 }
+// 
+// #ifndef QT_NO_DATASTREAM
+// /*!
+//     \fn QDataStream &operator<<(QDataStream &stream, const QTransform &matrix)
+//     \since 4.3
+//     \relates QTransform
+// 
+//     Writes the given \a matrix to the given \a stream and returns a
+//     reference to the stream.
+// 
+//     \sa {Format of the QDataStream Operators}
+// */
+// QDataStream & operator<<(QDataStream &s, const QTransform &m)
+// {
+//     s << double(m.m11())
+//       << double(m.m12())
+//       << double(m.m13())
+//       << double(m.m21())
+//       << double(m.m22())
+//       << double(m.m23())
+//       << double(m.m31())
+//       << double(m.m32())
+//       << double(m.m33());
+//     return s;
+// }
+// 
+// /*!
+//     \fn QDataStream &operator>>(QDataStream &stream, QTransform &matrix)
+//     \since 4.3
+//     \relates QTransform
+// 
+//     Reads the given \a matrix from the given \a stream and returns a
+//     reference to the stream.
+// 
+//     \sa {Format of the QDataStream Operators}
+// */
+// QDataStream & operator>>(QDataStream &s, QTransform &t)
+// {
+//      double m11, m12, m13,
+//          m21, m22, m23,
+//          m31, m32, m33;
+// 
+//      s >> m11;
+//      s >> m12;
+//      s >> m13;
+//      s >> m21;
+//      s >> m22;
+//      s >> m23;
+//      s >> m31;
+//      s >> m32;
+//      s >> m33;
+//      t.setMatrix(m11, m12, m13,
+//                  m21, m22, m23,
+//                  m31, m32, m33);
+//      return s;
+// }
+// 
+// #endif // QT_NO_DATASTREAM
 
-#ifndef QT_NO_DATASTREAM
-/*!
-    \fn QDataStream &operator<<(QDataStream &stream, const QTransform &matrix)
-    \since 4.3
-    \relates QTransform
-
-    Writes the given \a matrix to the given \a stream and returns a
-    reference to the stream.
-
-    \sa {Format of the QDataStream Operators}
-*/
-QDataStream & operator<<(QDataStream &s, const QTransform &m)
-{
-    s << double(m.m11())
-      << double(m.m12())
-      << double(m.m13())
-      << double(m.m21())
-      << double(m.m22())
-      << double(m.m23())
-      << double(m.m31())
-      << double(m.m32())
-      << double(m.m33());
-    return s;
-}
-
-/*!
-    \fn QDataStream &operator>>(QDataStream &stream, QTransform &matrix)
-    \since 4.3
-    \relates QTransform
-
-    Reads the given \a matrix from the given \a stream and returns a
-    reference to the stream.
-
-    \sa {Format of the QDataStream Operators}
-*/
-QDataStream & operator>>(QDataStream &s, QTransform &t)
-{
-     double m11, m12, m13,
-         m21, m22, m23,
-         m31, m32, m33;
-
-     s >> m11;
-     s >> m12;
-     s >> m13;
-     s >> m21;
-     s >> m22;
-     s >> m23;
-     s >> m31;
-     s >> m32;
-     s >> m33;
-     t.setMatrix(m11, m12, m13,
-                 m21, m22, m23,
-                 m31, m32, m33);
-     return s;
-}
-
-#endif // QT_NO_DATASTREAM
-
-#ifndef QT_NO_DEBUG_STREAM
-QDebug operator<<(QDebug dbg, const QTransform &m)
-{
-    dbg.nospace() << "QTransform("
-                  << "11="  << m.m11()
-                  << " 12=" << m.m12()
-                  << " 13=" << m.m13()
-                  << " 21=" << m.m21()
-                  << " 22=" << m.m22()
-                  << " 23=" << m.m23()
-                  << " 31=" << m.m31()
-                  << " 32=" << m.m32()
-                  << " 33=" << m.m33()
-                  << ")";
-    return dbg.space();
-}
-#endif
 
 /*!
     \fn QPoint operator*(const QPoint &point, const QTransform &matrix)
@@ -1670,7 +1654,6 @@ bool QTransform::quadToQuad(const QPolygonF &one,
     if (!squareToQuad(two, stq))
         return false;
     trans *= stq;
-    //qDebug()<<"Final = "<<trans;
     return true;
 }
 
@@ -1907,10 +1890,10 @@ QTransform::TransformationType QTransform::type() const
 
     Returns the transform as a QVariant.
 */
-QTransform::operator QVariant() const
-{
-    return QVariant(QVariant::Transform, this);
-}
+// QTransform::operator QVariant() const
+// {
+//     return QVariant(QVariant::Transform, this);
+// }
 
 
 /*!

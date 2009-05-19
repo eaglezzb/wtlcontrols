@@ -45,7 +45,8 @@
 //modify #include "qbitmap.h"
 //modify #include "qapplication.h"
 //modify #include <private/qapplication_p.h>
-#include "qt_windows.h"
+// #include "qt_windows.h"
+#include "core/qt_windows.h"
 //modify #include "qprinter.h"
 
 QT_BEGIN_NAMESPACE

@@ -43,11 +43,12 @@
 #include "qpixmap.h"
 #include "qbitmap.h"
 #include "qpixmapcache.h"
-#include "qdatastream.h"
-#include "qvariant.h"
-#include "qline.h"
-#include "qdebug.h"
-#include <QtCore/qcoreapplication.h>
+// #include "qdatastream.h"
+//#include "qvariant.h"
+// #include "qline.h"
+// #include "qdebug.h"
+#include "core/qline.h"
+// #include <QtCore/qcoreapplication.h>
 
 QT_BEGIN_NAMESPACE
 
@@ -94,20 +95,20 @@ const uchar *qt_patternForBrush(int brushStyle, bool invert)
     return pat_tbl[brushStyle - Qt::Dense1Pattern];
 }
 
-QPixmap qt_pixmapForBrush(int brushStyle, bool invert)
-{
-    QPixmap pm;
-    QString key = QLatin1String("$qt-brush$") + QString::number(brushStyle)
-                  + QString::number((int)invert);
-    if (!QPixmapCache::find(key, pm)) {
-        pm = QBitmap::fromData(QSize(8, 8), qt_patternForBrush(brushStyle, invert),
-                               QImage::Format_MonoLSB);
-        QPixmapCache::insert(key, pm);
-    }
-
-    return pm;
-}
-
+// QPixmap qt_pixmapForBrush(int brushStyle, bool invert)
+// {
+//     QPixmap pm;
+//     QString key = QLatin1String("$qt-brush$") + QString::number(brushStyle)
+//                   + QString::number((int)invert);
+//     if (!QPixmapCache::find(key, pm)) {
+//         pm = QBitmap::fromData(QSize(8, 8), qt_patternForBrush(brushStyle, invert),
+//                                QImage::Format_MonoLSB);
+//         QPixmapCache::insert(key, pm);
+//     }
+// 
+//     return pm;
+// }
+// 
 class QBrushPatternImageCache
 {
 public:
@@ -152,7 +153,7 @@ private:
 static void qt_cleanup_brush_pattern_image_cache();
 Q_GLOBAL_STATIC_WITH_INITIALIZER(QBrushPatternImageCache, qt_brushPatternImageCache,
                                  {
-                                     qAddPostRoutine(qt_cleanup_brush_pattern_image_cache);
+                                     //qAddPostRoutine(qt_cleanup_brush_pattern_image_cache);
                                  })
 
 static void qt_cleanup_brush_pattern_image_cache()
@@ -625,10 +626,10 @@ QBrush &QBrush::operator=(const QBrush &b)
 /*!
    Returns the brush as a QVariant
 */
-QBrush::operator QVariant() const
-{
-    return QVariant(QVariant::Brush, this);
-}
+// QBrush::operator QVariant() const
+// {
+//     return QVariant(QVariant::Brush, this);
+// }
 
 /*!
     \fn Qt::BrushStyle QBrush::style() const
@@ -949,200 +950,200 @@ bool QBrush::operator==(const QBrush &b) const
 
     Use color() instead.
 */
-
-#ifndef QT_NO_DEBUG_STREAM
-/*!
-  \internal
-*/
-QDebug operator<<(QDebug dbg, const QBrush &b)
-{
-#ifndef Q_BROKEN_DEBUG_STREAM
-    dbg.nospace() << "QBrush(" << b.color() << ',' << b.style() << ')';
-    return dbg.space();
-#else
-    qWarning("This compiler doesn't support streaming QBrush to QDebug");
-    return dbg;
-    Q_UNUSED(b);
-#endif
-}
-#endif
-
-/*****************************************************************************
-  QBrush stream functions
- *****************************************************************************/
-#ifndef QT_NO_DATASTREAM
-/*!
-    \fn QDataStream &operator<<(QDataStream &stream, const QBrush &brush)
-    \relates QBrush
-
-    Writes the given \a brush to the given \a stream and returns a
-    reference to the \a stream.
-
-    \sa {Format of the QDataStream Operators}
-*/
-
-QDataStream &operator<<(QDataStream &s, const QBrush &b)
-{
-    quint8 style = (quint8) b.style();
-    bool gradient_style = false;
-
-    if (style == Qt::LinearGradientPattern || style == Qt::RadialGradientPattern
-        || style == Qt::ConicalGradientPattern)
-        gradient_style = true;
-
-    if (s.version() < QDataStream::Qt_4_0 && gradient_style)
-        style = Qt::NoBrush;
-
-    s << style << b.color();
-    if (b.style() == Qt::TexturePattern) {
-        s << b.texture();
-    } else if (s.version() >= QDataStream::Qt_4_0 && gradient_style) {
-        const QGradient *gradient = b.gradient();
-        int type_as_int = int(gradient->type());
-        s << type_as_int;
-        if (s.version() >= QDataStream::Qt_4_3) {
-            s << int(gradient->spread());
-            s << int(gradient->coordinateMode());
-        }
-
-        if (s.version() >= QDataStream::Qt_4_5)
-            s << int(gradient->interpolationMode());
-
-        if (sizeof(qreal) == sizeof(double)) {
-            s << gradient->stops();
-        } else {
-            // ensure that we write doubles here instead of streaming the stops
-            // directly; otherwise, platforms that redefine qreal might generate
-            // data that cannot be read on other platforms.
-            QVector<QGradientStop> stops = gradient->stops();
-            s << quint32(stops.size());
-            for (int i = 0; i < stops.size(); ++i) {
-                const QGradientStop &stop = stops.at(i);
-                s << QPair<double, QColor>(double(stop.first), stop.second);
-            }
-        }
-
-        if (gradient->type() == QGradient::LinearGradient) {
-            s << static_cast<const QLinearGradient *>(gradient)->start();
-            s << static_cast<const QLinearGradient *>(gradient)->finalStop();
-        } else if (gradient->type() == QGradient::RadialGradient) {
-            s << static_cast<const QRadialGradient *>(gradient)->center();
-            s << static_cast<const QRadialGradient *>(gradient)->focalPoint();
-            s << (double) static_cast<const QRadialGradient *>(gradient)->radius();
-        } else { // type == Conical
-            s << static_cast<const QConicalGradient *>(gradient)->center();
-            s << (double) static_cast<const QConicalGradient *>(gradient)->angle();
-        }
-    }
-    if (s.version() >= QDataStream::Qt_4_3)
-        s << b.transform();
-    return s;
-}
-
-/*!
-    \fn QDataStream &operator>>(QDataStream &stream, QBrush &brush)
-    \relates QBrush
-
-    Reads the given \a brush from the given \a stream and returns a
-    reference to the \a stream.
-
-    \sa {Format of the QDataStream Operators}
-*/
-
-QDataStream &operator>>(QDataStream &s, QBrush &b)
-{
-    quint8 style;
-    QColor color;
-    s >> style;
-    s >> color;
-    if (style == Qt::TexturePattern) {
-        QPixmap pm;
-        s >> pm;
-        b = QBrush(color, pm);
-    } else if (style == Qt::LinearGradientPattern
-               || style == Qt::RadialGradientPattern
-               || style == Qt::ConicalGradientPattern) {
-
-        int type_as_int;
-        QGradient::Type type;
-        QGradientStops stops;
-        QGradient::CoordinateMode cmode = QGradient::LogicalMode;
-        QGradient::Spread spread = QGradient::PadSpread;
-        QGradient::InterpolationMode imode = QGradient::ColorInterpolation;
-
-        s >> type_as_int;
-        type = QGradient::Type(type_as_int);
-        if (s.version() >= QDataStream::Qt_4_3) {
-            s >> type_as_int;
-            spread = QGradient::Spread(type_as_int);
-            s >> type_as_int;
-            cmode = QGradient::CoordinateMode(type_as_int);
-        }
-
-        if (s.version() >= QDataStream::Qt_4_5) {
-            s >> type_as_int;
-            imode = QGradient::InterpolationMode(type_as_int);
-        }
-
-        if (sizeof(qreal) == sizeof(double)) {
-            s >> stops;
-        } else {
-            quint32 numStops;
-            double n;
-            QColor c;
-
-            s >> numStops;
-            for (quint32 i = 0; i < numStops; ++i) {
-                s >> n >> c;
-                stops << QPair<qreal, QColor>(n, c);
-            }
-        }
-
-        if (type == QGradient::LinearGradient) {
-            QPointF p1, p2;
-            s >> p1;
-            s >> p2;
-            QLinearGradient lg(p1, p2);
-            lg.setStops(stops);
-            lg.setSpread(spread);
-            lg.setCoordinateMode(cmode);
-            lg.setInterpolationMode(imode);
-            b = QBrush(lg);
-        } else if (type == QGradient::RadialGradient) {
-            QPointF center, focal;
-            double radius;
-            s >> center;
-            s >> focal;
-            s >> radius;
-            QRadialGradient rg(center, radius, focal);
-            rg.setStops(stops);
-            rg.setSpread(spread);
-            rg.setCoordinateMode(cmode);
-            rg.setInterpolationMode(imode);
-            b = QBrush(rg);
-        } else { // type == QGradient::ConicalGradient
-            QPointF center;
-            double angle;
-            s >> center;
-            s >> angle;
-            QConicalGradient cg(center, angle);
-            cg.setStops(stops);
-            cg.setSpread(spread);
-            cg.setCoordinateMode(cmode);
-            cg.setInterpolationMode(imode);
-            b = QBrush(cg);
-        }
-    } else {
-        b = QBrush(color, (Qt::BrushStyle)style);
-    }
-    if (s.version() >= QDataStream::Qt_4_3) {
-        QTransform transform;
-        s >> transform;
-        b.setTransform(transform);
-    }
-    return s;
-}
-#endif // QT_NO_DATASTREAM
+// 
+// #ifndef QT_NO_DEBUG_STREAM
+// /*!
+//   \internal
+// */
+// QDebug operator<<(QDebug dbg, const QBrush &b)
+// {
+// #ifndef Q_BROKEN_DEBUG_STREAM
+//     dbg.nospace() << "QBrush(" << b.color() << ',' << b.style() << ')';
+//     return dbg.space();
+// #else
+//     qWarning("This compiler doesn't support streaming QBrush to QDebug");
+//     return dbg;
+//     Q_UNUSED(b);
+// #endif
+// }
+// #endif
+// 
+// /*****************************************************************************
+//   QBrush stream functions
+//  *****************************************************************************/
+// #ifndef QT_NO_DATASTREAM
+// /*!
+//     \fn QDataStream &operator<<(QDataStream &stream, const QBrush &brush)
+//     \relates QBrush
+// 
+//     Writes the given \a brush to the given \a stream and returns a
+//     reference to the \a stream.
+// 
+//     \sa {Format of the QDataStream Operators}
+// */
+// 
+// QDataStream &operator<<(QDataStream &s, const QBrush &b)
+// {
+//     quint8 style = (quint8) b.style();
+//     bool gradient_style = false;
+// 
+//     if (style == Qt::LinearGradientPattern || style == Qt::RadialGradientPattern
+//         || style == Qt::ConicalGradientPattern)
+//         gradient_style = true;
+// 
+//     if (s.version() < QDataStream::Qt_4_0 && gradient_style)
+//         style = Qt::NoBrush;
+// 
+//     s << style << b.color();
+//     if (b.style() == Qt::TexturePattern) {
+//         s << b.texture();
+//     } else if (s.version() >= QDataStream::Qt_4_0 && gradient_style) {
+//         const QGradient *gradient = b.gradient();
+//         int type_as_int = int(gradient->type());
+//         s << type_as_int;
+//         if (s.version() >= QDataStream::Qt_4_3) {
+//             s << int(gradient->spread());
+//             s << int(gradient->coordinateMode());
+//         }
+// 
+//         if (s.version() >= QDataStream::Qt_4_5)
+//             s << int(gradient->interpolationMode());
+// 
+//         if (sizeof(qreal) == sizeof(double)) {
+//             s << gradient->stops();
+//         } else {
+//             // ensure that we write doubles here instead of streaming the stops
+//             // directly; otherwise, platforms that redefine qreal might generate
+//             // data that cannot be read on other platforms.
+//             QVector<QGradientStop> stops = gradient->stops();
+//             s << quint32(stops.size());
+//             for (int i = 0; i < stops.size(); ++i) {
+//                 const QGradientStop &stop = stops.at(i);
+//                 s << QPair<double, QColor>(double(stop.first), stop.second);
+//             }
+//         }
+// 
+//         if (gradient->type() == QGradient::LinearGradient) {
+//             s << static_cast<const QLinearGradient *>(gradient)->start();
+//             s << static_cast<const QLinearGradient *>(gradient)->finalStop();
+//         } else if (gradient->type() == QGradient::RadialGradient) {
+//             s << static_cast<const QRadialGradient *>(gradient)->center();
+//             s << static_cast<const QRadialGradient *>(gradient)->focalPoint();
+//             s << (double) static_cast<const QRadialGradient *>(gradient)->radius();
+//         } else { // type == Conical
+//             s << static_cast<const QConicalGradient *>(gradient)->center();
+//             s << (double) static_cast<const QConicalGradient *>(gradient)->angle();
+//         }
+//     }
+//     if (s.version() >= QDataStream::Qt_4_3)
+//         s << b.transform();
+//     return s;
+// }
+// 
+// /*!
+//     \fn QDataStream &operator>>(QDataStream &stream, QBrush &brush)
+//     \relates QBrush
+// 
+//     Reads the given \a brush from the given \a stream and returns a
+//     reference to the \a stream.
+// 
+//     \sa {Format of the QDataStream Operators}
+// */
+// 
+// QDataStream &operator>>(QDataStream &s, QBrush &b)
+// {
+//     quint8 style;
+//     QColor color;
+//     s >> style;
+//     s >> color;
+//     if (style == Qt::TexturePattern) {
+//         QPixmap pm;
+//         s >> pm;
+//         b = QBrush(color, pm);
+//     } else if (style == Qt::LinearGradientPattern
+//                || style == Qt::RadialGradientPattern
+//                || style == Qt::ConicalGradientPattern) {
+// 
+//         int type_as_int;
+//         QGradient::Type type;
+//         QGradientStops stops;
+//         QGradient::CoordinateMode cmode = QGradient::LogicalMode;
+//         QGradient::Spread spread = QGradient::PadSpread;
+//         QGradient::InterpolationMode imode = QGradient::ColorInterpolation;
+// 
+//         s >> type_as_int;
+//         type = QGradient::Type(type_as_int);
+//         if (s.version() >= QDataStream::Qt_4_3) {
+//             s >> type_as_int;
+//             spread = QGradient::Spread(type_as_int);
+//             s >> type_as_int;
+//             cmode = QGradient::CoordinateMode(type_as_int);
+//         }
+// 
+//         if (s.version() >= QDataStream::Qt_4_5) {
+//             s >> type_as_int;
+//             imode = QGradient::InterpolationMode(type_as_int);
+//         }
+// 
+//         if (sizeof(qreal) == sizeof(double)) {
+//             s >> stops;
+//         } else {
+//             quint32 numStops;
+//             double n;
+//             QColor c;
+// 
+//             s >> numStops;
+//             for (quint32 i = 0; i < numStops; ++i) {
+//                 s >> n >> c;
+//                 stops << QPair<qreal, QColor>(n, c);
+//             }
+//         }
+// 
+//         if (type == QGradient::LinearGradient) {
+//             QPointF p1, p2;
+//             s >> p1;
+//             s >> p2;
+//             QLinearGradient lg(p1, p2);
+//             lg.setStops(stops);
+//             lg.setSpread(spread);
+//             lg.setCoordinateMode(cmode);
+//             lg.setInterpolationMode(imode);
+//             b = QBrush(lg);
+//         } else if (type == QGradient::RadialGradient) {
+//             QPointF center, focal;
+//             double radius;
+//             s >> center;
+//             s >> focal;
+//             s >> radius;
+//             QRadialGradient rg(center, radius, focal);
+//             rg.setStops(stops);
+//             rg.setSpread(spread);
+//             rg.setCoordinateMode(cmode);
+//             rg.setInterpolationMode(imode);
+//             b = QBrush(rg);
+//         } else { // type == QGradient::ConicalGradient
+//             QPointF center;
+//             double angle;
+//             s >> center;
+//             s >> angle;
+//             QConicalGradient cg(center, angle);
+//             cg.setStops(stops);
+//             cg.setSpread(spread);
+//             cg.setCoordinateMode(cmode);
+//             cg.setInterpolationMode(imode);
+//             b = QBrush(cg);
+//         }
+//     } else {
+//         b = QBrush(color, (Qt::BrushStyle)style);
+//     }
+//     if (s.version() >= QDataStream::Qt_4_3) {
+//         QTransform transform;
+//         s >> transform;
+//         b.setTransform(transform);
+//     }
+//     return s;
+// }
+// #endif // QT_NO_DATASTREAM
 
 /*******************************************************************************
  * QGradient implementations

@@ -56,8 +56,8 @@
 #include "qimage.h"
 
 #ifdef Q_WS_WIN
-#include "qt_windows.h"
-
+// #include "qt_windows.h"
+#include "core/qt_windows.h"
 #elif defined(Q_WS_X11)
 #include <private/qt_x11_p.h>
 
